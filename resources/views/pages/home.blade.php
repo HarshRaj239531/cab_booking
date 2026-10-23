@@ -3,66 +3,79 @@
 @section('title', 'Veloce Cabs | Simple, Clean & Reliable Cab Booking')
 
 @section('content')
-<!-- HERO SECTION (Clean, Serene, Professional Light Blue & Gold Aesthetic like Yoga) -->
-<section class="relative min-h-[90vh] pt-12 pb-20 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#E2EEFB] via-[#F0F6FD] to-[#F0F6FD] border-b border-[#C7E0FA]">
+<!-- HERO SECTION (Refined Soft Dark Wash with Clean Luminous Console & Gold Accents) -->
+<section class="relative min-h-[90vh] pt-16 pb-20 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#1A2638] via-[#213046] to-[#283C56] border-b border-[#334B6B]/40">
     
-    <!-- Hero Background Image with Subtle Luminous Overlay -->
+    <!-- Hero Background Image with Very Light, Subtle Dark Wash (Halka Dark Tint) -->
     <div class="absolute inset-0 z-0 pointer-events-none">
-        <div class="absolute inset-0 bg-gradient-to-b from-[#E2EEFB]/90 via-[#F0F6FD]/75 to-[#F0F6FD] z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#1A2638]/65 via-[#213046]/40 to-[#283C56]/70 z-10"></div>
         <img
             src="{{ asset('images/hero_sedan.jpg') }}"
             alt="Luxury Sedan Background"
-            class="w-full h-full object-cover object-center opacity-25 filter saturate-150"
+            class="w-full h-full object-cover object-center opacity-65 filter saturate-125 contrast-105"
         />
         <!-- Ambient Champagne Gold & Ice Blue Glows -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-400/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-amber-400/15 rounded-full blur-3xl pointer-events-none"></div>
     </div>
 
     <div class="relative z-10 text-center px-4 w-full max-w-5xl mx-auto">
         
         <!-- Small Pill Tag with Gold Sparkle -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 border border-[#C7E0FA] text-[#0369A1] text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-amber-300 text-xs font-bold uppercase tracking-wider mb-6 shadow-md">
             <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
             <span>✨ Reliable Rides • Verified Drivers • Fixed Rates</span>
         </div>
 
         <!-- Big Display Headline with Serif & Gold Accent -->
-        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif leading-[1.02] tracking-tight mb-6 text-[#0B172A]">
+        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif leading-[1.02] tracking-tight mb-6 text-white">
             Ride in Peace. <br class="hidden sm:block" />
-            <span class="text-amber-500 italic pr-4 relative inline-block">
+            <span class="text-amber-300 italic pr-4 relative inline-block">
                 Arrive on Time.
-                <svg class="absolute w-full h-3.5 -bottom-1 left-0 text-amber-400/70" viewBox="0 0 200 9" fill="none">
+                <svg class="absolute w-full h-3.5 -bottom-1 left-0 text-amber-400/80" viewBox="0 0 200 9" fill="none">
                     <path d="M2.00018 7.37072C50.2989 -0.669527 122.956 -1.68412 198.057 7.37072" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
                 </svg>
             </span>
         </h1>
 
         <!-- Simple, Clear Subtitle -->
-        <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-[#334155] font-light mb-10 leading-relaxed px-4">
+        <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-200 font-light mb-8 leading-relaxed px-4">
             Book clean, comfortable cabs in seconds. No sudden price surges, polite verified drivers, and guaranteed zero cancellations.
         </p>
 
-        <!-- 3 Highlights Cards Grid (Yoga Inspired Clean Feature Highlights) -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10">
-            <div class="flex flex-col items-center p-5 bg-white rounded-3xl border border-[#C7E0FA] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div class="w-12 h-12 bg-sky-100 text-sky-700 rounded-2xl flex items-center justify-center mb-3">
+        <!-- Primary Call to Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+            <a href="{{ route('booking') }}" class="btn-gold text-base font-bold px-8 py-4 flex items-center gap-3 shadow-xl hover:scale-105 transition-transform group">
+                <span>Book a Ride Now</span>
+                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+            </a>
+            <a href="{{ route('fleet') }}" class="px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-base border border-white/25 backdrop-blur-md transition-all shadow-md">
+                <span>Explore Fleet & Fares</span>
+            </a>
+        </div>
+
+        <!-- 3 Highlights Cards Grid (Luminous Clean Cards) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
+            <div class="flex flex-col items-center p-5 bg-white/95 backdrop-blur-md rounded-3xl border border-white/60 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                <div class="w-12 h-12 bg-sky-100 text-sky-700 rounded-2xl flex items-center justify-center mb-3 shadow-sm">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Fast Pickup</span>
                 <span class="text-[#0B172A] font-serif text-lg font-semibold">Average 3-4 Mins</span>
             </div>
 
-            <div class="flex flex-col items-center p-5 bg-white rounded-3xl border border-[#C7E0FA] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center mb-3">
+            <div class="flex flex-col items-center p-5 bg-white/95 backdrop-blur-md rounded-3xl border border-white/60 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center mb-3 shadow-sm">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Clean & Fresh</span>
                 <span class="text-[#0B172A] font-serif text-lg font-semibold">Sanitized Daily</span>
             </div>
 
-            <div class="flex flex-col items-center p-5 bg-white rounded-3xl border border-[#C7E0FA] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div class="w-12 h-12 bg-sky-100 text-sky-700 rounded-2xl flex items-center justify-center mb-3">
+            <div class="flex flex-col items-center p-5 bg-white/95 backdrop-blur-md rounded-3xl border border-white/60 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                <div class="w-12 h-12 bg-sky-100 text-sky-700 rounded-2xl flex items-center justify-center mb-3 shadow-sm">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Honest Pricing</span>
@@ -70,92 +83,24 @@
             </div>
         </div>
 
-        <!-- QUICK BOOKING WIDGET (Light Blue & Golden Styling) -->
-        <div class="bg-white rounded-[2.5rem] p-6 sm:p-8 border-2 border-[#C7E0FA] shadow-2xl text-left max-w-4xl mx-auto relative overflow-hidden">
-            <!-- Subtle Golden Accent Strip on top -->
-            <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-sky-400 via-amber-400 to-sky-500"></div>
-
-            <div class="flex flex-wrap items-center justify-between border-b border-[#E1EFFD] pb-4 mb-6 gap-3">
-                <div>
-                    <span class="text-xs font-bold tracking-widest uppercase text-amber-600 block">Instant Cab Booking</span>
-                    <h2 class="font-serif text-2xl font-bold text-[#0B172A]">Where would you like to go?</h2>
-                </div>
-                <!-- Service Type Pills -->
-                <div class="flex gap-1.5 bg-[#F0F6FD] p-1 rounded-full border border-[#C7E0FA] text-xs font-semibold">
-                    <button type="button" onclick="setQuickType('city')" id="tabQuickCity" class="px-4 py-1.5 rounded-full bg-[#0284C7] text-white transition-all shadow-sm">City Ride</button>
-                    <button type="button" onclick="setQuickType('airport')" id="tabQuickAirport" class="px-4 py-1.5 rounded-full text-[#1E3A5F] hover:text-[#0284C7] transition-all">Airport</button>
-                    <button type="button" onclick="setQuickType('outstation')" id="tabQuickOutstation" class="px-4 py-1.5 rounded-full text-[#1E3A5F] hover:text-[#0284C7] transition-all">Outstation</button>
-                </div>
-            </div>
-
-            <form onsubmit="handleQuickProceed(event)" class="space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Pickup -->
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-[#334155] mb-1.5">Pickup Location</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-sky-600 text-base">📍</span>
-                            <input type="text" id="homePickup" required value="Connaught Place, Central City" class="input-clean w-full pl-10 pr-4 py-3 text-sm font-medium">
-                        </div>
-                    </div>
-
-                    <!-- Dropoff -->
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-[#334155] mb-1.5">Drop-off Destination</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-amber-600 text-base">🏁</span>
-                            <input type="text" id="homeDropoff" required value="International Airport Terminal 3" class="input-clean w-full pl-10 pr-4 py-3 text-sm font-medium">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
-                    <!-- Cab Category -->
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-[#334155] mb-1.5">Select Cab Type</label>
-                        <select id="homeVehicle" onchange="updateEstimatedPrice()" class="input-clean w-full px-4 py-3 text-sm font-medium">
-                            <option value="sedan" data-fare="35">Comfort Sedan ($35 base)</option>
-                            <option value="suv" data-fare="55">Spacious SUV ($55 base)</option>
-                            <option value="electric" data-fare="40">Eco Silent Electric Cab ($40 base)</option>
-                            <option value="van" data-fare="75">Family Travel Van ($75 base)</option>
-                        </select>
-                    </div>
-
-                    <!-- Date & Time -->
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-[#334155] mb-1.5">Pickup Time</label>
-                        <input type="datetime-local" id="homeTime" value="{{ date('Y-m-d\TH:i', strtotime('+1 hour')) }}" class="input-clean w-full px-4 py-2.5 text-sm font-medium">
-                    </div>
-
-                    <!-- Live Estimate Box & Submit Button -->
-                    <div class="flex items-end">
-                        <button type="submit" class="w-full btn-gold text-sm font-bold py-3.5 px-6 flex items-center justify-center gap-2 group shadow-xl">
-                            <span>Book Ride Now</span>
-                            <span id="quickFareBadge" class="bg-black/15 text-slate-900 px-2 py-0.5 rounded-full text-xs font-mono font-bold">$35</span>
-                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <!-- Social Proof Under Booking Card -->
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-[#1E3A5F] font-semibold">
+        <!-- Social Proof Under Highlights -->
+        <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-200 font-medium">
             <span class="flex items-center gap-1.5">
-                <span class="text-amber-500 font-bold">★ 4.96</span> from 48,000+ Happy Riders
+                <span class="text-amber-300 font-bold">★ 4.96</span> from 48,000+ Happy Riders
             </span>
-            <span class="text-slate-300">•</span>
+            <span class="text-slate-400">•</span>
             <span class="flex items-center gap-1.5">
-                <span class="text-sky-600 font-bold">✓</span> 100% Police Verified Drivers
+                <span class="text-sky-300 font-bold">✓</span> 100% Police Verified Drivers
             </span>
-            <span class="text-slate-300">•</span>
+            <span class="text-slate-400">•</span>
             <span class="flex items-center gap-1.5">
-                <span class="text-amber-500 font-bold">✨</span> Zero Surge Guarantee
+                <span class="text-amber-300 font-bold">✨</span> Zero Surge Guarantee
             </span>
         </div>
 
     </div>
 </section>
+
 
 <!-- RIDES FOR EVERY NEED (Light Blue & Gold Theme) -->
 <section class="py-20 px-6 bg-white border-b border-[#D2E4F7]">
@@ -430,46 +375,6 @@
 
 @push('scripts')
 <script>
-function setQuickType(type) {
-    const tabs = ['tabQuickCity', 'tabQuickAirport', 'tabQuickOutstation'];
-    tabs.forEach(t => {
-        document.getElementById(t).className = 'px-4 py-1.5 rounded-full text-[#1E3A5F] hover:text-[#0284C7] transition-all';
-    });
-
-    if (type === 'city') {
-        document.getElementById('tabQuickCity').className = 'px-4 py-1.5 rounded-full bg-[#0284C7] text-white transition-all shadow-sm';
-        document.getElementById('homePickup').value = 'Connaught Place, Central City';
-        document.getElementById('homeDropoff').value = 'South Extension Market';
-    } else if (type === 'airport') {
-        document.getElementById('tabQuickAirport').className = 'px-4 py-1.5 rounded-full bg-[#0284C7] text-white transition-all shadow-sm';
-        document.getElementById('homePickup').value = 'City Center Plaza';
-        document.getElementById('homeDropoff').value = 'International Airport Terminal 3';
-    } else if (type === 'outstation') {
-        document.getElementById('tabQuickOutstation').className = 'px-4 py-1.5 rounded-full bg-[#0284C7] text-white transition-all shadow-sm';
-        document.getElementById('homePickup').value = 'City Residence';
-        document.getElementById('homeDropoff').value = 'Weekend Resort & Heritage Palace';
-    }
-    updateEstimatedPrice();
-}
-
-function updateEstimatedPrice() {
-    const sel = document.getElementById('homeVehicle');
-    const fare = sel.options[sel.selectedIndex].getAttribute('data-fare') || '35';
-    document.getElementById('quickFareBadge').innerText = `$${fare}`;
-}
-
-function handleQuickProceed(e) {
-    e.preventDefault();
-    const pickup = encodeURIComponent(document.getElementById('homePickup').value);
-    const dropoff = encodeURIComponent(document.getElementById('homeDropoff').value);
-    const vehicle = document.getElementById('homeVehicle').value;
-
-    window.showToast('Checking cab availability...');
-    setTimeout(() => {
-        window.location.href = `{{ route('booking') }}?pickup=${pickup}&dropoff=${dropoff}&vehicle=${vehicle}`;
-    }, 300);
-}
-
 function toggleFaq(index) {
     const content = document.getElementById(`faqContent${index}`);
     const icon = document.getElementById(`faqIcon${index}`);
