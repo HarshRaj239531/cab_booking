@@ -15,14 +15,14 @@
             class="w-full h-full object-cover object-center opacity-65 filter saturate-125 contrast-105"
         />
         <!-- Ambient Champagne Gold & Ice Blue Glows -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-amber-400/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="motion-glow absolute top-1/4 left-1/4 w-96 h-96 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="motion-glow absolute top-1/3 right-1/4 w-80 h-80 bg-amber-400/15 rounded-full blur-3xl pointer-events-none"></div>
     </div>
 
     <div class="relative z-10 text-center px-4 w-full max-w-5xl mx-auto">
         
         <!-- Small Pill Tag with Gold Sparkle -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-amber-300 text-xs font-bold uppercase tracking-wider mb-6 shadow-md">
+        <div class="motion-float-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-amber-300 text-xs font-bold uppercase tracking-wider mb-6 shadow-md">
             <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
             <span>✨ Reliable Rides • Verified Drivers • Fixed Rates</span>
         </div>

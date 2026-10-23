@@ -610,13 +610,21 @@ function goToStep(step) {
     }
 
     const activeBox = document.getElementById(`step${step}Box`);
-    if (activeBox) activeBox.classList.remove('hidden');
+    if (activeBox) {
+        activeBox.classList.remove('hidden');
+        if (window.animate) {
+            window.animate(activeBox, { opacity: [0, 1], y: [25, 0], scale: [0.97, 1] }, { duration: 0.38, ease: [0.16, 1, 0.3, 1] });
+        }
+    }
 
     // Update active marker & connecting line
     const activeMarker = document.getElementById(`stepMarker${step}`);
     const activeLabel = document.getElementById(`stepLabel${step}`);
     if (activeMarker) {
         activeMarker.className = 'w-10 h-10 rounded-full bg-[#0B172A] text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-sky-100 transition-all';
+        if (window.animate) {
+            window.animate(activeMarker, { scale: [0.85, 1.15, 1] }, { duration: 0.35, ease: [0.16, 1, 0.3, 1] });
+        }
     }
     if (activeLabel) {
         activeLabel.className = 'text-[11px] font-bold text-[#0B172A] mt-2 whitespace-nowrap';
@@ -642,6 +650,12 @@ function pickCab(key, fare, name, img) {
             el.className = 'p-5 rounded-3xl border border-[#C7E0FA] bg-white cursor-pointer transition-all hover:border-[#0284C7] hover:shadow-lg relative group';
         }
     });
+
+    const activeCardId = `cabCard${key.charAt(0).toUpperCase() + key.slice(1)}`;
+    const selectedEl = document.getElementById(activeCardId);
+    if (selectedEl && window.animate) {
+        window.animate(selectedEl, { scale: [0.96, 1.03, 1] }, { duration: 0.3, ease: [0.16, 1, 0.3, 1] });
+    }
 
     const badges = {
         sedan: document.getElementById('selectedBadgeSedan'),

@@ -18,13 +18,16 @@
 </head>
 <body class="bg-[#F0F6FD] text-[#0B172A] font-sans min-h-full flex flex-col selection:bg-sky-200 selection:text-sky-950 overflow-x-hidden relative">
 
-    <!-- Radiant Top Scroll Progress (Light Blue to Gold Gradient) -->
-    <div id="scrollProgress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-sky-400 via-sky-600 to-amber-400 z-[200] transition-all duration-150" style="width: 0%;"></div>
+    <!-- Radiant Top Scroll Progress (Light Blue to Gold Gradient - Powered by Framer Motion scroll) -->
+    <div id="scrollProgress" class="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-sky-400 via-sky-600 to-amber-400 z-[200] pointer-events-none" style="width: 0%;"></div>
 
     <!-- Top Announcement Strip (Light Blue & Golden Touch) -->
-    <div class="bg-gradient-to-r from-[#0C2340] via-[#0F3057] to-[#0C2340] text-sky-100 text-xs py-2 px-4 z-[95] text-center font-medium flex items-center justify-center gap-2 border-b border-amber-500/20">
-        <span class="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-        <span>✨ 24/7 Available across all major airports & city hubs • Use coupon <strong class="text-amber-300 underline cursor-pointer font-bold" onclick="window.showToast('Coupon GOLD10 copied to clipboard!')">GOLD10</strong> for 10% off your ride</span>
+    <div class="bg-gradient-to-r from-[#0C2340] via-[#0F3057] to-[#0C2340] text-sky-100 text-xs py-2 px-4 z-[95] text-center font-medium flex items-center justify-center gap-3 border-b border-amber-500/20">
+        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-300 text-[10px] font-bold uppercase tracking-wider">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+            Framer Motion
+        </span>
+        <span>✨ 24/7 Available across all major airports & city hubs • Use coupon <strong class="text-amber-300 underline cursor-pointer font-bold" onclick="window.showToast('Coupon GOLD10 copied to clipboard!')">GOLD10</strong> for 10% off</span>
     </div>
 
     <!-- Floating Pill Glassmorphic Header -->

@@ -407,16 +407,29 @@ function filterCabs(category) {
 
     if (buttons[category]) {
         buttons[category].className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-[#0284C7] text-white shadow-md';
+        if (window.animate) {
+            window.animate(buttons[category], { scale: [0.93, 1.08, 1] }, { duration: 0.35, ease: [0.16, 1, 0.3, 1] });
+        }
     }
 
     const cards = document.querySelectorAll('.cab-card');
+    const visibleCards = [];
     cards.forEach(c => {
         if (category === 'all' || c.classList.contains(category)) {
             c.style.display = 'flex';
+            visibleCards.push(c);
         } else {
             c.style.display = 'none';
         }
     });
+
+    if (window.animate && visibleCards.length > 0) {
+        window.animate(
+            visibleCards,
+            { opacity: [0, 1], scale: [0.9, 1], y: [15, 0] },
+            { delay: window.stagger(0.06), duration: 0.45, ease: [0.16, 1, 0.3, 1] }
+        );
+    }
 
     window.showToast(`Showing: ${category.toUpperCase()}`);
 }
