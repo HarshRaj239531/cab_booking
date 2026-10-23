@@ -1,347 +1,523 @@
 @extends('layouts.app')
 
-@section('title', 'Book a Cab Online | Instant Fare Calculator')
+@section('title', 'Book a Cab Online | Instant Fare & Live Ride Tracking')
 
 @section('content')
-<section class="py-12 px-4 sm:px-6 lg:px-8 bg-[#F5F7F3] min-h-screen">
-    <div class="max-w-4xl mx-auto">
+<section class="py-12 px-4 sm:px-6 lg:px-8 bg-[#F0F6FD] min-h-screen relative overflow-hidden">
+    
+    <!-- Ambient Blue & Gold Glow Elements -->
+    <div class="absolute top-10 left-1/4 w-96 h-96 bg-sky-400/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-40 right-1/4 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10">
         
-        <!-- Page Title -->
+        <!-- Page Header -->
         <div class="text-center mb-10">
-            <span class="inline-block px-4 py-1.5 rounded-full bg-white border border-[#D8E2D5] text-[#355E3B] text-xs font-semibold uppercase tracking-wider mb-3 shadow-sm">
-                Fast & Transparent Booking
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#C7E0FA] text-[#0369A1] text-xs font-bold uppercase tracking-wider mb-3 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                ✦ Guaranteed Cab Dispatch & Fixed Fares
             </span>
-            <h1 class="text-3xl sm:text-5xl font-serif text-[#1A3320]">
-                Book Your <span class="text-emerald-700 italic">Cab in 60 Seconds</span>
+            <h1 class="text-3xl sm:text-5xl font-serif text-[#0B172A]">
+                Book Your Cab <span class="text-amber-500 italic">in 3 Simple Steps</span>
             </h1>
-            <p class="text-[#4A6350] text-sm sm:text-base mt-2 font-light">
-                Fixed prices, verified drivers, and live ride tracking.
+            <p class="text-[#475569] text-sm sm:text-base mt-2 font-light">
+                Fixed clear pricing, verified courteous drivers, and real-time live ride tracking.
             </p>
         </div>
 
-        <!-- 4-Step Progress Pill Strip -->
-        <div class="grid grid-cols-4 gap-2 text-center text-xs mb-10 font-medium">
-            <div id="stepTab1" class="py-3 px-2 rounded-2xl bg-[#1A3320] text-white shadow-md">
-                <span class="block text-[10px] text-emerald-300">STEP 1</span>
-                <span>Route & Time</span>
-            </div>
-            <div id="stepTab2" class="py-3 px-2 rounded-2xl bg-white border border-[#D8E2D5] text-[#5C7562]">
-                <span class="block text-[10px] text-[#7A9C76]">STEP 2</span>
-                <span>Choose Cab</span>
-            </div>
-            <div id="stepTab3" class="py-3 px-2 rounded-2xl bg-white border border-[#D8E2D5] text-[#5C7562]">
-                <span class="block text-[10px] text-[#7A9C76]">STEP 3</span>
-                <span>Rider Info</span>
-            </div>
-            <div id="stepTab4" class="py-3 px-2 rounded-2xl bg-white border border-[#D8E2D5] text-[#5C7562]">
-                <span class="block text-[10px] text-[#7A9C76]">STEP 4</span>
-                <span>Ride Pass</span>
+        <!-- 4-Step Progress Indicator -->
+        <div class="mb-10 max-w-3xl mx-auto px-2">
+            <div class="relative flex items-center justify-between">
+                <!-- Background Connection Track -->
+                <div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-1 bg-[#D2E4F7] z-0"></div>
+                <!-- Active Fill Line -->
+                <div id="stepLineProgress" class="absolute left-6 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-r from-sky-400 via-sky-600 to-amber-400 z-0 transition-all duration-500" style="width: 0%;"></div>
+
+                <!-- Step 1 Marker -->
+                <div onclick="goToStep(1)" class="relative z-10 flex flex-col items-center cursor-pointer group">
+                    <div id="stepMarker1" class="w-10 h-10 rounded-full bg-[#0B172A] text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-sky-100 transition-all">
+                        1
+                    </div>
+                    <span class="text-[11px] font-bold text-[#0B172A] mt-2 whitespace-nowrap">Route & Time</span>
+                </div>
+
+                <!-- Step 2 Marker -->
+                <div onclick="goToStep(2)" class="relative z-10 flex flex-col items-center cursor-pointer group">
+                    <div id="stepMarker2" class="w-10 h-10 rounded-full bg-white border-2 border-[#C7E0FA] text-[#64748B] flex items-center justify-center font-bold text-sm transition-all group-hover:border-[#0284C7]">
+                        2
+                    </div>
+                    <span class="text-[11px] font-medium text-[#64748B] mt-2 whitespace-nowrap" id="stepLabel2">Choose Cab</span>
+                </div>
+
+                <!-- Step 3 Marker -->
+                <div onclick="goToStep(3)" class="relative z-10 flex flex-col items-center cursor-pointer group">
+                    <div id="stepMarker3" class="w-10 h-10 rounded-full bg-white border-2 border-[#C7E0FA] text-[#64748B] flex items-center justify-center font-bold text-sm transition-all group-hover:border-[#0284C7]">
+                        3
+                    </div>
+                    <span class="text-[11px] font-medium text-[#64748B] mt-2 whitespace-nowrap" id="stepLabel3">Rider Info</span>
+                </div>
+
+                <!-- Step 4 Marker -->
+                <div class="relative z-10 flex flex-col items-center">
+                    <div id="stepMarker4" class="w-10 h-10 rounded-full bg-white border-2 border-[#C7E0FA] text-[#64748B] flex items-center justify-center font-bold text-sm transition-all">
+                        4
+                    </div>
+                    <span class="text-[11px] font-medium text-[#64748B] mt-2 whitespace-nowrap" id="stepLabel4">Ride Pass</span>
+                </div>
             </div>
         </div>
 
-        <!-- STEP 1: ROUTE & TIME -->
-        <div id="step1Box" class="bg-white rounded-[2.5rem] p-6 sm:p-10 border border-[#D8E2D5] shadow-xl space-y-6">
-            <div class="border-b border-[#EAF0E5] pb-4">
-                <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Step 1 of 4</span>
-                <h2 class="font-serif text-2xl font-bold text-[#1A3320]">Enter Your Pickup & Drop Location</h2>
-            </div>
-
-            <!-- Ride Mode Pills -->
-            <div class="flex gap-2 bg-[#F5F7F3] p-1.5 rounded-2xl border border-[#DCE5D9] text-xs font-semibold">
-                <button type="button" onclick="setMode('city')" id="btnModeCity" class="flex-1 py-2.5 rounded-xl bg-[#1A3320] text-white transition-all">City Ride</button>
-                <button type="button" onclick="setMode('airport')" id="btnModeAirport" class="flex-1 py-2.5 rounded-xl text-[#4A6350] hover:text-[#1A3320] transition-all">Airport Transfer</button>
-                <button type="button" onclick="setMode('hourly')" id="btnModeHourly" class="flex-1 py-2.5 rounded-xl text-[#4A6350] hover:text-[#1A3320] transition-all">Hourly Rental</button>
-            </div>
-
-            <div class="space-y-4">
-                <!-- Pickup -->
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Pickup Location</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-emerald-600">📍</span>
-                        <input type="text" id="bPickup" required value="{{ request('pickup') ?? 'Connaught Place, Central City' }}" class="w-full pl-10 pr-4 py-3 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium focus:outline-none focus:border-emerald-600 focus:bg-white">
+        <!-- MAIN WIZARD CONTAINER -->
+        <div>
+            
+            <!-- STEP 1: ROUTE & TRIP TIMING -->
+            <div id="step1Box" class="bg-white rounded-[2.5rem] p-6 sm:p-10 border-2 border-[#C7E0FA] shadow-xl space-y-6">
+                
+                <div class="flex flex-wrap items-center justify-between border-b border-[#E1EFFD] pb-4 gap-3">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-600 block">Step 01 of 03</span>
+                        <h2 class="font-serif text-2xl font-bold text-[#0B172A]">Where are you traveling?</h2>
+                    </div>
+                    
+                    <!-- Trip Mode Selector -->
+                    <div class="flex gap-1.5 bg-[#F0F6FD] p-1 rounded-full border border-[#C7E0FA] text-xs font-semibold">
+                        <button type="button" onclick="setMode('city')" id="btnModeCity" class="px-4 py-2 rounded-full bg-[#0284C7] text-white transition-all shadow-sm">City Ride</button>
+                        <button type="button" onclick="setMode('airport')" id="btnModeAirport" class="px-4 py-2 rounded-full text-[#1E3A5F] hover:text-[#0284C7] transition-all">Airport Transfer</button>
+                        <button type="button" onclick="setMode('hourly')" id="btnModeHourly" class="px-4 py-2 rounded-full text-[#1E3A5F] hover:text-[#0284C7] transition-all">Hourly Rental</button>
                     </div>
                 </div>
 
-                <!-- Dropoff -->
-                <div id="bDropoffContainer">
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Drop-off Destination</label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-emerald-600">🏁</span>
-                        <input type="text" id="bDropoff" required value="{{ request('dropoff') ?? 'International Airport Terminal 3' }}" class="w-full pl-10 pr-4 py-3 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium focus:outline-none focus:border-emerald-600 focus:bg-white">
+                <div class="space-y-5">
+                    
+                    <!-- Pickup Location Input -->
+                    <div>
+                        <div class="flex items-center justify-between mb-1.5">
+                            <label class="text-xs font-semibold uppercase tracking-wider text-[#475569]">Pickup Address</label>
+                            <!-- Quick Landmark Chips -->
+                            <div class="hidden sm:flex items-center gap-2 text-xs">
+                                <span class="text-[#64748B]">Quick Pick:</span>
+                                <button type="button" onclick="fillLocation('pickup', 'Airport Terminal 3 Arrivals')" class="text-[#0284C7] hover:underline font-medium">✈️ Airport T3</button>
+                                <span class="text-slate-300">•</span>
+                                <button type="button" onclick="fillLocation('pickup', 'Connaught Place Central Hub')" class="text-[#0284C7] hover:underline font-medium">🏢 City Center</button>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-sky-600 text-lg">📍</span>
+                            <input type="text" id="bPickup" required value="{{ request('pickup') ?? 'Connaught Place Central Hub' }}" class="input-clean w-full pl-11 pr-4 py-3.5 text-sm font-medium">
+                        </div>
                     </div>
+
+                    <!-- Destination Input -->
+                    <div id="bDropoffContainer">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <label class="text-xs font-semibold uppercase tracking-wider text-[#475569]">Drop-off Destination</label>
+                            <!-- Quick Landmark Chips -->
+                            <div class="hidden sm:flex items-center gap-2 text-xs">
+                                <span class="text-[#64748B]">Popular Drops:</span>
+                                <button type="button" onclick="fillLocation('dropoff', 'International Airport Terminal 3')" class="text-[#0284C7] hover:underline font-medium">✈️ Airport T3</button>
+                                <span class="text-slate-300">•</span>
+                                <button type="button" onclick="fillLocation('dropoff', 'Grand Heritage Palace Hotel')" class="text-[#0284C7] hover:underline font-medium">🏨 Grand Hotel</button>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-amber-500 text-lg">🏁</span>
+                            <input type="text" id="bDropoff" required value="{{ request('dropoff') ?? 'International Airport Terminal 3' }}" class="input-clean w-full pl-11 pr-4 py-3.5 text-sm font-medium">
+                        </div>
+                    </div>
+
+                    <!-- Hourly Standby Option (shown when Hourly is selected) -->
+                    <div id="bHourlyContainer" class="hidden">
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-1.5">Dedicated Standby Duration</label>
+                        <select id="bHourlyHours" onchange="calculateFare()" class="input-clean w-full px-4 py-3 text-sm font-medium">
+                            <option value="2">2 Hours Dedicated Standby (Quick stops & shopping)</option>
+                            <option value="4" selected>4 Hours Standby (Perfect for client meetings)</option>
+                            <option value="8">8 Hours Full Day Standby (Multiple city stops)</option>
+                            <option value="12">12 Hours Full Day City Tour</option>
+                        </select>
+                    </div>
+
+                    <!-- Timing Options: Leave Now vs Schedule -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-2">When do you need the cab?</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+                            <button type="button" onclick="setTimingOption('now')" id="btnTimeNow" class="p-3.5 rounded-2xl border-2 border-[#0284C7] bg-[#E1EFFD] text-[#0B172A] flex items-center gap-3 text-left font-semibold text-xs shadow-sm">
+                                <span class="w-8 h-8 rounded-full bg-[#0284C7] text-white flex items-center justify-center text-sm shrink-0 shadow">⚡</span>
+                                <div>
+                                    <div class="text-sm font-bold text-[#0B172A]">Leave Right Now</div>
+                                    <div class="text-[11px] text-[#475569] font-normal">Nearest cab arrives in ~3-4 mins</div>
+                                </div>
+                            </button>
+
+                            <button type="button" onclick="setTimingOption('later')" id="btnTimeLater" class="p-3.5 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex items-center gap-3 text-left font-semibold text-xs hover:border-[#0284C7] transition-all">
+                                <span class="w-8 h-8 rounded-full bg-[#F0F6FD] text-[#0B172A] flex items-center justify-center text-sm shrink-0">📅</span>
+                                <div>
+                                    <div class="text-sm font-bold text-[#0B172A]">Schedule for Later</div>
+                                    <div class="text-[11px] text-[#64748B] font-normal">Guaranteed on-time pickup</div>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Schedule Date/Time Picker -->
+                        <div id="scheduleTimeGroup" class="hidden pt-1">
+                            <input type="datetime-local" id="bDatetime" value="{{ date('Y-m-d\TH:i', strtotime('+2 hours')) }}" class="input-clean w-full px-4 py-3 text-sm font-medium">
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Route & Travel Information Banner -->
+                    <div class="p-5 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-sky-100 text-[#0284C7] flex items-center justify-center font-bold text-lg shadow-sm">
+                                🗺️
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase font-bold text-[#64748B] block">ESTIMATED ROUTE</span>
+                                <span class="text-sm font-bold text-[#0B172A]">24.5 km • Approx 32 mins</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 text-amber-700 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200 text-[11px] font-bold self-start sm:self-auto shadow-xs">
+                            <span>✨ Zero Surge Guarantee</span>
+                        </div>
+                    </div>
+
                 </div>
 
-                <!-- Hourly Dropdown (Hidden unless hourly) -->
-                <div id="bHourlyContainer" class="hidden">
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Hours on Standby</label>
-                    <select id="bHourlyHours" onchange="calculateFare()" class="w-full px-4 py-3 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium focus:outline-none focus:border-emerald-600">
-                        <option value="2">2 Hours Dedicated Standby</option>
-                        <option value="4" selected>4 Hours Standby (Popular for meetings)</option>
-                        <option value="8">8 Hours Full Day Standby</option>
-                        <option value="12">12 Hours Full Day City Tour</option>
-                    </select>
+                <div class="flex justify-end pt-4 border-t border-[#E1EFFD]">
+                    <button type="button" onclick="goToStep(2)" class="btn-gold px-8 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg">
+                        <span>Continue to Choose Cab</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 2: CHOOSE CAB (Visual Cards with Badges & Amenities) -->
+            <div id="step2Box" class="bg-white rounded-[2.5rem] p-6 sm:p-10 border-2 border-[#C7E0FA] shadow-xl space-y-6 hidden">
+                
+                <div class="flex items-center justify-between border-b border-[#E1EFFD] pb-4">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-600 block">Step 02 of 03</span>
+                        <h2 class="font-serif text-2xl font-bold text-[#0B172A]">Select Your Cab Type</h2>
+                    </div>
+                    <button type="button" onclick="goToStep(1)" class="text-xs font-semibold text-[#0284C7] hover:underline">← Modify Route</button>
                 </div>
 
-                <!-- Date & Time -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    
+                    <!-- Cab 1: Sedan -->
+                    <div onclick="pickCab('sedan', 35, 'Comfort Prime Sedan', 'hero_sedan.jpg')" id="cabCardSedan" class="p-5 rounded-3xl border-2 border-[#0284C7] bg-[#E1EFFD]/60 cursor-pointer transition-all hover:shadow-lg relative group">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="px-3 py-1 rounded-full bg-white border border-[#C7E0FA] text-[10px] font-bold text-[#0B172A] shadow-sm">
+                                ⭐ MOST POPULAR
+                            </span>
+                            <span class="text-2xl font-serif font-bold text-amber-600">$35.00</span>
+                        </div>
+                        <div class="h-32 rounded-2xl overflow-hidden mb-3">
+                            <img src="{{ asset('images/hero_sedan.jpg') }}" alt="Sedan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h3 class="font-serif font-bold text-lg text-[#0B172A]">Comfort Prime Sedan</h3>
+                        <p class="text-xs text-[#475569] mt-0.5">Air-conditioned sedan for daily rides, meetings, and station drops.</p>
+                        
+                        <div class="flex items-center gap-3 text-xs text-[#64748B] mt-3 pt-2.5 border-t border-[#C7E0FA]/60">
+                            <span>👤 4 Seats</span>
+                            <span>🧳 3 Bags</span>
+                            <span>❄️ AC</span>
+                        </div>
+                        <span class="text-xs font-bold text-[#0284C7] mt-2 block" id="selectedBadgeSedan">Selected ✓</span>
+                    </div>
+
+                    <!-- Cab 2: SUV -->
+                    <div onclick="pickCab('suv', 55, 'Spacious Family SUV', 'fleet_suv.jpg')" id="cabCardSuv" class="p-5 rounded-3xl border border-[#C7E0FA] bg-white cursor-pointer transition-all hover:border-[#0284C7] hover:shadow-lg relative group">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="px-3 py-1 rounded-full bg-[#F0F6FD] border border-[#C7E0FA] text-[10px] font-bold text-[#475569]">
+                                🎒 EXTRA LUGGAGE
+                            </span>
+                            <span class="text-2xl font-serif font-bold text-[#0B172A]">$55.00</span>
+                        </div>
+                        <div class="h-32 rounded-2xl overflow-hidden mb-3">
+                            <img src="{{ asset('images/fleet_suv.jpg') }}" alt="SUV" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h3 class="font-serif font-bold text-lg text-[#0B172A]">Spacious Family SUV</h3>
+                        <p class="text-xs text-[#475569] mt-0.5">Extra legroom and large trunk space. Ideal for family airport runs.</p>
+                        
+                        <div class="flex items-center gap-3 text-xs text-[#64748B] mt-3 pt-2.5 border-t border-[#C7E0FA]/60">
+                            <span>👤 6 Seats</span>
+                            <span>🧳 5 Bags</span>
+                            <span>🏔️ High Ground</span>
+                        </div>
+                        <span class="text-xs text-[#64748B] mt-2 block" id="selectedBadgeSuv">Click to Select</span>
+                    </div>
+
+                    <!-- Cab 3: Electric -->
+                    <div onclick="pickCab('electric', 40, 'Eco Silent Electric Cab', 'fleet_electric.jpg')" id="cabCardElectric" class="p-5 rounded-3xl border border-[#C7E0FA] bg-white cursor-pointer transition-all hover:border-[#0284C7] hover:shadow-lg relative group">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold">
+                                ⚡ ZERO EMISSION
+                            </span>
+                            <span class="text-2xl font-serif font-bold text-[#0B172A]">$40.00</span>
+                        </div>
+                        <div class="h-32 rounded-2xl overflow-hidden mb-3">
+                            <img src="{{ asset('images/fleet_electric.jpg') }}" alt="Electric" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h3 class="font-serif font-bold text-lg text-[#0B172A]">Eco Silent Electric Cab</h3>
+                        <p class="text-xs text-[#475569] mt-0.5">Completely quiet ride with zero emissions and instant fast AC.</p>
+                        
+                        <div class="flex items-center gap-3 text-xs text-[#64748B] mt-3 pt-2.5 border-t border-[#C7E0FA]/60">
+                            <span>👤 4 Seats</span>
+                            <span>🧳 3 Bags</span>
+                            <span>⚡ 100% Electric</span>
+                        </div>
+                        <span class="text-xs text-[#64748B] mt-2 block" id="selectedBadgeElectric">Click to Select</span>
+                    </div>
+
+                    <!-- Cab 4: Van -->
+                    <div onclick="pickCab('van', 75, 'Executive Group Van', 'fleet_van.jpg')" id="cabCardVan" class="p-5 rounded-3xl border border-[#C7E0FA] bg-white cursor-pointer transition-all hover:border-[#0284C7] hover:shadow-lg relative group">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="px-3 py-1 rounded-full bg-[#F0F6FD] border border-[#C7E0FA] text-[10px] font-bold text-[#475569]">
+                                👥 GROUP TRAVEL
+                            </span>
+                            <span class="text-2xl font-serif font-bold text-[#0B172A]">$75.00</span>
+                        </div>
+                        <div class="h-32 rounded-2xl overflow-hidden mb-3">
+                            <img src="{{ asset('images/fleet_van.jpg') }}" alt="Van" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <h3 class="font-serif font-bold text-lg text-[#0B172A]">Executive Group Van</h3>
+                        <p class="text-xs text-[#475569] mt-0.5">High ceiling, comfortable individual seats, and huge baggage capacity.</p>
+                        
+                        <div class="flex items-center gap-3 text-xs text-[#64748B] mt-3 pt-2.5 border-t border-[#C7E0FA]/60">
+                            <span>👤 7 Seats</span>
+                            <span>🧳 10 Bags</span>
+                            <span>🚌 High Roof</span>
+                        </div>
+                        <span class="text-xs text-[#64748B] mt-2 block" id="selectedBadgeVan">Click to Select</span>
+                    </div>
+
+                </div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-[#E1EFFD]">
+                    <button type="button" onclick="goToStep(1)" class="btn-outline-blue px-6 py-2.5 text-xs">Back</button>
+                    <button type="button" onclick="goToStep(3)" class="btn-gold px-8 py-3 text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg">
+                        <span>Continue to Passenger Info</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 3: PASSENGER INFO & TRIP OPTIONS -->
+            <div id="step3Box" class="bg-white rounded-[2.5rem] p-6 sm:p-10 border-2 border-[#C7E0FA] shadow-xl space-y-6 hidden">
+                
+                <div class="flex items-center justify-between border-b border-[#E1EFFD] pb-4">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-600 block">Step 03 of 03</span>
+                        <h2 class="font-serif text-2xl font-bold text-[#0B172A]">Passenger & Trip Details</h2>
+                    </div>
+                    <button type="button" onclick="goToStep(2)" class="text-xs font-semibold text-[#0284C7] hover:underline">← Change Cab</button>
+                </div>
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Pickup Date & Time</label>
-                        <input type="datetime-local" id="bDatetime" value="{{ date('Y-m-d\TH:i', strtotime('+1 hour')) }}" class="w-full px-4 py-2.5 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium focus:outline-none focus:border-emerald-600">
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-1.5">Passenger Full Name</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">👤</span>
+                            <input type="text" id="rName" required value="Aditya Sharma" class="input-clean w-full pl-10 pr-4 py-3 text-sm font-medium">
+                        </div>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Flight Number (Optional for Airport)</label>
-                        <input type="text" id="bFlight" placeholder="e.g. AI 102 / 6E 543" class="w-full px-4 py-2.5 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium uppercase placeholder-slate-400 focus:outline-none focus:border-emerald-600">
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-1.5">Mobile Phone (For Driver Updates)</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">📱</span>
+                            <input type="tel" id="rPhone" required value="+91 98765 43210" class="input-clean w-full pl-10 pr-4 py-3 text-sm font-medium">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Estimated Route Strip -->
-                <div class="p-4 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] flex items-center justify-between text-xs text-[#4A6350]">
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
-                        <span>Estimated Route Distance: <strong class="text-[#1A3320]">~24.5 km</strong></span>
-                    </div>
-                    <div>
-                        <span>Estimated Travel Time: <strong class="text-emerald-700">~32 mins</strong></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex justify-end pt-4">
-                <button type="button" onclick="goToStep(2)" class="btn-emerald px-8 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span>Continue to Choose Cab</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </button>
-            </div>
-        </div>
-
-        <!-- STEP 2: CHOOSE CAB -->
-        <div id="step2Box" class="bg-white rounded-[2.5rem] p-6 sm:p-10 border border-[#D8E2D5] shadow-xl space-y-6 hidden">
-            <div class="flex items-center justify-between border-b border-[#EAF0E5] pb-4">
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Step 2 of 4</span>
-                    <h2 class="font-serif text-2xl font-bold text-[#1A3320]">Select Your Preferred Cab</h2>
-                </div>
-                <button type="button" onclick="goToStep(1)" class="text-xs font-semibold text-emerald-700 hover:underline">← Change Route</button>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                
-                <!-- Sedan -->
-                <div onclick="pickCab('sedan', 35, 'Comfort Prime Sedan', 'hero_sedan.jpg')" id="cabCardSedan" class="p-5 rounded-3xl border-2 border-emerald-600 bg-emerald-50/40 cursor-pointer transition-all hover:shadow-md">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="px-3 py-1 rounded-full bg-white border border-[#D8E2D5] text-[10px] font-bold text-[#1A3320]">POPULAR</span>
-                        <span class="text-xl font-bold text-emerald-700">$35.00</span>
-                    </div>
-                    <div class="h-28 rounded-2xl overflow-hidden mb-3">
-                        <img src="{{ asset('images/hero_sedan.jpg') }}" alt="Sedan" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="font-serif font-bold text-lg text-[#1A3320]">Comfort Prime Sedan</h3>
-                    <p class="text-xs text-[#4A6350]">4 Passengers • 3 Bags • Clean AC</p>
-                    <span class="text-xs font-bold text-emerald-700 mt-2 block" id="selectedBadgeSedan">Selected ✓</span>
-                </div>
-
-                <!-- SUV -->
-                <div onclick="pickCab('suv', 55, 'Spacious Family SUV', 'fleet_suv.jpg')" id="cabCardSuv" class="p-5 rounded-3xl border border-[#DCE5D9] bg-white cursor-pointer transition-all hover:border-emerald-600 hover:shadow-md">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="px-3 py-1 rounded-full bg-[#F5F7F3] border border-[#D8E2D5] text-[10px] font-bold text-[#5C7562]">EXTRA ROOM</span>
-                        <span class="text-xl font-bold text-[#1A3320]">$55.00</span>
-                    </div>
-                    <div class="h-28 rounded-2xl overflow-hidden mb-3">
-                        <img src="{{ asset('images/fleet_suv.jpg') }}" alt="SUV" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="font-serif font-bold text-lg text-[#1A3320]">Spacious Family SUV</h3>
-                    <p class="text-xs text-[#4A6350]">6 Passengers • 5 Bags • Big Trunk</p>
-                    <span class="text-xs text-[#7A9C76] mt-2 block" id="selectedBadgeSuv">Click to Select</span>
-                </div>
-
-                <!-- Electric -->
-                <div onclick="pickCab('electric', 40, 'Eco Green Electric Cab', 'fleet_electric.jpg')" id="cabCardElectric" class="p-5 rounded-3xl border border-[#DCE5D9] bg-white cursor-pointer transition-all hover:border-emerald-600 hover:shadow-md">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">100% GREEN</span>
-                        <span class="text-xl font-bold text-[#1A3320]">$40.00</span>
-                    </div>
-                    <div class="h-28 rounded-2xl overflow-hidden mb-3">
-                        <img src="{{ asset('images/fleet_electric.jpg') }}" alt="Electric" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="font-serif font-bold text-lg text-[#1A3320]">Eco Green Electric Cab</h3>
-                    <p class="text-xs text-[#4A6350]">4 Passengers • 3 Bags • Silent Ride</p>
-                    <span class="text-xs text-[#7A9C76] mt-2 block" id="selectedBadgeElectric">Click to Select</span>
-                </div>
-
-                <!-- Van -->
-                <div onclick="pickCab('van', 75, 'Executive Travel Van', 'fleet_van.jpg')" id="cabCardVan" class="p-5 rounded-3xl border border-[#DCE5D9] bg-white cursor-pointer transition-all hover:border-emerald-600 hover:shadow-md">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="px-3 py-1 rounded-full bg-[#F5F7F3] border border-[#D8E2D5] text-[10px] font-bold text-[#5C7562]">GROUP TOUR</span>
-                        <span class="text-xl font-bold text-[#1A3320]">$75.00</span>
-                    </div>
-                    <div class="h-28 rounded-2xl overflow-hidden mb-3">
-                        <img src="{{ asset('images/fleet_van.jpg') }}" alt="Van" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="font-serif font-bold text-lg text-[#1A3320]">Executive Travel Van</h3>
-                    <p class="text-xs text-[#4A6350]">7 Passengers • 10 Bags • High Roof</p>
-                    <span class="text-xs text-[#7A9C76] mt-2 block" id="selectedBadgeVan">Click to Select</span>
-                </div>
-
-            </div>
-
-            <div class="flex items-center justify-between pt-4 border-t border-[#EAF0E5]">
-                <button type="button" onclick="goToStep(1)" class="btn-outline px-6 py-2.5 text-xs">Back</button>
-                <button type="button" onclick="goToStep(3)" class="btn-emerald px-8 py-3 text-xs font-bold uppercase tracking-wider">
-                    Next: Rider Details →
-                </button>
-            </div>
-        </div>
-
-        <!-- STEP 3: RIDER DETAILS & SIMPLE PREFERENCES -->
-        <div id="step3Box" class="bg-white rounded-[2.5rem] p-6 sm:p-10 border border-[#D8E2D5] shadow-xl space-y-6 hidden">
-            <div class="flex items-center justify-between border-b border-[#EAF0E5] pb-4">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Step 3 of 4</span>
-                    <h2 class="font-serif text-2xl font-bold text-[#1A3320]">Passenger & Trip Details</h2>
-                </div>
-                <button type="button" onclick="goToStep(2)" class="text-xs font-semibold text-emerald-700 hover:underline">← Change Cab</button>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Passenger Full Name</label>
-                    <input type="text" id="rName" required value="Aditya Sharma" class="w-full px-4 py-3 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium focus:outline-none focus:border-emerald-600 focus:bg-white">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Mobile Phone (For Driver Updates)</label>
-                    <input type="tel" id="rPhone" required value="+91 98765 43210" class="w-full px-4 py-3 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium focus:outline-none focus:border-emerald-600 focus:bg-white">
-                </div>
-            </div>
-
-            <!-- Optional Add-ons -->
-            <div class="space-y-3">
-                <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350]">Trip Options</label>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                    <label class="flex items-center gap-3 p-4 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] cursor-pointer hover:border-emerald-600 transition-all">
-                        <input type="checkbox" id="addMeet" onchange="calculateFare()" class="w-4 h-4 accent-emerald-600 rounded">
-                        <div>
-                            <span class="font-bold text-[#1A3320] block">Airport Nameboard Pickup (+$10)</span>
-                            <span class="text-[#5C7562]">Driver waits inside airport arrivals hall with your name</span>
-                        </div>
-                    </label>
-
-                    <label class="flex items-center gap-3 p-4 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] cursor-pointer hover:border-emerald-600 transition-all">
-                        <input type="checkbox" id="addChild" onchange="calculateFare()" class="w-4 h-4 accent-emerald-600 rounded">
-                        <div>
-                            <span class="font-bold text-[#1A3320] block">Child Safety Seat (+$8)</span>
-                            <span class="text-[#5C7562]">Sanitized child car seat securely installed in rear</span>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <!-- Fare Summary Box -->
-            <div class="p-6 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] space-y-2.5 text-xs text-[#4A6350]">
-                <div class="flex justify-between">
-                    <span>Base Fare (<span id="sumCabName">Comfort Prime Sedan</span>):</span>
-                    <span id="sumBaseFare" class="font-bold text-[#1A3320]">$35.00</span>
-                </div>
-                <div class="flex justify-between">
-                    <span>Selected Options:</span>
-                    <span id="sumAddons" class="font-bold text-[#1A3320]">$0.00</span>
-                </div>
-                <div class="flex justify-between text-emerald-700" id="discountRow" style="display: none;">
-                    <span>Promo Discount (<span id="appliedCodeText">RIDE10</span>):</span>
-                    <span id="sumDiscount" class="font-bold">-$3.50</span>
-                </div>
-                <div class="flex justify-between text-base font-bold text-[#1A3320] pt-2 border-t border-[#DCE5D9]">
-                    <span>Total Estimated Fare:</span>
-                    <span id="sumTotal" class="text-xl text-emerald-700 font-serif">$35.00</span>
-                </div>
-            </div>
-
-            <!-- Promo Code Input -->
-            <div class="flex gap-2">
-                <input type="text" id="promoInput" placeholder="Try Promo Code: RIDE10" class="flex-grow px-4 py-2.5 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-xs uppercase placeholder-slate-400 focus:outline-none focus:border-emerald-600">
-                <button type="button" onclick="applyPromo()" class="btn-outline px-6 py-2.5 text-xs font-semibold">Apply Code</button>
-            </div>
-
-            <div class="flex items-center justify-between pt-4 border-t border-[#EAF0E5]">
-                <button type="button" onclick="goToStep(2)" class="btn-outline px-6 py-2.5 text-xs">Back</button>
-                <button type="button" onclick="confirmAndIssuePass()" class="btn-emerald px-8 py-3 text-xs font-bold uppercase tracking-wider shadow-lg">
-                    Confirm & Dispatch Cab ✓
-                </button>
-            </div>
-        </div>
-
-        <!-- STEP 4: CONFIRMED RIDE PASS & LIVE ROUTE (Clean Yoga Style & 2x Better) -->
-        <div id="step4Box" class="hidden space-y-6">
-            <div class="bg-white rounded-[2.5rem] p-6 sm:p-10 border-2 border-emerald-600/60 shadow-2xl space-y-6">
-                
-                <!-- Pass Header -->
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#EAF0E5] pb-5 gap-3">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-lg">
-                            ✓
-                        </div>
-                        <div>
-                            <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Ride Confirmed</span>
-                            <h3 class="font-serif text-2xl font-bold text-[#1A3320]">Your Cab is on the way!</h3>
-                        </div>
-                    </div>
-                    <div class="text-left sm:text-right">
-                        <span class="text-[11px] text-[#7A9C76] block">BOOKING ID</span>
-                        <span class="text-lg font-bold text-[#1A3320] font-mono">VC-9824-DEL</span>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-1.5">Email Address (For Instant Receipt)</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">✉️</span>
+                        <input type="email" id="rEmail" value="aditya.sharma@gmail.com" class="input-clean w-full pl-10 pr-4 py-3 text-sm font-medium">
                     </div>
                 </div>
 
-                <!-- Driver & Car Card -->
-                <div class="p-5 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div class="flex items-center gap-4">
-                        <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-emerald-600 shrink-0">
-                            <img src="{{ asset('images/vip_chauffeur.jpg') }}" alt="Driver Photo" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h4 class="font-bold text-base text-[#1A3320]">Ramesh Kumar</h4>
-                                <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">4.9 ★ (3,120 Trips)</span>
+                <!-- Privacy & Data Encryption Assurance Box -->
+                <div class="p-3.5 rounded-2xl bg-sky-50 border border-sky-100 flex items-center gap-3">
+                    <span class="text-sky-600 text-lg">🔒</span>
+                    <p class="text-xs text-sky-900 leading-relaxed font-medium">
+                        Your contact details are encrypted and shared only with your assigned driver for immediate pickup coordination.
+                    </p>
+                </div>
+
+                <!-- Trip Options Checkboxes -->
+                <div class="space-y-3">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569]">Helpful Ride Options</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <label class="flex items-center gap-3 p-4 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] cursor-pointer hover:border-[#0284C7] transition-all">
+                            <input type="checkbox" id="addMeet" onchange="calculateFare()" class="w-4 h-4 accent-[#0284C7] rounded">
+                            <div>
+                                <span class="font-bold text-[#0B172A] block">Airport Nameboard Pickup (+$10)</span>
+                                <span class="text-[#64748B]">Driver waits in arrival terminal with your name</span>
                             </div>
-                            <p class="text-xs text-[#5C7562]" id="passCabDisplay">Comfort Prime Sedan • Plate: DL 01 AB 8890</p>
-                        </div>
-                    </div>
-                    <div class="sm:text-right">
-                        <span class="text-[11px] text-[#7A9C76] block">DRIVER ETA</span>
-                        <span class="text-base font-bold text-emerald-700">Arriving in 3 Mins</span>
+                        </label>
+
+                        <label class="flex items-center gap-3 p-4 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] cursor-pointer hover:border-[#0284C7] transition-all">
+                            <input type="checkbox" id="addChild" onchange="calculateFare()" class="w-4 h-4 accent-[#0284C7] rounded">
+                            <div>
+                                <span class="font-bold text-[#0B172A] block">Child Safety Seat (+$8)</span>
+                                <span class="text-[#64748B]">Sanitized child car seat securely installed</span>
+                            </div>
+                        </label>
                     </div>
                 </div>
 
-                <!-- Live Route Progress Bar -->
-                <div class="p-6 rounded-2xl bg-[#F5F7F3] border border-[#DCE5D9] space-y-4">
-                    <div class="flex justify-between text-xs text-[#5C7562]">
-                        <span class="font-bold text-[#1A3320]">📍 Pickup: <span id="passPickupText">Connaught Place</span></span>
-                        <span class="font-bold text-emerald-700">🏁 Destination: <span id="passDropoffText">Airport T3</span></span>
+                <!-- Itemized Fare Summary Box -->
+                <div class="p-6 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] space-y-2.5 text-xs text-[#475569]">
+                    <div class="flex justify-between">
+                        <span>Base Ride Fare (<span id="sumCabName">Comfort Prime Sedan</span>):</span>
+                        <span id="sumBaseFare" class="font-bold text-[#0B172A]">$35.00</span>
                     </div>
-
-                    <!-- Moving Cab Line -->
-                    <div class="relative h-2.5 rounded-full bg-[#DCE5D9] my-6">
-                        <div id="cabProgressBar" class="h-full bg-emerald-600 rounded-full transition-all duration-700" style="width: 35%;"></div>
-                        <div id="cabMovingIcon" class="absolute -top-3.5 transform -translate-x-1/2 transition-all duration-700 text-lg" style="left: 35%;">
-                            🚖
-                        </div>
+                    <div class="flex justify-between">
+                        <span>Selected Options:</span>
+                        <span id="sumAddons" class="font-bold text-[#0B172A]">$0.00</span>
                     </div>
-
-                    <div class="flex justify-between text-[11px] text-[#7A9C76]">
-                        <span>Status: Driver on the way to pickup</span>
-                        <span>Direct Call: <strong>+91 98765 00112</strong></span>
+                    <div class="flex justify-between text-amber-600 font-bold" id="discountRow" style="display: none;">
+                        <span>Discount Code (<span id="appliedCodeText">GOLD10</span>):</span>
+                        <span id="sumDiscount">-$3.50</span>
+                    </div>
+                    <div class="flex justify-between text-slate-500 pt-1 text-[11px] border-t border-[#C7E0FA]/60">
+                        <span>Tolls, Taxes & Driver Tip:</span>
+                        <span class="text-[#0284C7] font-semibold">Included • No Surprise Fees</span>
+                    </div>
+                    <div class="flex justify-between text-base font-bold text-[#0B172A] pt-2 border-t border-[#C7E0FA]">
+                        <span>Guaranteed Total Fare:</span>
+                        <span id="sumTotal" class="text-3xl text-amber-600 font-serif font-bold">$35.00</span>
                     </div>
                 </div>
 
-                <!-- Action Buttons -->
-                <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#EAF0E5]">
-                    <button type="button" onclick="window.print()" class="btn-outline px-6 py-2.5 text-xs">
-                        🖨️ Print Receipt
-                    </button>
-                    <button type="button" onclick="resetWizard()" class="btn-primary px-8 py-2.5 text-xs font-semibold">
-                        Book Another Cab
+                <!-- Promo Code Box -->
+                <div class="flex gap-2">
+                    <input type="text" id="promoInput" placeholder="Try Promo Code: GOLD10" class="input-clean flex-grow px-4 py-3 text-xs uppercase placeholder-slate-400 font-mono">
+                    <button type="button" onclick="applyPromo()" class="btn-outline-blue px-6 py-2.5 text-xs font-semibold">Apply Code</button>
+                </div>
+
+                <!-- Payment Simulator Selector -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-2">How would you like to pay?</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                        <label class="p-3 rounded-2xl border-2 border-[#0284C7] bg-[#E1EFFD] font-bold text-[#0B172A] flex flex-col items-center justify-center text-center cursor-pointer shadow-sm">
+                            <input type="radio" name="payMethod" checked class="hidden">
+                            <span>Cash to Driver</span>
+                            <span class="text-[10px] text-[#475569] font-normal">Pay after trip</span>
+                        </label>
+                        <label class="p-3 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#0284C7] transition-all">
+                            <input type="radio" name="payMethod" class="hidden">
+                            <span>UPI / QR Scan</span>
+                            <span class="text-[10px] text-[#64748B] font-normal">GooglePay / Paytm</span>
+                        </label>
+                        <label class="p-3 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#0284C7] transition-all">
+                            <input type="radio" name="payMethod" class="hidden">
+                            <span>Credit/Debit Card</span>
+                            <span class="text-[10px] text-[#64748B] font-normal">Visa / Mastercard</span>
+                        </label>
+                        <label class="p-3 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#0284C7] transition-all">
+                            <input type="radio" name="payMethod" class="hidden">
+                            <span>Apple Pay</span>
+                            <span class="text-[10px] text-[#64748B] font-normal">1-Touch Pay</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-[#E1EFFD]">
+                    <button type="button" onclick="goToStep(2)" class="btn-outline-blue px-6 py-2.5 text-xs">Back</button>
+                    <button type="button" onclick="confirmAndIssuePass()" class="btn-gold px-10 py-3.5 text-xs font-bold uppercase tracking-wider shadow-xl flex items-center gap-2">
+                        <span>Confirm Ride & Dispatch Cab</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                     </button>
                 </div>
             </div>
+
+            <!-- STEP 4: CONFIRMED RIDE PASS & LIVE ROUTE -->
+            <div id="step4Box" class="hidden space-y-6">
+                <div class="bg-white rounded-[2.5rem] p-6 sm:p-10 border-2 border-[#0284C7] shadow-2xl space-y-6 relative overflow-hidden">
+                    <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-sky-400 via-amber-400 to-sky-600"></div>
+
+                    <!-- Pass Header -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#E1EFFD] pb-5 gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0284C7] to-amber-500 text-white flex items-center justify-center font-bold text-xl shadow-md">
+                                ✓
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-[#0284C7] uppercase tracking-wider">Ride Confirmed & Dispatched</span>
+                                <h3 class="font-serif text-2xl font-bold text-[#0B172A]">Your Cab is on the way!</h3>
+                            </div>
+                        </div>
+                        <div class="text-left sm:text-right">
+                            <span class="text-[11px] text-[#64748B] block">BOOKING REFERENCE</span>
+                            <span class="text-xl font-bold text-[#0B172A] font-mono">VC-9824-DEL</span>
+                        </div>
+                    </div>
+
+                    <!-- Assigned Driver & Vehicle Card -->
+                    <div class="p-5 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-amber-400 shrink-0 shadow-sm">
+                                <img src="{{ asset('images/vip_chauffeur.jpg') }}" alt="Driver Photo" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h4 class="font-bold text-lg text-[#0B172A]">Ramesh Kumar</h4>
+                                    <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full">4.96 ★ Verified Driver</span>
+                                </div>
+                                <p class="text-xs text-[#475569]" id="passCabDisplay">Comfort Prime Sedan • White • Plate: DL 01 AB 8890</p>
+                                <p class="text-xs text-[#64748B] mt-1">Direct Call: <strong class="text-[#0B172A]">+91 98765 00112</strong></p>
+                            </div>
+                        </div>
+                        <div class="sm:text-right">
+                            <span class="text-[11px] text-[#64748B] block">ESTIMATED ARRIVAL</span>
+                            <span class="text-lg font-bold text-amber-600 flex items-center gap-1.5 sm:justify-end">
+                                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping"></span>
+                                Arriving in 3 Mins
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Live Route Progress Bar with Moving Cab -->
+                    <div class="p-6 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] space-y-4">
+                        <div class="flex justify-between text-xs text-[#475569]">
+                            <span class="font-bold text-[#0B172A]">📍 Pickup: <span id="passPickupText">Connaught Place</span></span>
+                            <span class="font-bold text-[#0284C7]">🏁 Destination: <span id="passDropoffText">Airport T3</span></span>
+                        </div>
+
+                        <!-- Moving Cab Line -->
+                        <div class="relative h-3 rounded-full bg-[#C7E0FA] my-7">
+                            <div id="cabProgressBar" class="h-full bg-gradient-to-r from-sky-500 to-amber-400 rounded-full transition-all duration-700" style="width: 35%;"></div>
+                            <div id="cabMovingIcon" class="absolute -top-4 transform -translate-x-1/2 transition-all duration-700 text-2xl" style="left: 35%;">
+                                🚕
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between text-[11px] text-[#64748B]">
+                            <span>Driver Status: <strong class="text-[#0B172A]">On Route to Pickup Point</strong></span>
+                            <span class="text-[#0284C7] font-semibold">Live GPS Link sent via SMS</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#E1EFFD]">
+                        <button type="button" onclick="window.print()" class="btn-outline-blue px-6 py-2.5 text-xs">
+                            🖨️ Print / Save Receipt
+                        </button>
+                        <div class="flex gap-3">
+                            <button type="button" onclick="window.showToast('Live tracking link copied to clipboard!')" class="btn-outline-blue px-6 py-2.5 text-xs text-[#0284C7] border-[#0284C7]/50">
+                                🔗 Share Trip Link
+                            </button>
+                            <button type="button" onclick="resetWizard()" class="btn-gold px-8 py-2.5 text-xs font-bold shadow-md">
+                                Book Another Cab
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -352,10 +528,11 @@
 <script>
 let bookingState = {
     mode: 'city',
+    timing: 'now',
     cabKey: 'sedan',
     cabName: 'Comfort Prime Sedan',
     baseFare: 35,
-    pickup: 'Connaught Place, Central City',
+    pickup: 'Connaught Place Central Hub',
     dropoff: 'International Airport Terminal 3',
     addons: {
         meet: false,
@@ -368,22 +545,23 @@ function setMode(mode) {
     bookingState.mode = mode;
     const btns = ['btnModeCity', 'btnModeAirport', 'btnModeHourly'];
     btns.forEach(b => {
-        document.getElementById(b).className = 'flex-1 py-2.5 rounded-xl text-[#4A6350] hover:text-[#1A3320] transition-all';
+        const el = document.getElementById(b);
+        if (el) el.className = 'px-4 py-2 rounded-full text-[#1E3A5F] hover:text-[#0284C7] transition-all';
     });
 
     const dropoffBox = document.getElementById('bDropoffContainer');
     const hourlyBox = document.getElementById('bHourlyContainer');
 
     if (mode === 'city') {
-        document.getElementById('btnModeCity').className = 'flex-1 py-2.5 rounded-xl bg-[#1A3320] text-white transition-all';
+        document.getElementById('btnModeCity').className = 'px-4 py-2 rounded-full bg-[#0284C7] text-white transition-all shadow-sm';
         dropoffBox.classList.remove('hidden');
         hourlyBox.classList.add('hidden');
     } else if (mode === 'airport') {
-        document.getElementById('btnModeAirport').className = 'flex-1 py-2.5 rounded-xl bg-[#1A3320] text-white transition-all';
+        document.getElementById('btnModeAirport').className = 'px-4 py-2 rounded-full bg-[#0284C7] text-white transition-all shadow-sm';
         dropoffBox.classList.remove('hidden');
         hourlyBox.classList.add('hidden');
     } else if (mode === 'hourly') {
-        document.getElementById('btnModeHourly').className = 'flex-1 py-2.5 rounded-xl bg-[#1A3320] text-white transition-all';
+        document.getElementById('btnModeHourly').className = 'px-4 py-2 rounded-full bg-[#0284C7] text-white transition-all shadow-sm';
         dropoffBox.classList.add('hidden');
         hourlyBox.classList.remove('hidden');
     }
@@ -391,27 +569,65 @@ function setMode(mode) {
     calculateFare();
 }
 
+function fillLocation(field, text) {
+    if (field === 'pickup') {
+        document.getElementById('bPickup').value = text;
+        window.showToast(`Pickup set to: ${text}`);
+    } else {
+        document.getElementById('bDropoff').value = text;
+        window.showToast(`Destination set to: ${text}`);
+    }
+}
+
+function setTimingOption(option) {
+    bookingState.timing = option;
+    const nowBtn = document.getElementById('btnTimeNow');
+    const laterBtn = document.getElementById('btnTimeLater');
+    const scheduleBox = document.getElementById('scheduleTimeGroup');
+
+    if (option === 'now') {
+        nowBtn.className = 'p-3.5 rounded-2xl border-2 border-[#0284C7] bg-[#E1EFFD] text-[#0B172A] flex items-center gap-3 text-left font-semibold text-xs shadow-sm';
+        laterBtn.className = 'p-3.5 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex items-center gap-3 text-left font-semibold text-xs hover:border-[#0284C7] transition-all';
+        scheduleBox.classList.add('hidden');
+    } else {
+        laterBtn.className = 'p-3.5 rounded-2xl border-2 border-[#0284C7] bg-[#E1EFFD] text-[#0B172A] flex items-center gap-3 text-left font-semibold text-xs shadow-sm';
+        nowBtn.className = 'p-3.5 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex items-center gap-3 text-left font-semibold text-xs hover:border-[#0284C7] transition-all';
+        scheduleBox.classList.remove('hidden');
+    }
+}
+
 function goToStep(step) {
     for (let i = 1; i <= 4; i++) {
         const box = document.getElementById(`step${i}Box`);
         if (box) box.classList.add('hidden');
 
-        const tab = document.getElementById(`stepTab${i}`);
-        if (tab) {
-            tab.className = 'py-3 px-2 rounded-2xl bg-white border border-[#D8E2D5] text-[#5C7562]';
+        const marker = document.getElementById(`stepMarker${i}`);
+        const label = document.getElementById(`stepLabel${i}`);
+        if (marker && i > 1) {
+            marker.className = 'w-10 h-10 rounded-full bg-white border-2 border-[#C7E0FA] text-[#64748B] flex items-center justify-center font-bold text-sm transition-all';
         }
+        if (label) label.className = 'text-[11px] font-medium text-[#64748B] mt-2 whitespace-nowrap';
     }
 
     const activeBox = document.getElementById(`step${step}Box`);
     if (activeBox) activeBox.classList.remove('hidden');
 
-    const activeTab = document.getElementById(`stepTab${step}`);
-    if (activeTab) {
-        activeTab.className = 'py-3 px-2 rounded-2xl bg-[#1A3320] text-white shadow-md';
+    // Update active marker & connecting line
+    const activeMarker = document.getElementById(`stepMarker${step}`);
+    const activeLabel = document.getElementById(`stepLabel${step}`);
+    if (activeMarker) {
+        activeMarker.className = 'w-10 h-10 rounded-full bg-[#0B172A] text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-sky-100 transition-all';
+    }
+    if (activeLabel) {
+        activeLabel.className = 'text-[11px] font-bold text-[#0B172A] mt-2 whitespace-nowrap';
     }
 
+    const progressPercent = ((step - 1) / 3) * 100;
+    const line = document.getElementById('stepLineProgress');
+    if (line) line.style.width = `${progressPercent}%`;
+
     calculateFare();
-    window.scrollTo({ top: 180, behavior: 'smooth' });
+    window.scrollTo({ top: 160, behavior: 'smooth' });
 }
 
 function pickCab(key, fare, name, img) {
@@ -423,7 +639,7 @@ function pickCab(key, fare, name, img) {
     cards.forEach(c => {
         const el = document.getElementById(c);
         if (el) {
-            el.className = 'p-5 rounded-3xl border border-[#DCE5D9] bg-white cursor-pointer transition-all hover:border-emerald-600 hover:shadow-md';
+            el.className = 'p-5 rounded-3xl border border-[#C7E0FA] bg-white cursor-pointer transition-all hover:border-[#0284C7] hover:shadow-lg relative group';
         }
     });
 
@@ -436,7 +652,7 @@ function pickCab(key, fare, name, img) {
     Object.keys(badges).forEach(k => {
         if (badges[k]) {
             badges[k].innerText = 'Click to Select';
-            badges[k].className = 'text-xs text-[#7A9C76] mt-2 block';
+            badges[k].className = 'text-xs text-[#64748B] mt-2 block';
         }
     });
 
@@ -448,11 +664,11 @@ function pickCab(key, fare, name, img) {
     };
     const activeEl = document.getElementById(activeMap[key]);
     if (activeEl) {
-        activeEl.className = 'p-5 rounded-3xl border-2 border-emerald-600 bg-emerald-50/40 cursor-pointer transition-all hover:shadow-md';
+        activeEl.className = 'p-5 rounded-3xl border-2 border-[#0284C7] bg-[#E1EFFD]/60 cursor-pointer transition-all hover:shadow-lg relative group';
     }
     if (badges[key]) {
         badges[key].innerText = 'Selected ✓';
-        badges[key].className = 'text-xs font-bold text-emerald-700 mt-2 block';
+        badges[key].className = 'text-xs font-bold text-[#0284C7] mt-2 block';
     }
 
     window.showToast(`Selected: ${name}`);
@@ -505,18 +721,18 @@ function calculateFare() {
 
 function applyPromo() {
     const code = document.getElementById('promoInput')?.value.trim().toUpperCase();
-    if (code === 'RIDE10' || code === 'LUXE10') {
+    if (code === 'GOLD10' || code === 'RIDE10' || code === 'LUXE10') {
         bookingState.promoApplied = true;
         document.getElementById('appliedCodeText').innerText = code;
         calculateFare();
         window.showToast(`Promo ${code} applied: 10% discount!`);
     } else {
-        window.showToast('Please enter code: RIDE10', 'error');
+        window.showToast('Please enter coupon: GOLD10', 'error');
     }
 }
 
 function confirmAndIssuePass() {
-    window.showToast('Cab confirmed! Driver assigned.');
+    window.showToast('Cab confirmed! Driver dispatched to your location.');
 
     document.getElementById('step3Box').classList.add('hidden');
     document.getElementById('step4Box').classList.remove('hidden');
@@ -525,10 +741,15 @@ function confirmAndIssuePass() {
     document.getElementById('passPickupText').innerText = document.getElementById('bPickup')?.value || 'City Center';
     document.getElementById('passDropoffText').innerText = document.getElementById('bDropoff')?.value || 'Destination';
 
-    const tab4 = document.getElementById('stepTab4');
-    if (tab4) tab4.className = 'py-3 px-2 rounded-2xl bg-[#1A3320] text-white shadow-md';
+    const marker4 = document.getElementById('stepMarker4');
+    const label4 = document.getElementById('stepLabel4');
+    if (marker4) marker4.className = 'w-10 h-10 rounded-full bg-[#0284C7] text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-sky-100';
+    if (label4) label4.className = 'text-[11px] font-bold text-[#0284C7] mt-2 whitespace-nowrap';
 
-    // Animate moving cab icon along route line
+    const line = document.getElementById('stepLineProgress');
+    if (line) line.style.width = '100%';
+
+    // Moving cab animation
     let p = 35;
     const interval = setInterval(() => {
         p += 5;
@@ -541,7 +762,7 @@ function confirmAndIssuePass() {
         }
     }, 900);
 
-    window.scrollTo({ top: 150, behavior: 'smooth' });
+    window.scrollTo({ top: 140, behavior: 'smooth' });
 }
 
 function resetWizard() {
@@ -555,7 +776,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const v = p.get('vehicle');
     if (v === 'sedan') pickCab('sedan', 35, 'Comfort Prime Sedan', 'hero_sedan.jpg');
     if (v === 'suv') pickCab('suv', 55, 'Spacious Family SUV', 'fleet_suv.jpg');
-    if (v === 'electric') pickCab('electric', 40, 'Eco Green Electric Cab', 'fleet_electric.jpg');
+    if (v === 'electric') pickCab('electric', 40, 'Eco Silent Electric Cab', 'fleet_electric.jpg');
     if (v === 'van') pickCab('van', 75, 'Executive Travel Van', 'fleet_van.jpg');
 });
 </script>
