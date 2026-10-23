@@ -1,471 +1,383 @@
 @extends('layouts.app')
 
-@section('title', 'The 2026 Fleet | Ultra-Luxury Chauffeur Vehicles')
+@section('title', 'Our Cabs & Transparent Fares')
 
 @section('content')
 <!-- FLEET HERO HEADER -->
-<section class="py-20 relative overflow-hidden border-b border-white/[0.08] bg-[#07080D]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-mono font-semibold uppercase tracking-wider mb-4">
-            Curated 2026 Collection
-        </div>
-        <h1 class="font-display font-extrabold text-4xl sm:text-6xl text-white tracking-tight mb-6">
-            The Veloce <span class="text-gold-gradient font-serif italic">Fleet Portfolio</span>
+<section class="py-16 px-6 bg-[#EAF0E5] border-b border-[#D8E2D5] text-center">
+    <div class="max-w-4xl mx-auto">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-white/80 border border-[#D8E2D5] text-[#355E3B] text-xs font-semibold uppercase tracking-wider mb-4 shadow-sm">
+            Spotless & Well-Maintained Cabs
+        </span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif text-[#1A3320] mb-4">
+            Our Cabs & <span class="text-emerald-700 italic">Clear Fares</span>
         </h1>
-        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            Every vehicle in our collection is an engineered sanctuary of silence, craftsmanship, and state-of-the-art telematics. Aged under 12 months, sanitized with hospital-grade UV-C protocols before each dispatch.
+        <p class="text-[#4A6350] text-sm sm:text-base max-w-xl mx-auto font-light leading-relaxed">
+            Choose the right cab for your journey. Clean interiors, working AC, polite verified drivers, and transparent pricing with zero hidden charges.
         </p>
 
-        <!-- Fleet Category Filter Buttons -->
-        <div class="flex flex-wrap items-center justify-center gap-2.5 pt-8">
-            <button type="button" onclick="filterFleet('all')" id="btnFilterAll" class="px-5 py-2.5 rounded-full text-xs font-bold font-mono uppercase tracking-wider transition-all bg-amber-500 text-black shadow-lg shadow-amber-500/20">
-                All Vehicles (6)
+        <!-- Category Filter Buttons (Yoga Pill Style) -->
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-8">
+            <button type="button" onclick="filterCabs('all')" id="btnFilterAll" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-[#1A3320] text-white shadow-md">
+                All Cabs (6)
             </button>
-            <button type="button" onclick="filterFleet('sedan')" id="btnFilterSedan" class="px-5 py-2.5 rounded-full text-xs font-bold font-mono uppercase tracking-wider transition-all glass-card text-slate-300 hover:text-white hover:border-amber-400">
-                Presidential Sedans
+            <button type="button" onclick="filterCabs('sedan')" id="btnFilterSedan" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-white border border-[#D8E2D5] text-[#355E3B] hover:bg-[#F5F7F3]">
+                Sedans
             </button>
-            <button type="button" onclick="filterFleet('suv')" id="btnFilterSuv" class="px-5 py-2.5 rounded-full text-xs font-bold font-mono uppercase tracking-wider transition-all glass-card text-slate-300 hover:text-white hover:border-amber-400">
-                Luxury SUVs
+            <button type="button" onclick="filterCabs('suv')" id="btnFilterSuv" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-white border border-[#D8E2D5] text-[#355E3B] hover:bg-[#F5F7F3]">
+                SUVs
             </button>
-            <button type="button" onclick="filterFleet('electric')" id="btnFilterElectric" class="px-5 py-2.5 rounded-full text-xs font-bold font-mono uppercase tracking-wider transition-all glass-card text-slate-300 hover:text-white hover:border-amber-400">
-                Clean EV Hyper-Cabs
+            <button type="button" onclick="filterCabs('electric')" id="btnFilterElectric" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-white border border-[#D8E2D5] text-[#355E3B] hover:bg-[#F5F7F3]">
+                Electric Cabs
             </button>
-            <button type="button" onclick="filterFleet('van')" id="btnFilterVan" class="px-5 py-2.5 rounded-full text-xs font-bold font-mono uppercase tracking-wider transition-all glass-card text-slate-300 hover:text-white hover:border-amber-400">
-                Executive Jet Vans
+            <button type="button" onclick="filterCabs('van')" id="btnFilterVan" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-white border border-[#D8E2D5] text-[#355E3B] hover:bg-[#F5F7F3]">
+                Family Vans
             </button>
         </div>
     </div>
 </section>
 
 <!-- FLEET CATALOG GRID -->
-<section class="py-20 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="fleetGrid">
+<section class="py-16 px-6 bg-[#F5F7F3]">
+    <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="fleetContainer">
             
-            <!-- CAR 1: Mercedes-Maybach S 680 -->
-            <div class="fleet-item sedan glass-card rounded-3xl overflow-hidden group hover:border-amber-500/50 transition-all duration-500 flex flex-col justify-between">
+            <!-- CAB 1: Comfort Sedan -->
+            <div class="cab-card sedan card-clean overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="relative h-60 overflow-hidden">
-                        <img src="{{ asset('images/hero_sedan.jpg') }}" alt="Mercedes-Maybach S 680" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0B0D15] via-transparent to-transparent"></div>
-                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-amber-500/40 text-amber-300 text-[10px] font-mono font-bold">
-                            PRESIDENTIAL FIRST CLASS
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="{{ asset('images/hero_sedan.jpg') }}" alt="Comfort Sedan" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-white/95 px-3 py-1 rounded-full text-xs font-bold text-[#1A3320] shadow-sm">
+                            CITY FAVORITE
                         </span>
-                        <div class="absolute top-4 right-4 text-right">
-                            <span class="text-lg font-display font-bold text-white">$165<span class="text-xs text-slate-400">/hr</span></span>
-                        </div>
                     </div>
-
-                    <div class="p-6 space-y-4">
-                        <div>
-                            <div class="flex items-center justify-between mb-1">
-                                <h3 class="font-display font-bold text-xl text-white">Mercedes-Maybach S 680</h3>
-                                <span class="text-amber-400 text-xs font-mono">621 HP</span>
-                            </div>
-                            <p class="text-slate-400 text-xs leading-relaxed">
-                                Flagship executive limousine with first-class reclining seats, champagne refrigerator, and acoustic privacy partition.
-                            </p>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="font-serif text-xl font-bold text-[#1A3320]">Prime Comfort Sedan</h3>
+                            <span class="text-xl font-bold text-emerald-700">$35 <span class="text-xs text-[#5C7562]">base</span></span>
                         </div>
+                        <p class="text-xs text-[#4A6350] mb-4">Comfortable 4-seater sedan. Perfect for city rides, business commutes, and station drops.</p>
 
-                        <!-- Technical Specs Matrix -->
-                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/[0.08] text-center text-xs font-mono">
+                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#EAF0E5] text-center text-xs text-[#4A6350]">
                             <div>
-                                <span class="text-slate-500 block text-[9px]">CAPACITY</span>
-                                <span class="text-white font-bold">3 Pax</span>
+                                <span class="text-[10px] text-[#7A9C76] block">SEATING</span>
+                                <span class="font-bold text-[#1A3320]">4 Seats</span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block text-[9px]">LUGGAGE</span>
-                                <span class="text-white font-bold">3 Bags</span>
+                                <span class="text-[10px] text-[#7A9C76] block">LUGGAGE</span>
+                                <span class="font-bold text-[#1A3320]">3 Bags</span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block text-[9px]">0-100 KM/H</span>
-                                <span class="text-amber-300 font-bold">4.4s</span>
+                                <span class="text-[10px] text-[#7A9C76] block">PER KM</span>
+                                <span class="font-bold text-emerald-700">$1.20</span>
                             </div>
                         </div>
 
-                        <!-- Amenities Chips -->
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Acoustic Double Glass</span>
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Champagne Flutes</span>
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Wi-Fi 7</span>
+                        <div class="flex flex-wrap gap-1.5 pt-3">
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Dual AC</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Clean Bottled Water</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">USB Mobile Charger</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="p-6 pt-0 space-y-2">
-                    <button type="button" onclick="openSpecModal('maybach')" class="w-full py-2.5 rounded-xl glass-card hover:bg-white/[0.1] text-xs font-mono font-bold text-slate-300 hover:text-white uppercase tracking-wider transition-all">
-                        View 360° Specifications
+                    <button type="button" onclick="openDetailsModal('sedan')" class="btn-outline w-full py-2.5 text-xs block text-center">
+                        View Details & Features
                     </button>
-                    <a href="{{ route('booking') }}?vehicle=maybach" class="w-full btn-gold py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-md">
-                        Reserve This Vehicle
+                    <a href="{{ route('booking') }}?vehicle=sedan" class="btn-primary w-full py-2.5 text-xs block text-center">
+                        Book This Cab
                     </a>
                 </div>
             </div>
 
-            <!-- CAR 2: Range Rover SV Autobiography -->
-            <div class="fleet-item suv glass-card rounded-3xl overflow-hidden group hover:border-amber-500/50 transition-all duration-500 flex flex-col justify-between">
+            <!-- CAB 2: Spacious SUV -->
+            <div class="cab-card suv card-clean overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="relative h-60 overflow-hidden">
-                        <img src="{{ asset('images/fleet_suv.jpg') }}" alt="Range Rover SV Autobiography" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0B0D15] via-transparent to-transparent"></div>
-                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-cyan-500/40 text-cyan-300 text-[10px] font-mono font-bold">
-                            LUXURY COMMAND SUV
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="{{ asset('images/fleet_suv.jpg') }}" alt="Spacious SUV" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-white/95 px-3 py-1 rounded-full text-xs font-bold text-[#1A3320] shadow-sm">
+                            FAMILY & AIRPORT
                         </span>
-                        <div class="absolute top-4 right-4 text-right">
-                            <span class="text-lg font-display font-bold text-white">$190<span class="text-xs text-slate-400">/hr</span></span>
-                        </div>
                     </div>
-
-                    <div class="p-6 space-y-4">
-                        <div>
-                            <div class="flex items-center justify-between mb-1">
-                                <h3 class="font-display font-bold text-xl text-white">Range Rover SV LWB</h3>
-                                <span class="text-amber-400 text-xs font-mono">530 HP</span>
-                            </div>
-                            <p class="text-slate-400 text-xs leading-relaxed">
-                                Long-wheelbase executive SUV with electrically deployable club tables, rear footrests, and commanding road presence.
-                            </p>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="font-serif text-xl font-bold text-[#1A3320]">Spacious Family SUV</h3>
+                            <span class="text-xl font-bold text-emerald-700">$55 <span class="text-xs text-[#5C7562]">base</span></span>
                         </div>
+                        <p class="text-xs text-[#4A6350] mb-4">Big trunk space and ample legroom. Best for airport runs and outstation trips with family.</p>
 
-                        <!-- Technical Specs Matrix -->
-                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/[0.08] text-center text-xs font-mono">
+                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#EAF0E5] text-center text-xs text-[#4A6350]">
                             <div>
-                                <span class="text-slate-500 block text-[9px]">CAPACITY</span>
-                                <span class="text-white font-bold">4 Pax</span>
+                                <span class="text-[10px] text-[#7A9C76] block">SEATING</span>
+                                <span class="font-bold text-[#1A3320]">6 Seats</span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block text-[9px]">LUGGAGE</span>
-                                <span class="text-white font-bold">5 Bags</span>
+                                <span class="text-[10px] text-[#7A9C76] block">LUGGAGE</span>
+                                <span class="font-bold text-[#1A3320]">5 Large Bags</span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block text-[9px]">ALL-TERRAIN</span>
-                                <span class="text-cyan-300 font-bold">AWD Air Susp.</span>
+                                <span class="text-[10px] text-[#7A9C76] block">PER KM</span>
+                                <span class="font-bold text-emerald-700">$1.60</span>
                             </div>
                         </div>
 
-                        <!-- Amenities Chips -->
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Motorized Club Tables</span>
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Hot Stone Massage</span>
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Meridian 3D Sound</span>
+                        <div class="flex flex-wrap gap-1.5 pt-3">
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Rear AC Vents</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Reclining Seats</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Highway Certified</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="p-6 pt-0 space-y-2">
-                    <button type="button" onclick="openSpecModal('suv')" class="w-full py-2.5 rounded-xl glass-card hover:bg-white/[0.1] text-xs font-mono font-bold text-slate-300 hover:text-white uppercase tracking-wider transition-all">
-                        View 360° Specifications
+                    <button type="button" onclick="openDetailsModal('suv')" class="btn-outline w-full py-2.5 text-xs block text-center">
+                        View Details & Features
                     </button>
-                    <a href="{{ route('booking') }}?vehicle=suv" class="w-full btn-gold py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-md">
-                        Reserve This Vehicle
+                    <a href="{{ route('booking') }}?vehicle=suv" class="btn-primary w-full py-2.5 text-xs block text-center">
+                        Book This Cab
                     </a>
                 </div>
             </div>
 
-            <!-- CAR 3: Lucid Air Sapphire EV -->
-            <div class="fleet-item electric glass-card rounded-3xl overflow-hidden group hover:border-amber-500/50 transition-all duration-500 flex flex-col justify-between">
+            <!-- CAB 3: Eco Electric Cab -->
+            <div class="cab-card electric card-clean overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="relative h-60 overflow-hidden">
-                        <img src="{{ asset('images/fleet_electric.jpg') }}" alt="Lucid Air Sapphire" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0B0D15] via-transparent to-transparent"></div>
-                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-emerald-500/40 text-emerald-300 text-[10px] font-mono font-bold">
-                            ZERO-EMISSION HYPER-LIMO
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="{{ asset('images/fleet_electric.jpg') }}" alt="Eco Electric Cab" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                            🌱 ZERO NOISE
                         </span>
-                        <div class="absolute top-4 right-4 text-right">
-                            <span class="text-lg font-display font-bold text-white">$145<span class="text-xs text-slate-400">/hr</span></span>
-                        </div>
                     </div>
-
-                    <div class="p-6 space-y-4">
-                        <div>
-                            <div class="flex items-center justify-between mb-1">
-                                <h3 class="font-display font-bold text-xl text-white">Lucid Air Sapphire</h3>
-                                <span class="text-emerald-400 text-xs font-mono">1,234 HP</span>
-                            </div>
-                            <p class="text-slate-400 text-xs leading-relaxed">
-                                The world's fastest ultra-luxury electric sedan. Glass canopy cockpit, carbon-ceramic brakes, and active sound suppression.
-                            </p>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="font-serif text-xl font-bold text-[#1A3320]">Eco Electric Cab</h3>
+                            <span class="text-xl font-bold text-emerald-700">$40 <span class="text-xs text-[#5C7562]">base</span></span>
                         </div>
+                        <p class="text-xs text-[#4A6350] mb-4">Silent, smooth, and 100% green energy. Glide through traffic with zero tailpipe emissions.</p>
 
-                        <!-- Technical Specs Matrix -->
-                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/[0.08] text-center text-xs font-mono">
+                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#EAF0E5] text-center text-xs text-[#4A6350]">
                             <div>
-                                <span class="text-slate-500 block text-[9px]">CAPACITY</span>
-                                <span class="text-white font-bold">3 Pax</span>
+                                <span class="text-[10px] text-[#7A9C76] block">SEATING</span>
+                                <span class="font-bold text-[#1A3320]">4 Seats</span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block text-[9px]">LUGGAGE</span>
-                                <span class="text-white font-bold">3 Bags</span>
+                                <span class="text-[10px] text-[#7A9C76] block">LUGGAGE</span>
+                                <span class="font-bold text-[#1A3320]">3 Bags</span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block text-[9px]">0-100 KM/H</span>
-                                <span class="text-emerald-300 font-bold">1.89s</span>
+                                <span class="text-[10px] text-[#7A9C76] block">PER KM</span>
+                                <span class="font-bold text-emerald-700">$1.30</span>
                             </div>
                         </div>
 
-                        <!-- Amenities Chips -->
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Panoramic Glass Canopy</span>
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Active Road Noise Cancel</span>
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">100% Green Energy</span>
+                        <div class="flex flex-wrap gap-1.5 pt-3">
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Zero Engine Noise</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Eco Green Ride</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Super Fast AC</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="p-6 pt-0 space-y-2">
-                    <button type="button" onclick="openSpecModal('lucid')" class="w-full py-2.5 rounded-xl glass-card hover:bg-white/[0.1] text-xs font-mono font-bold text-slate-300 hover:text-white uppercase tracking-wider transition-all">
-                        View 360° Specifications
+                    <button type="button" onclick="openDetailsModal('electric')" class="btn-outline w-full py-2.5 text-xs block text-center">
+                        View Details & Features
                     </button>
-                    <a href="{{ route('booking') }}?vehicle=lucid" class="w-full btn-gold py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-md">
-                        Reserve This Vehicle
+                    <a href="{{ route('booking') }}?vehicle=electric" class="btn-primary w-full py-2.5 text-xs block text-center">
+                        Book This Cab
                     </a>
                 </div>
             </div>
 
-            <!-- CAR 4: Maybach VIP Executive Jet Van -->
-            <div class="fleet-item van glass-card rounded-3xl overflow-hidden group hover:border-amber-500/50 transition-all duration-500 flex flex-col justify-between">
+            <!-- CAB 4: Family Group Van -->
+            <div class="cab-card van card-clean overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="relative h-60 overflow-hidden">
-                        <img src="{{ asset('images/fleet_van.jpg') }}" alt="Maybach VIP Executive Jet Van" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0B0D15] via-transparent to-transparent"></div>
-                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-purple-500/40 text-purple-300 text-[10px] font-mono font-bold">
-                            BOARDROOM JET VAN
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="{{ asset('images/fleet_van.jpg') }}" alt="Family Van" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-white/95 px-3 py-1 rounded-full text-xs font-bold text-[#1A3320] shadow-sm">
+                            LARGE GROUP TRAVEL
                         </span>
-                        <div class="absolute top-4 right-4 text-right">
-                            <span class="text-lg font-display font-bold text-white">$240<span class="text-xs text-slate-400">/hr</span></span>
-                        </div>
                     </div>
-
-                    <div class="p-6 space-y-4">
-                        <div>
-                            <div class="flex items-center justify-between mb-1">
-                                <h3 class="font-display font-bold text-xl text-white">Maybach VIP Executive Jet Van</h3>
-                                <span class="text-purple-400 text-xs font-mono">Custom Coach</span>
-                            </div>
-                            <p class="text-slate-400 text-xs leading-relaxed">
-                                Complete private jet experience on wheels. 6 rotating captain chairs, 4K teleconference screen, private dressing suite, and Nespresso bar.
-                            </p>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="font-serif text-xl font-bold text-[#1A3320]">Executive Travel Van</h3>
+                            <span class="text-xl font-bold text-emerald-700">$75 <span class="text-xs text-[#5C7562]">base</span></span>
                         </div>
+                        <p class="text-xs text-[#4A6350] mb-4">Travel together with your entire group. Extra luggage space, high roof, and comfortable individual seats.</p>
 
-                        <!-- Technical Specs Matrix -->
-                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/[0.08] text-center text-xs font-mono">
+                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#EAF0E5] text-center text-xs text-[#4A6350]">
                             <div>
-                                <span class="text-slate-500 block text-[9px]">CAPACITY</span>
-                                <span class="text-white font-bold">7 Pax</span>
+                                <span class="text-[10px] text-[#7A9C76] block">SEATING</span>
+                                <span class="font-bold text-[#1A3320]">7 Seats</span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block text-[9px]">LUGGAGE</span>
-                                <span class="text-white font-bold">12 Bags</span>
+                                <span class="text-[10px] text-[#7A9C76] block">LUGGAGE</span>
+                                <span class="font-bold text-[#1A3320]">8-10 Bags</span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block text-[9px]">INTERIOR</span>
-                                <span class="text-purple-300 font-bold">Standing Room</span>
+                                <span class="text-[10px] text-[#7A9C76] block">PER KM</span>
+                                <span class="font-bold text-emerald-700">$2.10</span>
                             </div>
                         </div>
 
-                        <!-- Amenities Chips -->
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">43" OLED Telepresence</span>
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Artisan Espresso Bar</span>
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Armored Driver Divider</span>
+                        <div class="flex flex-wrap gap-1.5 pt-3">
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">High Ceiling</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Big Luggage Boot</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Group Tour Special</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="p-6 pt-0 space-y-2">
-                    <button type="button" onclick="openSpecModal('van')" class="w-full py-2.5 rounded-xl glass-card hover:bg-white/[0.1] text-xs font-mono font-bold text-slate-300 hover:text-white uppercase tracking-wider transition-all">
-                        View 360° Specifications
+                    <button type="button" onclick="openDetailsModal('van')" class="btn-outline w-full py-2.5 text-xs block text-center">
+                        View Details & Features
                     </button>
-                    <a href="{{ route('booking') }}?vehicle=van" class="w-full btn-gold py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-md">
-                        Reserve This Vehicle
+                    <a href="{{ route('booking') }}?vehicle=van" class="btn-primary w-full py-2.5 text-xs block text-center">
+                        Book This Cab
                     </a>
                 </div>
             </div>
 
-            <!-- CAR 5: Rolls-Royce Spectre EV -->
-            <div class="fleet-item electric sedan glass-card rounded-3xl overflow-hidden group hover:border-amber-500/50 transition-all duration-500 flex flex-col justify-between">
+            <!-- CAB 5: Executive Business Sedan -->
+            <div class="cab-card sedan card-clean overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="relative h-60 overflow-hidden">
-                        <img src="{{ asset('images/luxe_interior.jpg') }}" alt="Rolls-Royce Spectre Bespoke" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0B0D15] via-transparent to-transparent"></div>
-                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-amber-500/40 text-amber-300 text-[10px] font-mono font-bold">
-                            ULTRA-LUXURY COUPE-LIMOUSINE
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="{{ asset('images/luxe_interior.jpg') }}" alt="Executive Business Sedan" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-white/95 px-3 py-1 rounded-full text-xs font-bold text-[#1A3320] shadow-sm">
+                            BUSINESS EXECUTIVE
                         </span>
-                        <div class="absolute top-4 right-4 text-right">
-                            <span class="text-lg font-display font-bold text-white">$275<span class="text-xs text-slate-400">/hr</span></span>
-                        </div>
                     </div>
-
-                    <div class="p-6 space-y-4">
-                        <div>
-                            <div class="flex items-center justify-between mb-1">
-                                <h3 class="font-display font-bold text-xl text-white">Rolls-Royce Spectre Bespoke</h3>
-                                <span class="text-amber-400 text-xs font-mono">577 HP EV</span>
-                            </div>
-                            <p class="text-slate-400 text-xs leading-relaxed">
-                                The pinnacle of quiet authority. Illuminated fascia with 5,500 starlight clusters and magic carpet planar suspension.
-                            </p>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="font-serif text-xl font-bold text-[#1A3320]">Executive Business Class</h3>
+                            <span class="text-xl font-bold text-emerald-700">$60 <span class="text-xs text-[#5C7562]">base</span></span>
                         </div>
+                        <p class="text-xs text-[#4A6350] mb-4">Premium leather seats, laptop charger ports, and high-speed Wi-Fi. Designed for work on the move.</p>
 
-                        <!-- Technical Specs Matrix -->
-                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/[0.08] text-center text-xs font-mono">
+                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#EAF0E5] text-center text-xs text-[#4A6350]">
                             <div>
-                                <span class="text-slate-500 block text-[9px]">CAPACITY</span>
-                                <span class="text-white font-bold">3 Pax</span>
+                                <span class="text-[10px] text-[#7A9C76] block">SEATING</span>
+                                <span class="font-bold text-[#1A3320]">3-4 Seats</span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block text-[9px]">LUGGAGE</span>
-                                <span class="text-white font-bold">3 Bags</span>
+                                <span class="text-[10px] text-[#7A9C76] block">LUGGAGE</span>
+                                <span class="font-bold text-[#1A3320]">3 Bags</span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block text-[9px]">STARLIGHT</span>
-                                <span class="text-amber-300 font-bold">Door Clusters</span>
+                                <span class="text-[10px] text-[#7A9C76] block">PER KM</span>
+                                <span class="font-bold text-emerald-700">$1.80</span>
                             </div>
                         </div>
 
-                        <!-- Amenities Chips -->
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Spirit of Ecstasy Chauffeur</span>
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Wool Carpet Inlays</span>
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">18-Speaker Bespoke Audio</span>
+                        <div class="flex flex-wrap gap-1.5 pt-3">
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Free Wi-Fi</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Laptop Power</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Top-Rated Driver</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="p-6 pt-0 space-y-2">
-                    <button type="button" onclick="openSpecModal('maybach')" class="w-full py-2.5 rounded-xl glass-card hover:bg-white/[0.1] text-xs font-mono font-bold text-slate-300 hover:text-white uppercase tracking-wider transition-all">
-                        View 360° Specifications
+                    <button type="button" onclick="openDetailsModal('sedan')" class="btn-outline w-full py-2.5 text-xs block text-center">
+                        View Details & Features
                     </button>
-                    <a href="{{ route('booking') }}?vehicle=maybach" class="w-full btn-gold py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-md">
-                        Reserve This Vehicle
+                    <a href="{{ route('booking') }}?vehicle=sedan" class="btn-primary w-full py-2.5 text-xs block text-center">
+                        Book This Cab
                     </a>
                 </div>
             </div>
 
-            <!-- CAR 6: Armored Escalade Presidential VR8 -->
-            <div class="fleet-item suv glass-card rounded-3xl overflow-hidden group hover:border-amber-500/50 transition-all duration-500 flex flex-col justify-between">
+            <!-- CAB 6: Outstation Cruiser SUV -->
+            <div class="cab-card suv card-clean overflow-hidden flex flex-col justify-between">
                 <div>
-                    <div class="relative h-60 overflow-hidden">
-                        <img src="{{ asset('images/fleet_suv.jpg') }}" alt="Armored Escalade Presidential VR8" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0B0D15] via-transparent to-transparent"></div>
-                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-red-500/40 text-red-300 text-[10px] font-mono font-bold">
-                            BALLISTIC VR8 SECURITY
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="{{ asset('images/vip_chauffeur.jpg') }}" alt="Outstation Cruiser SUV" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-white/95 px-3 py-1 rounded-full text-xs font-bold text-[#1A3320] shadow-sm">
+                            LONG DISTANCE
                         </span>
-                        <div class="absolute top-4 right-4 text-right">
-                            <span class="text-lg font-display font-bold text-white">$320<span class="text-xs text-slate-400">/hr</span></span>
-                        </div>
                     </div>
-
-                    <div class="p-6 space-y-4">
-                        <div>
-                            <div class="flex items-center justify-between mb-1">
-                                <h3 class="font-display font-bold text-xl text-white">Armored Escalade VR8 Escort</h3>
-                                <span class="text-red-400 text-xs font-mono">Ballistic Armor</span>
-                            </div>
-                            <p class="text-slate-400 text-xs leading-relaxed">
-                                Certified protection against rifle rounds and underbody fragmentation grenades. Run-flat military tires and siren intercom.
-                            </p>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="font-serif text-xl font-bold text-[#1A3320]">Outstation Cruiser SUV</h3>
+                            <span class="text-xl font-bold text-emerald-700">$65 <span class="text-xs text-[#5C7562]">base</span></span>
                         </div>
+                        <p class="text-xs text-[#4A6350] mb-4">Built for long journeys. Extra fuel range, soft suspension, experienced highway drivers.</p>
 
-                        <!-- Technical Specs Matrix -->
-                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-white/[0.08] text-center text-xs font-mono">
+                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#EAF0E5] text-center text-xs text-[#4A6350]">
                             <div>
-                                <span class="text-slate-500 block text-[9px]">CAPACITY</span>
-                                <span class="text-white font-bold">4 VIP Pax</span>
+                                <span class="text-[10px] text-[#7A9C76] block">SEATING</span>
+                                <span class="font-bold text-[#1A3320]">6 Seats</span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block text-[9px]">LUGGAGE</span>
-                                <span class="text-white font-bold">6 Bags</span>
+                                <span class="text-[10px] text-[#7A9C76] block">LUGGAGE</span>
+                                <span class="font-bold text-[#1A3320]">6 Bags</span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block text-[9px]">PROTECTION</span>
-                                <span class="text-red-400 font-bold">VR8 / CEN B6</span>
+                                <span class="text-[10px] text-[#7A9C76] block">PER KM</span>
+                                <span class="font-bold text-emerald-700">$1.75</span>
                             </div>
                         </div>
 
-                        <!-- Amenities Chips -->
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Run-Flat Tires</span>
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Aux Oxygen Air Supply</span>
-                            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-[10px] text-slate-300 border border-white/[0.06]">Tactical Escort Trained</span>
+                        <div class="flex flex-wrap gap-1.5 pt-3">
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Emergency Kit</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Highway Toll Pass</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F8FAF6] text-[11px] text-[#4A6350] border border-[#DCE5D9]">Roof Carrier</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="p-6 pt-0 space-y-2">
-                    <button type="button" onclick="openSpecModal('suv')" class="w-full py-2.5 rounded-xl glass-card hover:bg-white/[0.1] text-xs font-mono font-bold text-slate-300 hover:text-white uppercase tracking-wider transition-all">
-                        View 360° Specifications
+                    <button type="button" onclick="openDetailsModal('suv')" class="btn-outline w-full py-2.5 text-xs block text-center">
+                        View Details & Features
                     </button>
-                    <a href="{{ route('booking') }}?vehicle=suv" class="w-full btn-gold py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center block shadow-md">
-                        Reserve This Vehicle
+                    <a href="{{ route('booking') }}?vehicle=suv" class="btn-primary w-full py-2.5 text-xs block text-center">
+                        Book This Cab
                     </a>
                 </div>
             </div>
 
         </div>
-
     </div>
 </section>
 
-<!-- INTERACTIVE 360° SPEC MODAL -->
-<div id="specModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-2xl flex items-center justify-center p-4 hidden">
-    <div class="glass-card-gold rounded-3xl max-w-3xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
-        <button type="button" onclick="closeSpecModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl font-mono">✕</button>
+<!-- MODAL: CAB DETAILS MODAL (Yoga Style Modal) -->
+<div id="detailsModal" class="fixed inset-0 z-[120] bg-black/50 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-[2rem] border border-[#D8E2D5] max-w-xl w-full p-6 sm:p-8 relative shadow-2xl space-y-6">
+        <button type="button" onclick="closeDetailsModal()" class="absolute top-5 right-5 text-[#5C7562] hover:text-[#1A3320] text-xl font-bold">✕</button>
         
-        <div class="space-y-6">
-            <div>
-                <span id="modalCategory" class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Vehicle Technical Dossier</span>
-                <h3 id="modalName" class="font-display font-extrabold text-3xl text-white mt-1">Mercedes-Maybach S 680</h3>
-            </div>
+        <div>
+            <span id="modalCategoryTag" class="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Cab Specifications</span>
+            <h3 id="modalTitle" class="font-serif text-2xl font-bold text-[#1A3320] mt-1">Comfort Prime Sedan</h3>
+        </div>
 
-            <div class="relative h-64 sm:h-80 rounded-2xl overflow-hidden border border-white/[0.1]">
-                <img id="modalImg" src="{{ asset('images/hero_sedan.jpg') }}" alt="Vehicle Specs" class="w-full h-full object-cover">
-                <div class="absolute bottom-3 left-3 bg-black/80 px-3 py-1 rounded-full text-xs font-mono text-amber-300 border border-amber-500/30">
-                    360° Telemetry Verified
-                </div>
-            </div>
+        <div class="h-48 rounded-2xl overflow-hidden border border-[#E1EAE1]">
+            <img id="modalImage" src="{{ asset('images/hero_sedan.jpg') }}" alt="Cab Preview" class="w-full h-full object-cover">
+        </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center font-mono">
-                <div class="p-3 rounded-xl bg-white/[0.04] border border-white/[0.08]">
-                    <div class="text-[10px] text-slate-400">POWERTRAIN</div>
-                    <div id="modalPower" class="text-sm font-bold text-white mt-1">Twin-Turbo V12</div>
-                </div>
-                <div class="p-3 rounded-xl bg-white/[0.04] border border-white/[0.08]">
-                    <div class="text-[10px] text-slate-400">ACCELERATION</div>
-                    <div id="modalAccel" class="text-sm font-bold text-amber-300 mt-1">4.4s (0-100)</div>
-                </div>
-                <div class="p-3 rounded-xl bg-white/[0.04] border border-white/[0.08]">
-                    <div class="text-[10px] text-slate-400">MAX CAPACITY</div>
-                    <div id="modalSeats" class="text-sm font-bold text-white mt-1">3 VIP + Chauffeur</div>
-                </div>
-                <div class="p-3 rounded-xl bg-white/[0.04] border border-white/[0.08]">
-                    <div class="text-[10px] text-slate-400">ACOUSTIC RATING</div>
-                    <div id="modalNoise" class="text-sm font-bold text-emerald-300 mt-1">&lt; 49 dB at 120km/h</div>
-                </div>
+        <div class="grid grid-cols-3 gap-3 text-center text-xs">
+            <div class="p-3 rounded-2xl bg-[#F8FAF6] border border-[#E1EAE1]">
+                <span class="text-[#7A9C76] block text-[10px]">PASSENGERS</span>
+                <span id="modalPax" class="font-bold text-[#1A3320]">4 Persons</span>
             </div>
+            <div class="p-3 rounded-2xl bg-[#F8FAF6] border border-[#E1EAE1]">
+                <span class="text-[#7A9C76] block text-[10px]">LUGGAGE</span>
+                <span id="modalBags" class="font-bold text-[#1A3320]">3 Large Bags</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-[#F8FAF6] border border-[#E1EAE1]">
+                <span class="text-[#7A9C76] block text-[10px]">BASE FARE</span>
+                <span id="modalFare" class="font-bold text-emerald-700 text-sm">$35.00</span>
+            </div>
+        </div>
 
-            <div class="space-y-3">
-                <h4 class="text-sm font-bold text-white uppercase tracking-wider font-mono">Standard First-Class Inclusions:</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
-                    <div class="flex items-center gap-2">✓ Electrochromic Private Partitions</div>
-                    <div class="flex items-center gap-2">✓ Thermoelectric Chilled Beverage Cooler</div>
-                    <div class="flex items-center gap-2">✓ Burmester High-End 4D Surround Sound</div>
-                    <div class="flex items-center gap-2">✓ HEPA Ionization Medical Air Purification</div>
-                    <div class="flex items-center gap-2">✓ Starlink Satellite Encrypted Wi-Fi</div>
-                    <div class="flex items-center gap-2">✓ Chauffeur Armed / Diplomatic Certification</div>
-                </div>
-            </div>
+        <div class="space-y-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-[#1A3320]">What's Included:</h4>
+            <ul class="text-xs text-[#4A6350] space-y-1.5">
+                <li>✓ 100% Sanitized and cleaned interior before every trip</li>
+                <li>✓ Verified, background-checked polite driver</li>
+                <li>✓ Automatic digital route and live trip tracking</li>
+                <li>✓ Free cancellation up to 1 hour before pickup</li>
+            </ul>
+        </div>
 
-            <div class="flex items-center justify-between pt-4 border-t border-white/[0.08]">
-                <div>
-                    <span class="text-xs text-slate-400 font-mono block">Hourly Standby</span>
-                    <span id="modalPrice" class="font-display font-bold text-2xl text-amber-300">$165 / hour</span>
-                </div>
-                <a id="modalBookBtn" href="{{ route('booking') }}?vehicle=maybach" class="btn-gold px-8 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
-                    Book This Specific Model
-                </a>
-            </div>
+        <div class="flex items-center justify-between pt-4 border-t border-[#E1EAE1]">
+            <button type="button" onclick="closeDetailsModal()" class="btn-outline px-6 py-2.5 text-xs">Close</button>
+            <a id="modalBookLink" href="{{ route('booking') }}?vehicle=sedan" class="btn-emerald px-8 py-2.5 text-xs font-semibold">
+                Book This Cab Now
+            </a>
         </div>
     </div>
 </div>
@@ -473,8 +385,7 @@
 
 @push('scripts')
 <script>
-// Filter Fleet by Category
-function filterFleet(category) {
+function filterCabs(category) {
     const buttons = {
         all: document.getElementById('btnFilterAll'),
         sedan: document.getElementById('btnFilterSedan'),
@@ -483,85 +394,72 @@ function filterFleet(category) {
         van: document.getElementById('btnFilterVan'),
     };
 
-    // Reset button styles
-    Object.keys(buttons).forEach(key => {
-        if (buttons[key]) {
-            buttons[key].className = 'px-5 py-2.5 rounded-full text-xs font-bold font-mono uppercase tracking-wider transition-all glass-card text-slate-300 hover:text-white hover:border-amber-400';
+    Object.keys(buttons).forEach(k => {
+        if (buttons[k]) {
+            buttons[k].className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-white border border-[#D8E2D5] text-[#355E3B] hover:bg-[#F5F7F3]';
         }
     });
 
-    // Highlight active button
     if (buttons[category]) {
-        buttons[category].className = 'px-5 py-2.5 rounded-full text-xs font-bold font-mono uppercase tracking-wider transition-all bg-amber-500 text-black shadow-lg shadow-amber-500/20';
+        buttons[category].className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-[#1A3320] text-white shadow-md';
     }
 
-    const items = document.querySelectorAll('.fleet-item');
-    items.forEach(item => {
-        if (category === 'all' || item.classList.contains(category)) {
-            item.style.display = 'flex';
+    const cards = document.querySelectorAll('.cab-card');
+    cards.forEach(c => {
+        if (category === 'all' || c.classList.contains(category)) {
+            c.style.display = 'flex';
         } else {
-            item.style.display = 'none';
+            c.style.display = 'none';
         }
     });
 
-    window.showToast(`Fleet filtered by: ${category.toUpperCase()}`);
+    window.showToast(`Showing: ${category.toUpperCase()}`);
 }
 
-// 360° Specs Modal Logic
-function openSpecModal(type) {
-    const modal = document.getElementById('specModal');
-    const name = document.getElementById('modalName');
-    const img = document.getElementById('modalImg');
-    const power = document.getElementById('modalPower');
-    const accel = document.getElementById('modalAccel');
-    const seats = document.getElementById('modalSeats');
-    const noise = document.getElementById('modalNoise');
-    const price = document.getElementById('modalPrice');
-    const bookBtn = document.getElementById('modalBookBtn');
+function openDetailsModal(type) {
+    const modal = document.getElementById('detailsModal');
+    const title = document.getElementById('modalTitle');
+    const img = document.getElementById('modalImage');
+    const pax = document.getElementById('modalPax');
+    const bags = document.getElementById('modalBags');
+    const fare = document.getElementById('modalFare');
+    const link = document.getElementById('modalBookLink');
 
-    if (type === 'maybach') {
-        name.innerText = 'Mercedes-Maybach S 680 First Class';
+    if (type === 'sedan') {
+        title.innerText = 'Comfort Prime Sedan';
         img.src = '{{ asset("images/hero_sedan.jpg") }}';
-        power.innerText = '6.0L Twin-Turbo V12 (621 HP)';
-        accel.innerText = '4.4s (0-100 km/h)';
-        seats.innerText = '3 VIP + Chauffeur';
-        noise.innerText = '< 49 dB at 120km/h';
-        price.innerText = '$165 / hour';
-        bookBtn.href = '{{ route("booking") }}?vehicle=maybach';
+        pax.innerText = '4 Persons';
+        bags.innerText = '3 Large Bags';
+        fare.innerText = '$35.00 Base';
+        link.href = '{{ route("booking") }}?vehicle=sedan';
     } else if (type === 'suv') {
-        name.innerText = 'Range Rover SV Long Wheelbase';
+        title.innerText = 'Spacious Family SUV';
         img.src = '{{ asset("images/fleet_suv.jpg") }}';
-        power.innerText = '4.4L Twin-Turbo V8 (530 HP)';
-        accel.innerText = '4.6s (0-100 km/h)';
-        seats.innerText = '4 VIP + Chauffeur';
-        noise.innerText = '< 51 dB at 120km/h';
-        price.innerText = '$190 / hour';
-        bookBtn.href = '{{ route("booking") }}?vehicle=suv';
-    } else if (type === 'lucid') {
-        name.innerText = 'Lucid Air Sapphire Hyper-EV';
+        pax.innerText = '6 Persons';
+        bags.innerText = '5 Large Bags';
+        fare.innerText = '$55.00 Base';
+        link.href = '{{ route("booking") }}?vehicle=suv';
+    } else if (type === 'electric') {
+        title.innerText = 'Eco Green Electric Cab';
         img.src = '{{ asset("images/fleet_electric.jpg") }}';
-        power.innerText = 'Tri-Motor Electric (1,234 HP)';
-        accel.innerText = '1.89s (0-100 km/h)';
-        seats.innerText = '3 VIP + Chauffeur';
-        noise.innerText = '< 48 dB (Active Noise Cancel)';
-        price.innerText = '$145 / hour';
-        bookBtn.href = '{{ route("booking") }}?vehicle=lucid';
+        pax.innerText = '4 Persons';
+        bags.innerText = '3 Large Bags';
+        fare.innerText = '$40.00 Base';
+        link.href = '{{ route("booking") }}?vehicle=electric';
     } else if (type === 'van') {
-        name.innerText = 'Maybach VIP Executive Jet Van';
+        title.innerText = 'Executive Group Van';
         img.src = '{{ asset("images/fleet_van.jpg") }}';
-        power.innerText = 'Custom 3.0L Turbo Diesel';
-        accel.innerText = 'Smooth Limousine Spec';
-        seats.innerText = '7 VIP + 2 Crew';
-        noise.innerText = 'Acoustic Partition Wall';
-        price.innerText = '$240 / hour';
-        bookBtn.href = '{{ route("booking") }}?vehicle=van';
+        pax.innerText = '7 Persons';
+        bags.innerText = '8-10 Large Bags';
+        fare.innerText = '$75.00 Base';
+        link.href = '{{ route("booking") }}?vehicle=van';
     }
 
     modal.classList.remove('hidden');
 }
 
-function closeSpecModal() {
-    document.getElementById('specModal').classList.add('hidden');
+function closeDetailsModal() {
+    document.getElementById('detailsModal').classList.add('hidden');
 }
 </script>
 @endpush

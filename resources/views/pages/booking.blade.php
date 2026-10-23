@@ -1,566 +1,347 @@
 @extends('layouts.app')
 
-@section('title', 'Bespoke Chauffeur Reservation & Live Fare Calculator')
+@section('title', 'Book a Cab Online | Instant Fare Calculator')
 
 @section('content')
-<section class="py-16 relative z-10 min-h-screen">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-12 px-4 sm:px-6 lg:px-8 bg-[#F5F7F3] min-h-screen">
+    <div class="max-w-4xl mx-auto">
         
-        <!-- Header -->
-        <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
-            <span class="px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-mono font-semibold uppercase tracking-wider inline-block">
-                State-of-the-Art Reservation Engine
+        <!-- Page Title -->
+        <div class="text-center mb-10">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-white border border-[#D8E2D5] text-[#355E3B] text-xs font-semibold uppercase tracking-wider mb-3 shadow-sm">
+                Fast & Transparent Booking
             </span>
-            <h1 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
-                Command Your <span class="text-gold-gradient font-serif italic font-normal">Private Journey</span>
+            <h1 class="text-3xl sm:text-5xl font-serif text-[#1A3320]">
+                Book Your <span class="text-emerald-700 italic">Cab in 60 Seconds</span>
             </h1>
-            <p class="text-slate-400 text-sm sm:text-base font-light">
-                Transparent guaranteed quotations. No hidden surge pricing. Flight delays monitored automatically.
+            <p class="text-[#4A6350] text-sm sm:text-base mt-2 font-light">
+                Fixed prices, verified drivers, and live ride tracking.
             </p>
         </div>
 
-        <!-- 4-Step Progress Indicator Bar -->
-        <div class="max-w-4xl mx-auto mb-12">
-            <div class="grid grid-cols-4 gap-2 text-center text-xs font-mono">
-                <div id="stepIndicator1" class="p-3 rounded-xl border border-amber-500 bg-amber-500/20 text-amber-300 font-bold">
-                    <span class="block text-[10px] text-amber-400/80">STEP 01</span>
-                    Route & Time
-                </div>
-                <div id="stepIndicator2" class="p-3 rounded-xl border border-white/[0.08] bg-white/[0.02] text-slate-400 font-medium">
-                    <span class="block text-[10px] text-slate-500">STEP 02</span>
-                    Vehicle Class
-                </div>
-                <div id="stepIndicator3" class="p-3 rounded-xl border border-white/[0.08] bg-white/[0.02] text-slate-400 font-medium">
-                    <span class="block text-[10px] text-slate-500">STEP 03</span>
-                    VIP Customization
-                </div>
-                <div id="stepIndicator4" class="p-3 rounded-xl border border-white/[0.08] bg-white/[0.02] text-slate-400 font-medium">
-                    <span class="block text-[10px] text-slate-500">STEP 04</span>
-                    Pass & Dispatch
-                </div>
+        <!-- 4-Step Progress Pill Strip -->
+        <div class="grid grid-cols-4 gap-2 text-center text-xs mb-10 font-medium">
+            <div id="stepTab1" class="py-3 px-2 rounded-2xl bg-[#1A3320] text-white shadow-md">
+                <span class="block text-[10px] text-emerald-300">STEP 1</span>
+                <span>Route & Time</span>
+            </div>
+            <div id="stepTab2" class="py-3 px-2 rounded-2xl bg-white border border-[#D8E2D5] text-[#5C7562]">
+                <span class="block text-[10px] text-[#7A9C76]">STEP 2</span>
+                <span>Choose Cab</span>
+            </div>
+            <div id="stepTab3" class="py-3 px-2 rounded-2xl bg-white border border-[#D8E2D5] text-[#5C7562]">
+                <span class="block text-[10px] text-[#7A9C76]">STEP 3</span>
+                <span>Rider Info</span>
+            </div>
+            <div id="stepTab4" class="py-3 px-2 rounded-2xl bg-white border border-[#D8E2D5] text-[#5C7562]">
+                <span class="block text-[10px] text-[#7A9C76]">STEP 4</span>
+                <span>Ride Pass</span>
             </div>
         </div>
 
-        <!-- WIZARD CONTAINER -->
-        <div class="max-w-4xl mx-auto">
-            
-            <!-- STEP 1: ROUTE & ITINERARY -->
-            <div id="step1" class="glass-card-gold rounded-3xl p-6 sm:p-10 space-y-8">
+        <!-- STEP 1: ROUTE & TIME -->
+        <div id="step1Box" class="bg-white rounded-[2.5rem] p-6 sm:p-10 border border-[#D8E2D5] shadow-xl space-y-6">
+            <div class="border-b border-[#EAF0E5] pb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Step 1 of 4</span>
+                <h2 class="font-serif text-2xl font-bold text-[#1A3320]">Enter Your Pickup & Drop Location</h2>
+            </div>
+
+            <!-- Ride Mode Pills -->
+            <div class="flex gap-2 bg-[#F5F7F3] p-1.5 rounded-2xl border border-[#DCE5D9] text-xs font-semibold">
+                <button type="button" onclick="setMode('city')" id="btnModeCity" class="flex-1 py-2.5 rounded-xl bg-[#1A3320] text-white transition-all">City Ride</button>
+                <button type="button" onclick="setMode('airport')" id="btnModeAirport" class="flex-1 py-2.5 rounded-xl text-[#4A6350] hover:text-[#1A3320] transition-all">Airport Transfer</button>
+                <button type="button" onclick="setMode('hourly')" id="btnModeHourly" class="flex-1 py-2.5 rounded-xl text-[#4A6350] hover:text-[#1A3320] transition-all">Hourly Rental</button>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Pickup -->
                 <div>
-                    <h2 class="font-display font-bold text-2xl text-white">01. Define Your Journey Coordinates</h2>
-                    <p class="text-slate-400 text-xs sm:text-sm mt-1">Specify your origin, destination, and service format.</p>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Pickup Location</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-emerald-600">📍</span>
+                        <input type="text" id="bPickup" required value="{{ request('pickup') ?? 'Connaught Place, Central City' }}" class="w-full pl-10 pr-4 py-3 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium focus:outline-none focus:border-emerald-600 focus:bg-white">
+                    </div>
                 </div>
 
-                <!-- Service Mode Toggle -->
-                <div class="grid grid-cols-3 gap-2 bg-black/40 p-1.5 rounded-2xl border border-white/[0.08] text-xs">
-                    <button type="button" onclick="setServiceType('point')" id="btnServicePoint" class="py-3 rounded-xl font-bold transition-all bg-amber-500/30 text-amber-200 border border-amber-500/40">
-                        Point to Point
-                    </button>
-                    <button type="button" onclick="setServiceType('hourly')" id="btnServiceHourly" class="py-3 rounded-xl font-bold transition-all text-slate-400 hover:text-white">
-                        By-The-Hour Chauffeur
-                    </button>
-                    <button type="button" onclick="setServiceType('airport')" id="btnServiceAirport" class="py-3 rounded-xl font-bold transition-all text-slate-400 hover:text-white">
-                        Airport VIP Tarmac
-                    </button>
+                <!-- Dropoff -->
+                <div id="bDropoffContainer">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Drop-off Destination</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-emerald-600">🏁</span>
+                        <input type="text" id="bDropoff" required value="{{ request('dropoff') ?? 'International Airport Terminal 3' }}" class="w-full pl-10 pr-4 py-3 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium focus:outline-none focus:border-emerald-600 focus:bg-white">
+                    </div>
                 </div>
 
-                <div class="space-y-4">
-                    <!-- Pickup Location -->
+                <!-- Hourly Dropdown (Hidden unless hourly) -->
+                <div id="bHourlyContainer" class="hidden">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Hours on Standby</label>
+                    <select id="bHourlyHours" onchange="calculateFare()" class="w-full px-4 py-3 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium focus:outline-none focus:border-emerald-600">
+                        <option value="2">2 Hours Dedicated Standby</option>
+                        <option value="4" selected>4 Hours Standby (Popular for meetings)</option>
+                        <option value="8">8 Hours Full Day Standby</option>
+                        <option value="12">12 Hours Full Day City Tour</option>
+                    </select>
+                </div>
+
+                <!-- Date & Time -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <div class="flex items-center justify-between mb-1.5">
-                            <label class="text-xs font-mono text-slate-300 uppercase tracking-wider">Pickup Location</label>
-                            <div class="flex items-center gap-2 text-[11px] text-amber-400/90 font-mono">
-                                <span class="cursor-pointer hover:underline" onclick="applyPresetLocation('pickup', 'JFK Terminal 4 Private FBO')">JFK FBO</span> •
-                                <span class="cursor-pointer hover:underline" onclick="applyPresetLocation('pickup', 'The Plaza Hotel 5th Ave')">The Plaza</span> •
-                                <span class="cursor-pointer hover:underline" onclick="applyPresetLocation('pickup', 'Wall St Financial Hub')">Wall St</span>
-                            </div>
-                        </div>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-amber-400">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-                            </div>
-                            <input type="text" id="bookingPickup" required value="{{ request('pickup') ?? 'The Plaza Hotel, 5th Avenue, New York' }}" class="w-full pl-10 pr-4 py-3 rounded-xl bg-black/60 border border-white/[0.12] text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 font-medium">
-                        </div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Pickup Date & Time</label>
+                        <input type="datetime-local" id="bDatetime" value="{{ date('Y-m-d\TH:i', strtotime('+1 hour')) }}" class="w-full px-4 py-2.5 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium focus:outline-none focus:border-emerald-600">
                     </div>
-
-                    <!-- Dropoff Location -->
-                    <div id="dropoffGroup">
-                        <div class="flex items-center justify-between mb-1.5">
-                            <label class="text-xs font-mono text-slate-300 uppercase tracking-wider">Destination</label>
-                            <div class="flex items-center gap-2 text-[11px] text-cyan-400/90 font-mono">
-                                <span class="cursor-pointer hover:underline" onclick="applyPresetLocation('dropoff', 'Teterboro Private Airport FBO')">Teterboro FBO</span> •
-                                <span class="cursor-pointer hover:underline" onclick="applyPresetLocation('dropoff', 'JFK International Airport')">JFK Airport</span> •
-                                <span class="cursor-pointer hover:underline" onclick="applyPresetLocation('dropoff', 'The Hamptons Estate')">The Hamptons</span>
-                            </div>
-                        </div>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-cyan-400">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
-                            </div>
-                            <input type="text" id="bookingDropoff" required value="{{ request('dropoff') ?? 'JFK International Airport - Terminal 4' }}" class="w-full pl-10 pr-4 py-3 rounded-xl bg-black/60 border border-white/[0.12] text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 font-medium">
-                        </div>
-                    </div>
-
-                    <!-- Hourly Duration (Conditional for hourly) -->
-                    <div id="hourlyDurationGroup" class="hidden">
-                        <label class="block text-xs font-mono text-slate-300 uppercase tracking-wider mb-1.5">Service Duration (Hours On Standby)</label>
-                        <select id="hourlyHours" onchange="calculateFareBreakdown()" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/[0.12] text-sm text-white focus:outline-none focus:border-amber-400 font-mono">
-                            <option value="2">2 Hours Dedicated Standby</option>
-                            <option value="4" selected>4 Hours Dedicated Standby</option>
-                            <option value="8">8 Hours Full Day Mobility</option>
-                            <option value="12">12 Hours Diplomatic Escort</option>
-                            <option value="24">24 Hours Round-the-Clock Standby</option>
-                        </select>
-                    </div>
-
-                    <!-- Date & Time Row -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-mono text-slate-300 uppercase tracking-wider mb-1.5">Scheduled Date & Time</label>
-                            <input type="datetime-local" id="bookingDatetime" value="{{ date('Y-m-d\TH:i', strtotime('+2 hours')) }}" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/[0.12] text-sm text-white focus:outline-none focus:border-amber-400 font-mono">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-mono text-slate-300 uppercase tracking-wider mb-1.5">Flight Number (Optional for Radar Sync)</label>
-                            <input type="text" id="bookingFlight" placeholder="e.g. BA 178 / Emirates EK 201" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/[0.12] text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 font-mono uppercase">
-                        </div>
-                    </div>
-
-                    <!-- Calculated Route Telemetry Preview -->
-                    <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-between text-xs font-mono">
-                        <div class="flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-                            <div>
-                                <span class="text-slate-400 block text-[10px]">RADAR DISTANCE</span>
-                                <span class="text-white font-bold" id="telemetryDistance">26.8 km (16.6 mi)</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="text-slate-400 block text-[10px]">TRANSIT ESTIMATE</span>
-                            <span class="text-amber-300 font-bold" id="telemetryDuration">~34 mins</span>
-                        </div>
-                        <div>
-                            <span class="text-slate-400 block text-[10px]">ROUTE OPTIMIZATION</span>
-                            <span class="text-cyan-400 font-bold">Fastest Express</span>
-                        </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Flight Number (Optional for Airport)</label>
+                        <input type="text" id="bFlight" placeholder="e.g. AI 102 / 6E 543" class="w-full px-4 py-2.5 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium uppercase placeholder-slate-400 focus:outline-none focus:border-emerald-600">
                     </div>
                 </div>
 
-                <div class="flex justify-end pt-4">
-                    <button type="button" onclick="goToStep(2)" class="btn-gold px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg">
-                        <span>Continue to Vehicle Selection</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </button>
+                <!-- Estimated Route Strip -->
+                <div class="p-4 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] flex items-center justify-between text-xs text-[#4A6350]">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                        <span>Estimated Route Distance: <strong class="text-[#1A3320]">~24.5 km</strong></span>
+                    </div>
+                    <div>
+                        <span>Estimated Travel Time: <strong class="text-emerald-700">~32 mins</strong></span>
+                    </div>
                 </div>
             </div>
 
-            <!-- STEP 2: CHOOSE VEHICLE CLASS -->
-            <div id="step2" class="glass-card-gold rounded-3xl p-6 sm:p-10 space-y-8 hidden">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="font-display font-bold text-2xl text-white">02. Select Your Vehicle Class</h2>
-                        <p class="text-slate-400 text-xs sm:text-sm mt-1">Calculated rates based on current route parameters.</p>
-                    </div>
-                    <button type="button" onclick="goToStep(1)" class="text-xs font-mono text-amber-300 hover:underline">← Modify Route</button>
+            <div class="flex justify-end pt-4">
+                <button type="button" onclick="goToStep(2)" class="btn-emerald px-8 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+                    <span>Continue to Choose Cab</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 2: CHOOSE CAB -->
+        <div id="step2Box" class="bg-white rounded-[2.5rem] p-6 sm:p-10 border border-[#D8E2D5] shadow-xl space-y-6 hidden">
+            <div class="flex items-center justify-between border-b border-[#EAF0E5] pb-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Step 2 of 4</span>
+                    <h2 class="font-serif text-2xl font-bold text-[#1A3320]">Select Your Preferred Cab</h2>
                 </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    
-                    <!-- Vehicle Card 1: Maybach -->
-                    <div onclick="selectVehicle('maybach', 165, 'Mercedes-Maybach S 680', 'hero_sedan.jpg')" id="vehCardMaybach" class="veh-select-card p-5 rounded-2xl border border-amber-500/30 bg-white/[0.04] hover:border-amber-400 cursor-pointer transition-all relative overflow-hidden group">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-mono font-bold">FIRST CLASS</span>
-                            <span class="text-xl font-display font-bold text-amber-300" id="priceDisplayMaybach">$165.00</span>
-                        </div>
-                        <div class="h-32 rounded-xl overflow-hidden mb-3">
-                            <img src="{{ asset('images/hero_sedan.jpg') }}" alt="Mercedes-Maybach" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-                        </div>
-                        <h3 class="font-display font-bold text-lg text-white">Mercedes-Maybach S 680</h3>
-                        <p class="text-slate-400 text-xs mt-1">Twin-Turbo V12 • 3 VIP Passengers • 3 Luggage</p>
-                        <div class="mt-3 flex items-center justify-between text-[11px] font-mono text-slate-400 border-t border-white/[0.06] pt-2">
-                            <span>Champagne & Wi-Fi 7</span>
-                            <span class="text-emerald-400 font-bold" id="badgeMaybach">Selected ✓</span>
-                        </div>
-                    </div>
-
-                    <!-- Vehicle Card 2: Range Rover SUV -->
-                    <div onclick="selectVehicle('suv', 190, 'Range Rover SV Long Wheelbase', 'fleet_suv.jpg')" id="vehCardSuv" class="veh-select-card p-5 rounded-2xl border border-white/[0.08] bg-white/[0.02] hover:border-amber-400 cursor-pointer transition-all relative overflow-hidden group">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-mono font-bold">EXECUTIVE SUV</span>
-                            <span class="text-xl font-display font-bold text-white" id="priceDisplaySuv">$190.00</span>
-                        </div>
-                        <div class="h-32 rounded-xl overflow-hidden mb-3">
-                            <img src="{{ asset('images/fleet_suv.jpg') }}" alt="Range Rover SV" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-                        </div>
-                        <h3 class="font-display font-bold text-lg text-white">Range Rover SV LWB</h3>
-                        <p class="text-slate-400 text-xs mt-1">530 HP AWD • 4 VIP Passengers • 5 Luggage</p>
-                        <div class="mt-3 flex items-center justify-between text-[11px] font-mono text-slate-400 border-t border-white/[0.06] pt-2">
-                            <span>Club Tables & All-Terrain</span>
-                            <span class="text-slate-500" id="badgeSuv">Select</span>
-                        </div>
-                    </div>
-
-                    <!-- Vehicle Card 3: Lucid Air Sapphire EV -->
-                    <div onclick="selectVehicle('lucid', 145, 'Lucid Air Sapphire Hyper-EV', 'fleet_electric.jpg')" id="vehCardLucid" class="veh-select-card p-5 rounded-2xl border border-white/[0.08] bg-white/[0.02] hover:border-amber-400 cursor-pointer transition-all relative overflow-hidden group">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-mono font-bold">ZERO EMISSION</span>
-                            <span class="text-xl font-display font-bold text-white" id="priceDisplayLucid">$145.00</span>
-                        </div>
-                        <div class="h-32 rounded-xl overflow-hidden mb-3">
-                            <img src="{{ asset('images/fleet_electric.jpg') }}" alt="Lucid Air Sapphire" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-                        </div>
-                        <h3 class="font-display font-bold text-lg text-white">Lucid Air Sapphire</h3>
-                        <p class="text-slate-400 text-xs mt-1">1,234 HP Tri-Motor • 3 VIP Passengers • 3 Luggage</p>
-                        <div class="mt-3 flex items-center justify-between text-[11px] font-mono text-slate-400 border-t border-white/[0.06] pt-2">
-                            <span>Whisper Quiet &lt; 48 dB</span>
-                            <span class="text-slate-500" id="badgeLucid">Select</span>
-                        </div>
-                    </div>
-
-                    <!-- Vehicle Card 4: Maybach Sprinter VIP Van -->
-                    <div onclick="selectVehicle('van', 240, 'Maybach VIP Executive Jet Van', 'fleet_van.jpg')" id="vehCardVan" class="veh-select-card p-5 rounded-2xl border border-white/[0.08] bg-white/[0.02] hover:border-amber-400 cursor-pointer transition-all relative overflow-hidden group">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 text-[10px] font-mono font-bold">BOARDROOM JET VAN</span>
-                            <span class="text-xl font-display font-bold text-white" id="priceDisplayVan">$240.00</span>
-                        </div>
-                        <div class="h-32 rounded-xl overflow-hidden mb-3">
-                            <img src="{{ asset('images/fleet_van.jpg') }}" alt="Maybach Jet Van" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
-                        </div>
-                        <h3 class="font-display font-bold text-lg text-white">Maybach VIP Executive Van</h3>
-                        <p class="text-slate-400 text-xs mt-1">Coachbuilt Jet Interior • 7 VIP Passengers • 12 Luggage</p>
-                        <div class="mt-3 flex items-center justify-between text-[11px] font-mono text-slate-400 border-t border-white/[0.06] pt-2">
-                            <span>43" OLED & Espresso Bar</span>
-                            <span class="text-slate-500" id="badgeVan">Select</span>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="flex items-center justify-between pt-4 border-t border-white/[0.08]">
-                    <button type="button" onclick="goToStep(1)" class="px-6 py-3 rounded-full glass-card text-xs font-mono uppercase text-slate-300 hover:text-white">
-                        Back to Route
-                    </button>
-                    <button type="button" onclick="goToStep(3)" class="btn-gold px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg">
-                        <span>Configure In-Cabin Preferences</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </button>
-                </div>
+                <button type="button" onclick="goToStep(1)" class="text-xs font-semibold text-emerald-700 hover:underline">← Change Route</button>
             </div>
 
-            <!-- STEP 3: BESPOKE PASSENGER CUSTOMIZATION -->
-            <div id="step3" class="glass-card-gold rounded-3xl p-6 sm:p-10 space-y-8 hidden">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="font-display font-bold text-2xl text-white">03. In-Cabin Bespoke Preferences</h2>
-                        <p class="text-slate-400 text-xs sm:text-sm mt-1">Tailor the sensory environment for your journey.</p>
-                    </div>
-                    <button type="button" onclick="goToStep(2)" class="text-xs font-mono text-amber-300 hover:underline">← Change Vehicle</button>
-                </div>
-
-                <!-- Passenger Identity -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-mono text-slate-300 uppercase tracking-wider mb-1.5">Primary Passenger Name</label>
-                        <input type="text" id="passengerName" required value="Lord Julian Sterling" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/[0.12] text-sm text-white focus:outline-none focus:border-amber-400 font-medium">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-mono text-slate-300 uppercase tracking-wider mb-1.5">Direct Mobile Phone / WhatsApp</label>
-                        <input type="tel" id="passengerPhone" required value="+1 (555) 782-9901" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/[0.12] text-sm text-white focus:outline-none focus:border-amber-400 font-mono">
-                    </div>
-                </div>
-
-                <!-- Climate Slider -->
-                <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] space-y-3">
-                    <div class="flex items-center justify-between">
-                        <label class="text-xs font-mono text-slate-300 uppercase tracking-wider">Cabin Climate Temperature</label>
-                        <span id="tempDisplay" class="px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 font-mono text-xs font-bold">20.5 °C (69 °F)</span>
-                    </div>
-                    <input type="range" id="tempSlider" min="18" max="25" step="0.5" value="20.5" oninput="updateTemperature(this.value)" class="w-full accent-amber-400 cursor-pointer">
-                    <div class="flex justify-between text-[10px] text-slate-500 font-mono">
-                        <span>18°C (Crisp & Cool)</span>
-                        <span>21.5°C (Balanced)</span>
-                        <span>25°C (Warm & Cozy)</span>
-                    </div>
-                </div>
-
-                <!-- Beverage Selection & Dress Code -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-mono text-slate-300 uppercase tracking-wider mb-1.5">Chilled Beverage Preference</label>
-                        <select id="beverageSelect" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/[0.12] text-xs text-white focus:outline-none focus:border-amber-400 font-mono">
-                            <option value="pellegrino">San Pellegrino Sparkling & Lemon Twist</option>
-                            <option value="evian">French Evian Natural Artesian Water</option>
-                            <option value="champagne">Vintage Dom Pérignon Champagne Flutes (+$45)</option>
-                            <option value="espresso">Hot Nespresso Single-Origin Roast</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-mono text-slate-300 uppercase tracking-wider mb-1.5">Chauffeur Attire Protocol</label>
-                        <select id="dressCodeSelect" class="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/[0.12] text-xs text-white focus:outline-none focus:border-amber-400 font-mono">
-                            <option value="blacktie">Black Tie Tuxedo & White Gloves</option>
-                            <option value="business" selected>Executive Business Suit & Tie</option>
-                            <option value="casual">Discreet Dark Attire (Undercover)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- VIP Add-ons Checklist -->
-                <div class="space-y-3">
-                    <label class="block text-xs font-mono text-slate-300 uppercase tracking-wider">Concierge Add-ons</label>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                        
-                        <label class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] cursor-pointer hover:border-amber-400/50 transition-all">
-                            <input type="checkbox" id="addonMeetGreet" onchange="calculateFareBreakdown()" class="w-4 h-4 accent-amber-400 rounded">
-                            <div class="flex-grow">
-                                <span class="text-white font-semibold block">FBO Tarmac Gate Meet & Greet</span>
-                                <span class="text-slate-400 text-[11px]">Chauffeur waits at aircraft steps with nameboard (+$35)</span>
-                            </div>
-                        </label>
-
-                        <label class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] cursor-pointer hover:border-amber-400/50 transition-all">
-                            <input type="checkbox" id="addonArmedEscort" onchange="calculateFareBreakdown()" class="w-4 h-4 accent-amber-400 rounded">
-                            <div class="flex-grow">
-                                <span class="text-white font-semibold block">Armed Close Protection Officer</span>
-                                <span class="text-slate-400 text-[11px]">Certified executive security detail liaison (+$180)</span>
-                            </div>
-                        </label>
-
-                        <label class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] cursor-pointer hover:border-amber-400/50 transition-all">
-                            <input type="checkbox" id="addonChildSeat" onchange="calculateFareBreakdown()" class="w-4 h-4 accent-amber-400 rounded">
-                            <div class="flex-grow">
-                                <span class="text-white font-semibold block">Infant / Child Safety Seat</span>
-                                <span class="text-slate-400 text-[11px]">Cybex Priam luxury ISOFIX system (+$20)</span>
-                            </div>
-                        </label>
-
-                        <label class="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] cursor-pointer hover:border-amber-400/50 transition-all">
-                            <input type="checkbox" id="addonLuggageTrailer" onchange="calculateFareBreakdown()" class="w-4 h-4 accent-amber-400 rounded">
-                            <div class="flex-grow">
-                                <span class="text-white font-semibold block">Extra Baggage Transport Vehicle</span>
-                                <span class="text-slate-400 text-[11px]">Secondary shadow vehicle for excess luggage (+$75)</span>
-                            </div>
-                        </label>
-
-                    </div>
-                </div>
-
-                <div class="flex items-center justify-between pt-4 border-t border-white/[0.08]">
-                    <button type="button" onclick="goToStep(2)" class="px-6 py-3 rounded-full glass-card text-xs font-mono uppercase text-slate-300 hover:text-white">
-                        Back to Vehicles
-                    </button>
-                    <button type="button" onclick="goToStep(4)" class="btn-gold px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg">
-                        <span>Review & Issue Reservation Pass</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- STEP 4: SUMMARY & LIVE DIGITAL PASS DISPATCH -->
-            <div id="step4" class="space-y-8 hidden">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 
-                <!-- Review Card & Payment Simulator -->
-                <div id="reviewCard" class="glass-card-gold rounded-3xl p-6 sm:p-10 space-y-8">
-                    <div>
-                        <h2 class="font-display font-bold text-2xl text-white">04. Final Authorization & Chauffeur Dispatch</h2>
-                        <p class="text-slate-400 text-xs sm:text-sm mt-1">Verify all booking credentials before satellite vehicle lock.</p>
+                <!-- Sedan -->
+                <div onclick="pickCab('sedan', 35, 'Comfort Prime Sedan', 'hero_sedan.jpg')" id="cabCardSedan" class="p-5 rounded-3xl border-2 border-emerald-600 bg-emerald-50/40 cursor-pointer transition-all hover:shadow-md">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="px-3 py-1 rounded-full bg-white border border-[#D8E2D5] text-[10px] font-bold text-[#1A3320]">POPULAR</span>
+                        <span class="text-xl font-bold text-emerald-700">$35.00</span>
                     </div>
-
-                    <!-- Itemized Invoice Breakdown -->
-                    <div class="p-6 rounded-2xl bg-black/60 border border-white/[0.08] space-y-3 font-mono text-xs">
-                        <div class="flex justify-between text-slate-300">
-                            <span>Base Rate (<span id="invoiceVehicleName">Mercedes-Maybach S 680</span>):</span>
-                            <span id="invoiceBaseRate">$165.00</span>
-                        </div>
-                        <div class="flex justify-between text-slate-300">
-                            <span>Distance / Route Surcharge (26.8 km):</span>
-                            <span id="invoiceDistanceRate">$18.50</span>
-                        </div>
-                        <div class="flex justify-between text-slate-300">
-                            <span>Selected Concierge Add-ons:</span>
-                            <span id="invoiceAddons">$0.00</span>
-                        </div>
-                        <div class="flex justify-between text-emerald-400" id="invoiceDiscountRow" style="display: none;">
-                            <span>Promo Code Discount (LUXE10):</span>
-                            <span id="invoiceDiscount">-$18.35</span>
-                        </div>
-                        <div class="flex justify-between text-slate-400 text-[11px] pt-1 border-t border-white/[0.06]">
-                            <span>Tolls, Airport FBO Permit & Tip:</span>
-                            <span class="text-emerald-400">Included (100% Guaranteed)</span>
-                        </div>
-                        <div class="flex justify-between text-white font-bold text-base pt-3 border-t border-amber-500/30">
-                            <span class="font-display">Total Guaranteed Fare:</span>
-                            <span id="invoiceTotal" class="text-amber-300 text-xl font-display font-black">$183.50</span>
-                        </div>
+                    <div class="h-28 rounded-2xl overflow-hidden mb-3">
+                        <img src="{{ asset('images/hero_sedan.jpg') }}" alt="Sedan" class="w-full h-full object-cover">
                     </div>
-
-                    <!-- Promo Code Input -->
-                    <div class="flex gap-2">
-                        <input type="text" id="promoCodeInput" placeholder="Try Promo Code: LUXE10" class="flex-grow px-4 py-3 rounded-xl bg-black/40 border border-white/[0.12] text-xs font-mono text-white uppercase placeholder-slate-500 focus:outline-none focus:border-amber-400">
-                        <button type="button" onclick="applyPromoCode()" class="px-6 py-3 rounded-xl glass-card text-xs font-mono font-bold text-amber-300 hover:border-amber-400 uppercase tracking-wider">
-                            Apply Code
-                        </button>
-                    </div>
-
-                    <!-- Payment Simulator Selector -->
-                    <div>
-                        <label class="block text-xs font-mono text-slate-300 uppercase tracking-wider mb-2">Simulated Settlement Method</label>
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
-                            <label class="p-3 rounded-xl border border-amber-500/40 bg-amber-500/10 text-amber-300 font-bold flex flex-col items-center justify-center text-center cursor-pointer">
-                                <input type="radio" name="paymentMethod" checked class="hidden">
-                                <span>Apple Pay</span>
-                                <span class="text-[9px] text-slate-400 font-normal">Instant 1-Touch</span>
-                            </label>
-                            <label class="p-3 rounded-xl border border-white/[0.08] bg-white/[0.02] text-slate-300 flex flex-col items-center justify-center text-center cursor-pointer hover:border-amber-400">
-                                <input type="radio" name="paymentMethod" class="hidden">
-                                <span>Centurion Black</span>
-                                <span class="text-[9px] text-slate-400 font-normal">Amex Direct</span>
-                            </label>
-                            <label class="p-3 rounded-xl border border-white/[0.08] bg-white/[0.02] text-slate-300 flex flex-col items-center justify-center text-center cursor-pointer hover:border-amber-400">
-                                <input type="radio" name="paymentMethod" class="hidden">
-                                <span>Corporate Account</span>
-                                <span class="text-[9px] text-slate-400 font-normal">Net-30 Invoice</span>
-                            </label>
-                            <label class="p-3 rounded-xl border border-white/[0.08] bg-white/[0.02] text-slate-300 flex flex-col items-center justify-center text-center cursor-pointer hover:border-amber-400">
-                                <input type="radio" name="paymentMethod" class="hidden">
-                                <span>USDT Escrow</span>
-                                <span class="text-[9px] text-slate-400 font-normal">Web3 Crypto</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-between pt-4 border-t border-white/[0.08]">
-                        <button type="button" onclick="goToStep(3)" class="px-6 py-3 rounded-full glass-card text-xs font-mono uppercase text-slate-300 hover:text-white">
-                            Back
-                        </button>
-                        <button type="button" onclick="confirmReservationAndGeneratePass()" class="btn-gold px-10 py-4 rounded-full text-xs font-black uppercase tracking-widest flex items-center gap-2 shadow-2xl">
-                            <span>Authorize & Dispatch Chauffeur</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                        </button>
-                    </div>
+                    <h3 class="font-serif font-bold text-lg text-[#1A3320]">Comfort Prime Sedan</h3>
+                    <p class="text-xs text-[#4A6350]">4 Passengers • 3 Bags • Clean AC</p>
+                    <span class="text-xs font-bold text-emerald-700 mt-2 block" id="selectedBadgeSedan">Selected ✓</span>
                 </div>
 
-                <!-- DIGITAL BOARDING PASS & LIVE TRACKER (Rendered upon confirmation) -->
-                <div id="confirmedPassCard" class="hidden space-y-8 animate-fade-in">
-                    
-                    <!-- Digital VIP Boarding Pass -->
-                    <div class="glass-card-gold rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl border-2 border-amber-400/40">
-                        <!-- Top Pass Header -->
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-amber-500/30 pb-6 mb-6 gap-4">
-                            <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 via-amber-600 to-amber-700 flex items-center justify-center text-black font-serif font-black text-2xl shadow-lg">
-                                    V
-                                </div>
-                                <div>
-                                    <div class="flex items-center gap-2">
-                                        <h3 class="font-display font-extrabold text-2xl text-white">VELOCE LUXE</h3>
-                                        <span class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-mono font-bold">
-                                            DISPATCH CONFIRMED
-                                        </span>
-                                    </div>
-                                    <p class="text-xs text-slate-400 font-mono">OFFICIAL DIGITAL BOARDING PASS</p>
-                                </div>
-                            </div>
-                            <div class="text-right font-mono">
-                                <span class="text-xs text-slate-400 block">RESERVATION REFERENCE</span>
-                                <span id="passRefCode" class="text-xl font-bold text-amber-300 tracking-wider">VL-8492-NYC</span>
-                            </div>
-                        </div>
-
-                        <!-- Pass Passenger & Route Dossier -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs mb-8">
-                            <div class="p-4 rounded-xl bg-black/40 border border-white/[0.06]">
-                                <span class="text-slate-400 block text-[10px]">PASSENGER NAME</span>
-                                <span id="passPassengerName" class="text-sm font-bold text-white mt-1 block">Lord Julian Sterling</span>
-                                <span class="text-slate-400 block text-[10px] mt-2">DRESS PROTOCOL</span>
-                                <span id="passDress" class="text-amber-300 font-medium">Business Suit & Tie</span>
-                            </div>
-                            <div class="p-4 rounded-xl bg-black/40 border border-white/[0.06]">
-                                <span class="text-slate-400 block text-[10px]">ORIGIN COORDINATES</span>
-                                <span id="passPickup" class="text-slate-200 mt-1 block font-medium truncate">The Plaza Hotel 5th Ave</span>
-                                <span class="text-slate-400 block text-[10px] mt-2">DESTINATION</span>
-                                <span id="passDropoff" class="text-cyan-300 mt-1 block font-medium truncate">JFK Airport Terminal 4</span>
-                            </div>
-                            <div class="p-4 rounded-xl bg-black/40 border border-white/[0.06]">
-                                <span class="text-slate-400 block text-[10px]">VEHICLE ALLOCATED</span>
-                                <span id="passVehicle" class="text-sm font-bold text-white mt-1 block">Mercedes-Maybach S 680</span>
-                                <span class="text-slate-400 block text-[10px] mt-2">LICENSE PLATE</span>
-                                <span class="text-amber-300 font-bold">LUX-777-NY</span>
-                            </div>
-                        </div>
-
-                        <!-- Chauffeur Profile Ribbon -->
-                        <div class="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-amber-500/25 flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-amber-400 shrink-0">
-                                    <img src="{{ asset('images/vip_chauffeur.jpg') }}" alt="Master Chauffeur Alexander Vance" class="w-full h-full object-cover">
-                                </div>
-                                <div>
-                                    <div class="flex items-center gap-2">
-                                        <h4 class="text-white font-bold text-sm">Alexander Vance</h4>
-                                        <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-mono font-bold">MASTER CHAUFFEUR</span>
-                                    </div>
-                                    <p class="text-xs text-slate-400">11 Yrs Senior Experience • 4.99 ★ (2,840 VIP Rides)</p>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-[10px] font-mono text-slate-400 block">CURRENT ETA</span>
-                                <span class="text-base font-mono font-bold text-emerald-400 flex items-center gap-1 justify-end">
-                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                                    3 Mins Away
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Animated Live Route Telemetry Progress Bar -->
-                        <div class="p-6 rounded-2xl bg-[#080B12] border border-cyan-500/20 space-y-4">
-                            <div class="flex items-center justify-between text-xs font-mono">
-                                <div class="flex items-center gap-2 text-amber-300">
-                                    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                                    <span>Origin Pickup</span>
-                                </div>
-                                <div class="text-slate-400">Live Satellite Telemetry Tracker</div>
-                                <div class="flex items-center gap-2 text-cyan-400">
-                                    <span>VIP Destination</span>
-                                    <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-                                </div>
-                            </div>
-
-                            <!-- Animated Moving Car along route line -->
-                            <div class="relative h-3 rounded-full bg-white/[0.08] overflow-visible my-6">
-                                <div id="liveRouteProgress" class="h-full bg-gradient-to-r from-amber-400 via-amber-500 to-cyan-400 rounded-full transition-all duration-1000" style="width: 38%;"></div>
-                                <div id="liveCarIcon" class="absolute -top-3.5 transform -translate-x-1/2 transition-all duration-1000" style="left: 38%;">
-                                    <div class="w-8 h-8 rounded-full bg-black border-2 border-amber-400 flex items-center justify-center text-xs shadow-lg shadow-amber-400/50">
-                                        🚗
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                                <span>Speed: 48 km/h</span>
-                                <span class="text-emerald-400 font-bold">Status: En Route to Rendezvous</span>
-                                <span>GPS: 40.7645° N, 73.9744° W</span>
-                            </div>
-                        </div>
-
-                        <!-- Action Buttons on Pass -->
-                        <div class="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/[0.08]">
-                            <button type="button" onclick="window.showToast('Boarding pass added to Apple Wallet!')" class="px-6 py-3 rounded-full bg-black border border-white/20 text-white text-xs font-mono font-bold flex items-center gap-2 hover:bg-white/[0.05]">
-                                <span> Add to Apple Wallet</span>
-                            </button>
-                            <div class="flex gap-3">
-                                <button type="button" onclick="window.print()" class="px-5 py-3 rounded-full glass-card text-xs font-mono text-slate-300 hover:text-white">
-                                    Print PDF Itinerary
-                                </button>
-                                <button type="button" onclick="resetBookingEngine()" class="btn-gold px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider">
-                                    Book Another Ride
-                                </button>
-                            </div>
-                        </div>
-
+                <!-- SUV -->
+                <div onclick="pickCab('suv', 55, 'Spacious Family SUV', 'fleet_suv.jpg')" id="cabCardSuv" class="p-5 rounded-3xl border border-[#DCE5D9] bg-white cursor-pointer transition-all hover:border-emerald-600 hover:shadow-md">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="px-3 py-1 rounded-full bg-[#F5F7F3] border border-[#D8E2D5] text-[10px] font-bold text-[#5C7562]">EXTRA ROOM</span>
+                        <span class="text-xl font-bold text-[#1A3320]">$55.00</span>
                     </div>
+                    <div class="h-28 rounded-2xl overflow-hidden mb-3">
+                        <img src="{{ asset('images/fleet_suv.jpg') }}" alt="SUV" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-serif font-bold text-lg text-[#1A3320]">Spacious Family SUV</h3>
+                    <p class="text-xs text-[#4A6350]">6 Passengers • 5 Bags • Big Trunk</p>
+                    <span class="text-xs text-[#7A9C76] mt-2 block" id="selectedBadgeSuv">Click to Select</span>
+                </div>
+
+                <!-- Electric -->
+                <div onclick="pickCab('electric', 40, 'Eco Green Electric Cab', 'fleet_electric.jpg')" id="cabCardElectric" class="p-5 rounded-3xl border border-[#DCE5D9] bg-white cursor-pointer transition-all hover:border-emerald-600 hover:shadow-md">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">100% GREEN</span>
+                        <span class="text-xl font-bold text-[#1A3320]">$40.00</span>
+                    </div>
+                    <div class="h-28 rounded-2xl overflow-hidden mb-3">
+                        <img src="{{ asset('images/fleet_electric.jpg') }}" alt="Electric" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-serif font-bold text-lg text-[#1A3320]">Eco Green Electric Cab</h3>
+                    <p class="text-xs text-[#4A6350]">4 Passengers • 3 Bags • Silent Ride</p>
+                    <span class="text-xs text-[#7A9C76] mt-2 block" id="selectedBadgeElectric">Click to Select</span>
+                </div>
+
+                <!-- Van -->
+                <div onclick="pickCab('van', 75, 'Executive Travel Van', 'fleet_van.jpg')" id="cabCardVan" class="p-5 rounded-3xl border border-[#DCE5D9] bg-white cursor-pointer transition-all hover:border-emerald-600 hover:shadow-md">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="px-3 py-1 rounded-full bg-[#F5F7F3] border border-[#D8E2D5] text-[10px] font-bold text-[#5C7562]">GROUP TOUR</span>
+                        <span class="text-xl font-bold text-[#1A3320]">$75.00</span>
+                    </div>
+                    <div class="h-28 rounded-2xl overflow-hidden mb-3">
+                        <img src="{{ asset('images/fleet_van.jpg') }}" alt="Van" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-serif font-bold text-lg text-[#1A3320]">Executive Travel Van</h3>
+                    <p class="text-xs text-[#4A6350]">7 Passengers • 10 Bags • High Roof</p>
+                    <span class="text-xs text-[#7A9C76] mt-2 block" id="selectedBadgeVan">Click to Select</span>
                 </div>
 
             </div>
 
+            <div class="flex items-center justify-between pt-4 border-t border-[#EAF0E5]">
+                <button type="button" onclick="goToStep(1)" class="btn-outline px-6 py-2.5 text-xs">Back</button>
+                <button type="button" onclick="goToStep(3)" class="btn-emerald px-8 py-3 text-xs font-bold uppercase tracking-wider">
+                    Next: Rider Details →
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 3: RIDER DETAILS & SIMPLE PREFERENCES -->
+        <div id="step3Box" class="bg-white rounded-[2.5rem] p-6 sm:p-10 border border-[#D8E2D5] shadow-xl space-y-6 hidden">
+            <div class="flex items-center justify-between border-b border-[#EAF0E5] pb-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Step 3 of 4</span>
+                    <h2 class="font-serif text-2xl font-bold text-[#1A3320]">Passenger & Trip Details</h2>
+                </div>
+                <button type="button" onclick="goToStep(2)" class="text-xs font-semibold text-emerald-700 hover:underline">← Change Cab</button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Passenger Full Name</label>
+                    <input type="text" id="rName" required value="Aditya Sharma" class="w-full px-4 py-3 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium focus:outline-none focus:border-emerald-600 focus:bg-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350] mb-1.5">Mobile Phone (For Driver Updates)</label>
+                    <input type="tel" id="rPhone" required value="+91 98765 43210" class="w-full px-4 py-3 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-sm text-[#14291B] font-medium focus:outline-none focus:border-emerald-600 focus:bg-white">
+                </div>
+            </div>
+
+            <!-- Optional Add-ons -->
+            <div class="space-y-3">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A6350]">Trip Options</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <label class="flex items-center gap-3 p-4 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] cursor-pointer hover:border-emerald-600 transition-all">
+                        <input type="checkbox" id="addMeet" onchange="calculateFare()" class="w-4 h-4 accent-emerald-600 rounded">
+                        <div>
+                            <span class="font-bold text-[#1A3320] block">Airport Nameboard Pickup (+$10)</span>
+                            <span class="text-[#5C7562]">Driver waits inside airport arrivals hall with your name</span>
+                        </div>
+                    </label>
+
+                    <label class="flex items-center gap-3 p-4 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] cursor-pointer hover:border-emerald-600 transition-all">
+                        <input type="checkbox" id="addChild" onchange="calculateFare()" class="w-4 h-4 accent-emerald-600 rounded">
+                        <div>
+                            <span class="font-bold text-[#1A3320] block">Child Safety Seat (+$8)</span>
+                            <span class="text-[#5C7562]">Sanitized child car seat securely installed in rear</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Fare Summary Box -->
+            <div class="p-6 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] space-y-2.5 text-xs text-[#4A6350]">
+                <div class="flex justify-between">
+                    <span>Base Fare (<span id="sumCabName">Comfort Prime Sedan</span>):</span>
+                    <span id="sumBaseFare" class="font-bold text-[#1A3320]">$35.00</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Selected Options:</span>
+                    <span id="sumAddons" class="font-bold text-[#1A3320]">$0.00</span>
+                </div>
+                <div class="flex justify-between text-emerald-700" id="discountRow" style="display: none;">
+                    <span>Promo Discount (<span id="appliedCodeText">RIDE10</span>):</span>
+                    <span id="sumDiscount" class="font-bold">-$3.50</span>
+                </div>
+                <div class="flex justify-between text-base font-bold text-[#1A3320] pt-2 border-t border-[#DCE5D9]">
+                    <span>Total Estimated Fare:</span>
+                    <span id="sumTotal" class="text-xl text-emerald-700 font-serif">$35.00</span>
+                </div>
+            </div>
+
+            <!-- Promo Code Input -->
+            <div class="flex gap-2">
+                <input type="text" id="promoInput" placeholder="Try Promo Code: RIDE10" class="flex-grow px-4 py-2.5 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] text-xs uppercase placeholder-slate-400 focus:outline-none focus:border-emerald-600">
+                <button type="button" onclick="applyPromo()" class="btn-outline px-6 py-2.5 text-xs font-semibold">Apply Code</button>
+            </div>
+
+            <div class="flex items-center justify-between pt-4 border-t border-[#EAF0E5]">
+                <button type="button" onclick="goToStep(2)" class="btn-outline px-6 py-2.5 text-xs">Back</button>
+                <button type="button" onclick="confirmAndIssuePass()" class="btn-emerald px-8 py-3 text-xs font-bold uppercase tracking-wider shadow-lg">
+                    Confirm & Dispatch Cab ✓
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 4: CONFIRMED RIDE PASS & LIVE ROUTE (Clean Yoga Style & 2x Better) -->
+        <div id="step4Box" class="hidden space-y-6">
+            <div class="bg-white rounded-[2.5rem] p-6 sm:p-10 border-2 border-emerald-600/60 shadow-2xl space-y-6">
+                
+                <!-- Pass Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#EAF0E5] pb-5 gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-lg">
+                            ✓
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Ride Confirmed</span>
+                            <h3 class="font-serif text-2xl font-bold text-[#1A3320]">Your Cab is on the way!</h3>
+                        </div>
+                    </div>
+                    <div class="text-left sm:text-right">
+                        <span class="text-[11px] text-[#7A9C76] block">BOOKING ID</span>
+                        <span class="text-lg font-bold text-[#1A3320] font-mono">VC-9824-DEL</span>
+                    </div>
+                </div>
+
+                <!-- Driver & Car Card -->
+                <div class="p-5 rounded-2xl bg-[#F8FAF6] border border-[#DCE5D9] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-emerald-600 shrink-0">
+                            <img src="{{ asset('images/vip_chauffeur.jpg') }}" alt="Driver Photo" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h4 class="font-bold text-base text-[#1A3320]">Ramesh Kumar</h4>
+                                <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">4.9 ★ (3,120 Trips)</span>
+                            </div>
+                            <p class="text-xs text-[#5C7562]" id="passCabDisplay">Comfort Prime Sedan • Plate: DL 01 AB 8890</p>
+                        </div>
+                    </div>
+                    <div class="sm:text-right">
+                        <span class="text-[11px] text-[#7A9C76] block">DRIVER ETA</span>
+                        <span class="text-base font-bold text-emerald-700">Arriving in 3 Mins</span>
+                    </div>
+                </div>
+
+                <!-- Live Route Progress Bar -->
+                <div class="p-6 rounded-2xl bg-[#F5F7F3] border border-[#DCE5D9] space-y-4">
+                    <div class="flex justify-between text-xs text-[#5C7562]">
+                        <span class="font-bold text-[#1A3320]">📍 Pickup: <span id="passPickupText">Connaught Place</span></span>
+                        <span class="font-bold text-emerald-700">🏁 Destination: <span id="passDropoffText">Airport T3</span></span>
+                    </div>
+
+                    <!-- Moving Cab Line -->
+                    <div class="relative h-2.5 rounded-full bg-[#DCE5D9] my-6">
+                        <div id="cabProgressBar" class="h-full bg-emerald-600 rounded-full transition-all duration-700" style="width: 35%;"></div>
+                        <div id="cabMovingIcon" class="absolute -top-3.5 transform -translate-x-1/2 transition-all duration-700 text-lg" style="left: 35%;">
+                            🚖
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between text-[11px] text-[#7A9C76]">
+                        <span>Status: Driver on the way to pickup</span>
+                        <span>Direct Call: <strong>+91 98765 00112</strong></span>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#EAF0E5]">
+                    <button type="button" onclick="window.print()" class="btn-outline px-6 py-2.5 text-xs">
+                        🖨️ Print Receipt
+                    </button>
+                    <button type="button" onclick="resetWizard()" class="btn-primary px-8 py-2.5 text-xs font-semibold">
+                        Book Another Cab
+                    </button>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -569,172 +350,128 @@
 
 @push('scripts')
 <script>
-// State Management
 let bookingState = {
-    serviceType: 'point',
-    pickup: 'The Plaza Hotel, 5th Avenue, New York',
-    dropoff: 'JFK International Airport - Terminal 4',
-    hours: 4,
-    vehicleKey: 'maybach',
-    vehicleName: 'Mercedes-Maybach S 680',
-    vehicleRate: 165,
-    vehicleImg: 'hero_sedan.jpg',
-    temperature: 20.5,
-    beverage: 'San Pellegrino Sparkling',
-    dressCode: 'Executive Business Suit & Tie',
-    passengerName: 'Lord Julian Sterling',
-    passengerPhone: '+1 (555) 782-9901',
+    mode: 'city',
+    cabKey: 'sedan',
+    cabName: 'Comfort Prime Sedan',
+    baseFare: 35,
+    pickup: 'Connaught Place, Central City',
+    dropoff: 'International Airport Terminal 3',
     addons: {
-        meetGreet: false,
-        armedEscort: false,
-        childSeat: false,
-        luggageTrailer: false
+        meet: false,
+        child: false
     },
-    promoApplied: false,
-    promoDiscount: 0
+    promoApplied: false
 };
 
-// Toggle Service Mode
-function setServiceType(type) {
-    bookingState.serviceType = type;
-    const tabs = ['btnServicePoint', 'btnServiceHourly', 'btnServiceAirport'];
-    tabs.forEach(t => {
-        document.getElementById(t).className = 'py-3 rounded-xl font-bold transition-all text-slate-400 hover:text-white';
+function setMode(mode) {
+    bookingState.mode = mode;
+    const btns = ['btnModeCity', 'btnModeAirport', 'btnModeHourly'];
+    btns.forEach(b => {
+        document.getElementById(b).className = 'flex-1 py-2.5 rounded-xl text-[#4A6350] hover:text-[#1A3320] transition-all';
     });
 
-    const dropoffGroup = document.getElementById('dropoffGroup');
-    const hourlyGroup = document.getElementById('hourlyDurationGroup');
+    const dropoffBox = document.getElementById('bDropoffContainer');
+    const hourlyBox = document.getElementById('bHourlyContainer');
 
-    if (type === 'point') {
-        document.getElementById('btnServicePoint').className = 'py-3 rounded-xl font-bold transition-all bg-amber-500/30 text-amber-200 border border-amber-500/40';
-        dropoffGroup.classList.remove('hidden');
-        hourlyGroup.classList.add('hidden');
-    } else if (type === 'hourly') {
-        document.getElementById('btnServiceHourly').className = 'py-3 rounded-xl font-bold transition-all bg-amber-500/30 text-amber-200 border border-amber-500/40';
-        dropoffGroup.classList.add('hidden');
-        hourlyGroup.classList.remove('hidden');
-    } else if (type === 'airport') {
-        document.getElementById('btnServiceAirport').className = 'py-3 rounded-xl font-bold transition-all bg-amber-500/30 text-amber-200 border border-amber-500/40';
-        dropoffGroup.classList.remove('hidden');
-        hourlyGroup.classList.add('hidden');
+    if (mode === 'city') {
+        document.getElementById('btnModeCity').className = 'flex-1 py-2.5 rounded-xl bg-[#1A3320] text-white transition-all';
+        dropoffBox.classList.remove('hidden');
+        hourlyBox.classList.add('hidden');
+    } else if (mode === 'airport') {
+        document.getElementById('btnModeAirport').className = 'flex-1 py-2.5 rounded-xl bg-[#1A3320] text-white transition-all';
+        dropoffBox.classList.remove('hidden');
+        hourlyBox.classList.add('hidden');
+    } else if (mode === 'hourly') {
+        document.getElementById('btnModeHourly').className = 'flex-1 py-2.5 rounded-xl bg-[#1A3320] text-white transition-all';
+        dropoffBox.classList.add('hidden');
+        hourlyBox.classList.remove('hidden');
     }
 
-    calculateFareBreakdown();
+    calculateFare();
 }
 
-function applyPresetLocation(field, val) {
-    if (field === 'pickup') {
-        document.getElementById('bookingPickup').value = val;
-        window.showToast(`Pickup updated: ${val}`);
-    } else {
-        document.getElementById('bookingDropoff').value = val;
-        window.showToast(`Destination updated: ${val}`);
-    }
-    calculateFareBreakdown();
-}
-
-// Wizard Step Navigation
 function goToStep(step) {
-    // Hide all
     for (let i = 1; i <= 4; i++) {
-        const el = document.getElementById(`step${i}`);
-        if (el) el.classList.add('hidden');
+        const box = document.getElementById(`step${i}Box`);
+        if (box) box.classList.add('hidden');
 
-        const indicator = document.getElementById(`stepIndicator${i}`);
-        if (indicator) {
-            indicator.className = 'p-3 rounded-xl border border-white/[0.08] bg-white/[0.02] text-slate-400 font-medium';
+        const tab = document.getElementById(`stepTab${i}`);
+        if (tab) {
+            tab.className = 'py-3 px-2 rounded-2xl bg-white border border-[#D8E2D5] text-[#5C7562]';
         }
     }
 
-    // Show active
-    const active = document.getElementById(`step${step}`);
-    if (active) active.classList.remove('hidden');
+    const activeBox = document.getElementById(`step${step}Box`);
+    if (activeBox) activeBox.classList.remove('hidden');
 
-    const activeIndicator = document.getElementById(`stepIndicator${step}`);
-    if (activeIndicator) {
-        activeIndicator.className = 'p-3 rounded-xl border border-amber-500 bg-amber-500/20 text-amber-300 font-bold';
+    const activeTab = document.getElementById(`stepTab${step}`);
+    if (activeTab) {
+        activeTab.className = 'py-3 px-2 rounded-2xl bg-[#1A3320] text-white shadow-md';
     }
 
-    // Read current form values
-    bookingState.pickup = document.getElementById('bookingPickup').value;
-    bookingState.dropoff = document.getElementById('bookingDropoff').value;
-    bookingState.passengerName = document.getElementById('passengerName')?.value || bookingState.passengerName;
-    bookingState.passengerPhone = document.getElementById('passengerPhone')?.value || bookingState.passengerPhone;
-
-    calculateFareBreakdown();
-    window.scrollTo({ top: 220, behavior: 'smooth' });
+    calculateFare();
+    window.scrollTo({ top: 180, behavior: 'smooth' });
 }
 
-// Vehicle Selection
-function selectVehicle(key, rate, name, img) {
-    bookingState.vehicleKey = key;
-    bookingState.vehicleRate = rate;
-    bookingState.vehicleName = name;
-    bookingState.vehicleImg = img;
+function pickCab(key, fare, name, img) {
+    bookingState.cabKey = key;
+    bookingState.baseFare = fare;
+    bookingState.cabName = name;
 
-    const cards = ['vehCardMaybach', 'vehCardSuv', 'vehCardLucid', 'vehCardVan'];
+    const cards = ['cabCardSedan', 'cabCardSuv', 'cabCardElectric', 'cabCardVan'];
     cards.forEach(c => {
         const el = document.getElementById(c);
         if (el) {
-            el.className = 'veh-select-card p-5 rounded-2xl border border-white/[0.08] bg-white/[0.02] hover:border-amber-400 cursor-pointer transition-all relative overflow-hidden group';
+            el.className = 'p-5 rounded-3xl border border-[#DCE5D9] bg-white cursor-pointer transition-all hover:border-emerald-600 hover:shadow-md';
         }
     });
 
     const badges = {
-        maybach: document.getElementById('badgeMaybach'),
-        suv: document.getElementById('badgeSuv'),
-        lucid: document.getElementById('badgeLucid'),
-        van: document.getElementById('badgeVan'),
+        sedan: document.getElementById('selectedBadgeSedan'),
+        suv: document.getElementById('selectedBadgeSuv'),
+        electric: document.getElementById('selectedBadgeElectric'),
+        van: document.getElementById('selectedBadgeVan'),
     };
     Object.keys(badges).forEach(k => {
         if (badges[k]) {
-            badges[k].innerText = 'Select';
-            badges[k].className = 'text-slate-500';
+            badges[k].innerText = 'Click to Select';
+            badges[k].className = 'text-xs text-[#7A9C76] mt-2 block';
         }
     });
 
     const activeMap = {
-        maybach: 'vehCardMaybach',
-        suv: 'vehCardSuv',
-        lucid: 'vehCardLucid',
-        van: 'vehCardVan',
+        sedan: 'cabCardSedan',
+        suv: 'cabCardSuv',
+        electric: 'cabCardElectric',
+        van: 'cabCardVan',
     };
-    const activeCard = document.getElementById(activeMap[key]);
-    if (activeCard) {
-        activeCard.className = 'veh-select-card p-5 rounded-2xl border-2 border-amber-400 bg-amber-500/10 cursor-pointer transition-all relative overflow-hidden group shadow-lg shadow-amber-500/10';
+    const activeEl = document.getElementById(activeMap[key]);
+    if (activeEl) {
+        activeEl.className = 'p-5 rounded-3xl border-2 border-emerald-600 bg-emerald-50/40 cursor-pointer transition-all hover:shadow-md';
     }
     if (badges[key]) {
         badges[key].innerText = 'Selected ✓';
-        badges[key].className = 'text-emerald-400 font-bold';
+        badges[key].className = 'text-xs font-bold text-emerald-700 mt-2 block';
     }
 
     window.showToast(`Selected: ${name}`);
-    calculateFareBreakdown();
+    calculateFare();
 }
 
-function updateTemperature(val) {
-    bookingState.temperature = val;
-    document.getElementById('tempDisplay').innerText = `${val} °C (${Math.round((val * 9/5) + 32)} °F)`;
-}
+function calculateFare() {
+    let base = bookingState.baseFare;
 
-// Calculation Engine
-function calculateFareBreakdown() {
-    let base = bookingState.vehicleRate;
-    let distanceCharge = 18.50;
-
-    if (bookingState.serviceType === 'hourly') {
-        const hours = parseInt(document.getElementById('hourlyHours')?.value || 4);
-        base = bookingState.vehicleRate * hours;
-        distanceCharge = 0;
+    if (bookingState.mode === 'hourly') {
+        const h = parseInt(document.getElementById('bHourlyHours')?.value || 4);
+        base = bookingState.baseFare * (h / 2);
     }
 
     let addonTotal = 0;
-    if (document.getElementById('addonMeetGreet')?.checked) addonTotal += 35;
-    if (document.getElementById('addonArmedEscort')?.checked) addonTotal += 180;
-    if (document.getElementById('addonChildSeat')?.checked) addonTotal += 20;
-    if (document.getElementById('addonLuggageTrailer')?.checked) addonTotal += 75;
+    if (document.getElementById('addMeet')?.checked) addonTotal += 10;
+    if (document.getElementById('addChild')?.checked) addonTotal += 8;
 
-    let subtotal = base + distanceCharge + addonTotal;
+    let subtotal = base + addonTotal;
     let discount = 0;
     if (bookingState.promoApplied) {
         discount = subtotal * 0.10;
@@ -742,21 +479,20 @@ function calculateFareBreakdown() {
 
     const total = subtotal - discount;
 
-    // Update Invoice Displays
-    const nameEl = document.getElementById('invoiceVehicleName');
-    if (nameEl) nameEl.innerText = bookingState.vehicleName;
+    const nameEl = document.getElementById('sumCabName');
+    if (nameEl) nameEl.innerText = bookingState.cabName;
 
-    const baseEl = document.getElementById('invoiceBaseRate');
+    const baseEl = document.getElementById('sumBaseFare');
     if (baseEl) baseEl.innerText = `$${base.toFixed(2)}`;
 
-    const addonsEl = document.getElementById('invoiceAddons');
+    const addonsEl = document.getElementById('sumAddons');
     if (addonsEl) addonsEl.innerText = `$${addonTotal.toFixed(2)}`;
 
-    const totalEl = document.getElementById('invoiceTotal');
+    const totalEl = document.getElementById('sumTotal');
     if (totalEl) totalEl.innerText = `$${total.toFixed(2)}`;
 
-    const discountRow = document.getElementById('invoiceDiscountRow');
-    const discountEl = document.getElementById('invoiceDiscount');
+    const discountRow = document.getElementById('discountRow');
+    const discountEl = document.getElementById('sumDiscount');
     if (discountRow && discountEl) {
         if (bookingState.promoApplied) {
             discountRow.style.display = 'flex';
@@ -767,73 +503,60 @@ function calculateFareBreakdown() {
     }
 }
 
-// Promo Code Handler
-function applyPromoCode() {
-    const input = document.getElementById('promoCodeInput');
-    const code = input.value.trim().toUpperCase();
-
-    if (code === 'LUXE10') {
+function applyPromo() {
+    const code = document.getElementById('promoInput')?.value.trim().toUpperCase();
+    if (code === 'RIDE10' || code === 'LUXE10') {
         bookingState.promoApplied = true;
-        calculateFareBreakdown();
-        window.showToast('VIP Privilege Code LUXE10 Applied: 10% Discount!');
+        document.getElementById('appliedCodeText').innerText = code;
+        calculateFare();
+        window.showToast(`Promo ${code} applied: 10% discount!`);
     } else {
-        window.showToast('Invalid or expired promo code.', 'error');
+        window.showToast('Please enter code: RIDE10', 'error');
     }
 }
 
-// Confirmation & Boarding Pass Generator
-function confirmReservationAndGeneratePass() {
-    window.showToast('Authorizing payment and issuing boarding pass...');
+function confirmAndIssuePass() {
+    window.showToast('Cab confirmed! Driver assigned.');
 
-    document.getElementById('reviewCard').classList.add('hidden');
-    document.getElementById('confirmedPassCard').classList.remove('hidden');
+    document.getElementById('step3Box').classList.add('hidden');
+    document.getElementById('step4Box').classList.remove('hidden');
 
-    // Populate Pass Fields
-    document.getElementById('passPassengerName').innerText = document.getElementById('passengerName')?.value || 'Lord Julian Sterling';
-    document.getElementById('passPickup').innerText = document.getElementById('bookingPickup')?.value || 'The Plaza Hotel 5th Ave';
-    document.getElementById('passDropoff').innerText = document.getElementById('bookingDropoff')?.value || 'JFK Airport Terminal 4';
-    document.getElementById('passVehicle').innerText = bookingState.vehicleName;
-    
-    const dressSelect = document.getElementById('dressCodeSelect');
-    if (dressSelect) {
-        document.getElementById('passDress').innerText = dressSelect.options[dressSelect.selectedIndex].text;
-    }
+    document.getElementById('passCabDisplay').innerText = `${bookingState.cabName} • Plate: DL 01 AB 8890`;
+    document.getElementById('passPickupText').innerText = document.getElementById('bPickup')?.value || 'City Center';
+    document.getElementById('passDropoffText').innerText = document.getElementById('bDropoff')?.value || 'Destination';
 
-    // Animate Progress Bar
-    let progress = 20;
+    const tab4 = document.getElementById('stepTab4');
+    if (tab4) tab4.className = 'py-3 px-2 rounded-2xl bg-[#1A3320] text-white shadow-md';
+
+    // Animate moving cab icon along route line
+    let p = 35;
     const interval = setInterval(() => {
-        progress += 4;
-        if (progress > 85) {
-            clearInterval(interval);
+        p += 5;
+        if (p > 85) clearInterval(interval);
+        const bar = document.getElementById('cabProgressBar');
+        const icon = document.getElementById('cabMovingIcon');
+        if (bar && icon) {
+            bar.style.width = `${p}%`;
+            icon.style.left = `${p}%`;
         }
-        const bar = document.getElementById('liveRouteProgress');
-        const car = document.getElementById('liveCarIcon');
-        if (bar && car) {
-            bar.style.width = `${progress}%`;
-            car.style.left = `${progress}%`;
-        }
-    }, 800);
+    }, 900);
 
-    window.scrollTo({ top: 300, behavior: 'smooth' });
+    window.scrollTo({ top: 150, behavior: 'smooth' });
 }
 
-function resetBookingEngine() {
-    document.getElementById('reviewCard').classList.remove('hidden');
-    document.getElementById('confirmedPassCard').classList.add('hidden');
+function resetWizard() {
+    document.getElementById('step4Box').classList.add('hidden');
     goToStep(1);
-    window.showToast('Ready for new reservation.');
+    window.showToast('Ready for new ride booking.');
 }
 
-// Check URL Params for pre-selected vehicle
 document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const preVehicle = urlParams.get('vehicle');
-    if (preVehicle) {
-        if (preVehicle === 'maybach') selectVehicle('maybach', 165, 'Mercedes-Maybach S 680', 'hero_sedan.jpg');
-        if (preVehicle === 'suv') selectVehicle('suv', 190, 'Range Rover SV Long Wheelbase', 'fleet_suv.jpg');
-        if (preVehicle === 'lucid') selectVehicle('lucid', 145, 'Lucid Air Sapphire Hyper-EV', 'fleet_electric.jpg');
-        if (preVehicle === 'van') selectVehicle('van', 240, 'Maybach VIP Executive Jet Van', 'fleet_van.jpg');
-    }
+    const p = new URLSearchParams(window.location.search);
+    const v = p.get('vehicle');
+    if (v === 'sedan') pickCab('sedan', 35, 'Comfort Prime Sedan', 'hero_sedan.jpg');
+    if (v === 'suv') pickCab('suv', 55, 'Spacious Family SUV', 'fleet_suv.jpg');
+    if (v === 'electric') pickCab('electric', 40, 'Eco Green Electric Cab', 'fleet_electric.jpg');
+    if (v === 'van') pickCab('van', 75, 'Executive Travel Van', 'fleet_van.jpg');
 });
 </script>
 @endpush
