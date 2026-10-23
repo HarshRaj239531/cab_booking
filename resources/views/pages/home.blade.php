@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
-@section('title', 'Simple, Clean & Reliable Cab Rides')
+@section('title', 'Veloce Cabs | Simple, Clean & Reliable Cab Booking')
 
 @section('content')
-<!-- HERO SECTION (Light Blue & Golden Radiant Atmosphere) -->
-<section class="relative min-h-[90vh] pt-12 pb-20 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#E2EEFB] via-[#F0F6FD] to-[#F0F6FD] border-b border-[#D2E4F7]">
+<!-- HERO SECTION (Clean, Serene, Professional Light Blue & Gold Aesthetic like Yoga) -->
+<section class="relative min-h-[90vh] pt-12 pb-20 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#E2EEFB] via-[#F0F6FD] to-[#F0F6FD] border-b border-[#C7E0FA]">
     
-    <!-- Hero Background Image with Luminous Blue Overlay -->
+    <!-- Hero Background Image with Subtle Luminous Overlay -->
     <div class="absolute inset-0 z-0 pointer-events-none">
-        <div class="absolute inset-0 bg-gradient-to-b from-[#E2EEFB]/90 via-[#F0F6FD]/70 to-[#F0F6FD] z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#E2EEFB]/90 via-[#F0F6FD]/75 to-[#F0F6FD] z-10"></div>
         <img
             src="{{ asset('images/hero_sedan.jpg') }}"
-            alt="Veloce Cabs"
+            alt="Luxury Sedan Background"
             class="w-full h-full object-cover object-center opacity-25 filter saturate-150"
         />
-        <!-- Ambient Golden & Blue Glow Orbs -->
+        <!-- Ambient Champagne Gold & Ice Blue Glows -->
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-400/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
     </div>
@@ -22,15 +22,15 @@
     <div class="relative z-10 text-center px-4 w-full max-w-5xl mx-auto">
         
         <!-- Small Pill Tag with Gold Sparkle -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-[#C7E0FA] text-[#0369A1] text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
-            <span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 border border-[#C7E0FA] text-[#0369A1] text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
             <span>✨ Reliable Rides • Verified Drivers • Fixed Rates</span>
         </div>
 
         <!-- Big Display Headline with Serif & Gold Accent -->
         <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif leading-[1.02] tracking-tight mb-6 text-[#0B172A]">
-            Ride with Peace. <br class="hidden sm:block" />
-            <span class="text-amber-500 italic pr-4 relative">
+            Ride in Peace. <br class="hidden sm:block" />
+            <span class="text-amber-500 italic pr-4 relative inline-block">
                 Arrive on Time.
                 <svg class="absolute w-full h-3.5 -bottom-1 left-0 text-amber-400/70" viewBox="0 0 200 9" fill="none">
                     <path d="M2.00018 7.37072C50.2989 -0.669527 122.956 -1.68412 198.057 7.37072" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
@@ -43,9 +43,9 @@
             Book clean, comfortable cabs in seconds. No sudden price surges, polite verified drivers, and guaranteed zero cancellations.
         </p>
 
-        <!-- 3 Highlights Cards Grid (Light Blue & Gold Touch) -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-12">
-            <div class="flex flex-col items-center p-5 bg-white rounded-3xl border border-[#D2E4F7] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        <!-- 3 Highlights Cards Grid (Yoga Inspired Clean Feature Highlights) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10">
+            <div class="flex flex-col items-center p-5 bg-white rounded-3xl border border-[#C7E0FA] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div class="w-12 h-12 bg-sky-100 text-sky-700 rounded-2xl flex items-center justify-center mb-3">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
@@ -53,7 +53,7 @@
                 <span class="text-[#0B172A] font-serif text-lg font-semibold">Average 3-4 Mins</span>
             </div>
 
-            <div class="flex flex-col items-center p-5 bg-white rounded-3xl border border-[#D2E4F7] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="flex flex-col items-center p-5 bg-white rounded-3xl border border-[#C7E0FA] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center mb-3">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
@@ -61,7 +61,7 @@
                 <span class="text-[#0B172A] font-serif text-lg font-semibold">Sanitized Daily</span>
             </div>
 
-            <div class="flex flex-col items-center p-5 bg-white rounded-3xl border border-[#D2E4F7] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="flex flex-col items-center p-5 bg-white rounded-3xl border border-[#C7E0FA] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div class="w-12 h-12 bg-sky-100 text-sky-700 rounded-2xl flex items-center justify-center mb-3">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
@@ -137,6 +137,21 @@
                     </div>
                 </div>
             </form>
+        </div>
+
+        <!-- Social Proof Under Booking Card -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-[#1E3A5F] font-semibold">
+            <span class="flex items-center gap-1.5">
+                <span class="text-amber-500 font-bold">★ 4.96</span> from 48,000+ Happy Riders
+            </span>
+            <span class="text-slate-300">•</span>
+            <span class="flex items-center gap-1.5">
+                <span class="text-sky-600 font-bold">✓</span> 100% Police Verified Drivers
+            </span>
+            <span class="text-slate-300">•</span>
+            <span class="flex items-center gap-1.5">
+                <span class="text-amber-500 font-bold">✨</span> Zero Surge Guarantee
+            </span>
         </div>
 
     </div>
@@ -280,7 +295,7 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-serif text-xl font-bold text-[#0B172A]">Eco Electric Cab</h3>
+                            <h3 class="font-serif text-xl font-bold text-[#0B172A]">Eco Silent Electric Cab</h3>
                             <span class="text-xl font-bold text-amber-600 font-serif">$40 <span class="text-xs text-slate-500 font-sans">base</span></span>
                         </div>
                         <p class="text-xs text-[#475569] mb-4">Ultra-smooth, zero-noise electric ride. Clean air and modern technology.</p>
