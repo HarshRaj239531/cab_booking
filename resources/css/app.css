@@ -1,0 +1,130 @@
+@import 'tailwindcss';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    
+    --color-primary-950: #0C1A10;
+    --color-primary-900: #14291B;
+    --color-primary-800: #1A3320;
+    --color-primary-700: #254A2E;
+    --color-primary-600: #355E3B;
+    
+    --color-emerald-500: #10B981;
+    --color-emerald-600: #059669;
+    --color-emerald-700: #047857;
+
+    --color-surface-bg: #F5F7F3;
+    --color-surface-card: #FFFFFF;
+    --color-surface-subtle: #F8FAF6;
+    --color-surface-border: #DCE5D9;
+}
+
+@layer base {
+    body {
+        background-color: #F5F7F3;
+        color: #14291B;
+        font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+        background-color: #A7F3D0;
+        color: #064E3B;
+    }
+
+    /* Custom Scrollbar like Yoga project */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #F5F7F3;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #1A3320;
+        border-radius: 10px;
+        border: 2px solid #F5F7F3;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #059669;
+    }
+}
+
+@layer utilities {
+    /* Navbar Hover Underline Effect */
+    .nav-link-underline {
+        position: relative;
+        padding-bottom: 2px;
+    }
+    .nav-link-underline::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #059669;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-link-underline:hover::after,
+    .nav-link-underline.active::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    /* Soft Card Shadows */
+    .card-clean {
+        background: #FFFFFF;
+        border: 1px solid #DCE5D9;
+        border-radius: 2rem;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-clean:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 35px -10px rgba(20, 41, 27, 0.08);
+        border-color: #B8D0B3;
+    }
+
+    .btn-primary {
+        background-color: #1A3320;
+        color: #FFFFFF;
+        border-radius: 9999px;
+        font-weight: 600;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 16px rgba(26, 51, 32, 0.15);
+    }
+    .btn-primary:hover {
+        background-color: #254A2E;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(26, 51, 32, 0.25);
+    }
+
+    .btn-emerald {
+        background-color: #059669;
+        color: #FFFFFF;
+        border-radius: 9999px;
+        font-weight: 600;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 16px rgba(5, 150, 105, 0.2);
+    }
+    .btn-emerald:hover {
+        background-color: #047857;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(5, 150, 105, 0.3);
+    }
+
+    .btn-outline {
+        border: 1.5px solid #DCE5D9;
+        background-color: #FFFFFF;
+        color: #1A3320;
+        border-radius: 9999px;
+        font-weight: 600;
+        transition: all 0.25s ease;
+    }
+    .btn-outline:hover {
+        background-color: #EAF0E5;
+        border-color: #A4C29E;
+    }
+}
