@@ -8,10 +8,10 @@
 
     <title>@yield('title', 'Quick & Reliable Cab Booking') | Veloce Cabs</title>
 
-    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <!-- Google Fonts: Plus Jakarta Sans (Clean, Modern, Simple) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Styles & Scripts via Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -39,7 +39,7 @@
                     </svg>
                 </div>
                 <div>
-                    <span class="font-serif font-bold text-xl text-[#0B172A] tracking-tight">Veloce</span>
+                    <span class="font-bold text-xl text-[#0B172A] tracking-tight">Veloce</span>
                     <span class="text-xs text-amber-600 font-bold tracking-wider uppercase ml-1">Gold</span>
                 </div>
             </a>
@@ -115,7 +115,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM5 11l1.5-4.5A2 2 0 018.4 5h7.2a2 2 0 011.9 1.5L19 11m-14 0h14m-14 0a2 2 0 00-2 2v3a1 1 0 001 1h1m14-6a2 2 0 012 2v3a1 1 0 01-1 1h-1"/>
                             </svg>
                         </div>
-                        <span class="font-serif font-bold text-2xl text-white">Veloce <span class="text-amber-400">Cabs</span></span>
+                        <span class="font-bold text-2xl text-white">Veloce <span class="text-amber-400">Cabs</span></span>
                     </div>
                     <p class="text-sm text-slate-400 max-w-sm leading-relaxed font-light">
                         Premium comfort, crystal-clear pricing, and courteous drivers. Dedicated to providing smooth airport transfers, city travel, and outstation holiday journeys.
@@ -129,7 +129,7 @@
 
                 <!-- Col 2: Quick Links -->
                 <div>
-                    <h4 class="font-serif text-white font-semibold text-base mb-4">Quick Links</h4>
+                    <h4 class="text-white font-bold text-base mb-4">Quick Links</h4>
                     <ul class="space-y-2.5 text-xs text-slate-400">
                         <li><a href="{{ route('home') }}" class="hover:text-amber-400 transition-colors">Home</a></li>
                         <li><a href="{{ route('fleet') }}" class="hover:text-amber-400 transition-colors">Our Fleet & Pricing</a></li>
@@ -141,7 +141,7 @@
 
                 <!-- Col 3: Need Help -->
                 <div>
-                    <h4 class="font-serif text-white font-semibold text-base mb-4">24/7 Helpline</h4>
+                    <h4 class="text-white font-bold text-base mb-4">24/7 Helpline</h4>
                     <p class="text-xs text-slate-400 mb-3 leading-relaxed">
                         Need immediate assistance or have a special ride inquiry?
                     </p>

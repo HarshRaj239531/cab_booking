@@ -17,8 +17,8 @@
                 <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
                 ✦ Guaranteed Cab Dispatch & Fixed Fares
             </span>
-            <h1 class="text-3xl sm:text-5xl font-serif text-[#0B172A]">
-                Book Your Cab <span class="text-amber-500 italic">in 3 Simple Steps</span>
+            <h1 class="text-3xl sm:text-5xl font-bold text-[#0B172A]">
+                Book Your Cab <span class="text-amber-500">in 3 Simple Steps</span>
             </h1>
             <p class="text-[#475569] text-sm sm:text-base mt-2 font-light">
                 Fixed clear pricing, verified courteous drivers, and real-time live ride tracking.

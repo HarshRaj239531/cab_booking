@@ -14,8 +14,8 @@
             <span class="w-2 h-2 rounded-full bg-amber-400"></span>
             We Are Here For You 24/7
         </span>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif text-[#0B172A] mb-4">
-            Help & <span class="text-amber-500 italic">Support Center</span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0B172A] mb-4">
+            Help & <span class="text-amber-500">Support Center</span>
         </h1>
         <p class="text-[#475569] text-sm sm:text-base max-w-xl mx-auto font-light leading-relaxed">
             Need help with an ongoing ride, corporate monthly cab billing, or lost an item in a cab? Contact our 24/7 dedicated support team.

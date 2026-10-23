@@ -27,19 +27,14 @@
             <span>✨ Reliable Rides • Verified Drivers • Fixed Rates</span>
         </div>
 
-        <!-- Big Display Headline with Serif & Gold Accent -->
-        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif leading-[1.02] tracking-tight mb-6 text-white">
+        <!-- Big Display Headline (Simple, Clean & Bold) -->
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 text-white leading-tight">
             Ride in Peace. <br class="hidden sm:block" />
-            <span class="text-amber-300 italic pr-4 relative inline-block">
-                Arrive on Time.
-                <svg class="absolute w-full h-3.5 -bottom-1 left-0 text-amber-400/80" viewBox="0 0 200 9" fill="none">
-                    <path d="M2.00018 7.37072C50.2989 -0.669527 122.956 -1.68412 198.057 7.37072" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-                </svg>
-            </span>
+            <span class="text-amber-400">Arrive on Time.</span>
         </h1>
 
         <!-- Simple, Clear Subtitle -->
-        <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-200 font-light mb-8 leading-relaxed px-4">
+        <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-200 font-normal mb-8 leading-relaxed px-4">
             Book clean, comfortable cabs in seconds. No sudden price surges, polite verified drivers, and guaranteed zero cancellations.
         </p>
 
@@ -63,7 +58,7 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Fast Pickup</span>
-                <span class="text-[#0B172A] font-serif text-lg font-semibold">Average 3-4 Mins</span>
+                <span class="text-[#0B172A] text-lg font-bold">Average 3-4 Mins</span>
             </div>
 
             <div class="flex flex-col items-center p-5 bg-white/95 backdrop-blur-md rounded-3xl border border-white/60 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
@@ -71,7 +66,7 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Clean & Fresh</span>
-                <span class="text-[#0B172A] font-serif text-lg font-semibold">Sanitized Daily</span>
+                <span class="text-[#0B172A] text-lg font-bold">Sanitized Daily</span>
             </div>
 
             <div class="flex flex-col items-center p-5 bg-white/95 backdrop-blur-md rounded-3xl border border-white/60 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
@@ -79,7 +74,7 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Honest Pricing</span>
-                <span class="text-[#0B172A] font-serif text-lg font-semibold">Zero Surge Surprises</span>
+                <span class="text-[#0B172A] text-lg font-bold">Zero Surge Surprises</span>
             </div>
         </div>
 
@@ -107,8 +102,8 @@
     <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
             <span class="text-amber-600 font-bold text-xs tracking-[0.3em] uppercase mb-3 block">Rides for Every Need</span>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif text-[#0B172A]">Crafted for Smooth Travel.</h2>
-            <p class="text-[#475569] text-sm sm:text-base max-w-xl mx-auto mt-3 font-light">Whether it's your daily morning office commute or a peaceful airport pickup, we have the right cab ready.</p>
+            <h2 class="text-3xl sm:text-4xl font-bold text-[#0B172A]">Cab Services for Every Journey</h2>
+            <p class="text-[#475569] text-sm sm:text-base max-w-xl mx-auto mt-3 font-normal">Whether it is your daily office commute or an airport pickup, we have the right cab ready for you.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -118,8 +113,8 @@
                 <div class="w-14 h-14 bg-sky-100 text-sky-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors shadow-sm">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
                 </div>
-                <h3 class="text-xl font-serif font-semibold text-[#0B172A] mb-2">Daily City Rides</h3>
-                <p class="text-[#475569] text-sm font-light leading-relaxed">Fast point-to-point travel across the city. Prompt pickups, cool air-conditioned comfort, and zero cancellations.</p>
+                <h3 class="text-xl font-bold text-[#0B172A] mb-2">Daily City Rides</h3>
+                <p class="text-[#475569] text-sm font-normal leading-relaxed">Fast point-to-point travel across the city. Prompt pickups, air-conditioned comfort, and zero cancellations.</p>
             </div>
 
             <!-- Service 2 -->
@@ -127,8 +122,8 @@
                 <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-amber-500 group-hover:text-white transition-colors shadow-sm">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
                 </div>
-                <h3 class="text-xl font-serif font-semibold text-[#0B172A] mb-2">Airport Pick & Drop</h3>
-                <p class="text-[#475569] text-sm font-light leading-relaxed">Flight-tracked airport transfers. If your flight arrives early or encounters delay, your cab automatically adjusts with zero extra wait charges.</p>
+                <h3 class="text-xl font-bold text-[#0B172A] mb-2">Airport Pick & Drop</h3>
+                <p class="text-[#475569] text-sm font-normal leading-relaxed">Flight-tracked airport transfers. If your flight is delayed, your cab automatically adjusts with zero extra charges.</p>
             </div>
 
             <!-- Service 3 -->
@@ -136,17 +131,17 @@
                 <div class="w-14 h-14 bg-sky-100 text-sky-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors shadow-sm">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
                 </div>
-                <h3 class="text-xl font-serif font-semibold text-[#0B172A] mb-2">Outstation Trips</h3>
-                <p class="text-[#475569] text-sm font-light leading-relaxed">Heading out of town for the weekend? Enjoy well-maintained vehicles, experienced highway drivers, and clear one-way or return fares.</p>
+                <h3 class="text-xl font-bold text-[#0B172A] mb-2">Outstation Trips</h3>
+                <p class="text-[#475569] text-sm font-normal leading-relaxed">Planning an outstation trip? Enjoy clean vehicles, experienced highway drivers, and clear fixed fares.</p>
             </div>
 
             <!-- Service 4 -->
             <div class="bg-[#F0F6FD] border border-[#D2E4F7] p-8 rounded-[2rem] hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
                 <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-amber-500 group-hover:text-white transition-colors shadow-sm">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
-                <h3 class="text-xl font-serif font-semibold text-[#0B172A] mb-2">Rent by the Hour</h3>
-                <p class="text-[#475569] text-sm font-light leading-relaxed">Have multiple stops, shopping errands, or business meetings? Keep the cab on dedicated standby for 2 to 24 hours.</p>
+                <h3 class="text-xl font-bold text-[#0B172A] mb-2">Hourly Rentals</h3>
+                <p class="text-[#475569] text-sm font-normal leading-relaxed">Multiple stops or full-day travel? Keep a dedicated cab with you for 2 to 24 hours at simple hourly rates.</p>
             </div>
 
         </div>
@@ -159,7 +154,7 @@
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
             <div>
                 <span class="text-amber-600 font-bold text-xs tracking-[0.3em] uppercase mb-2 block">Our Fleet</span>
-                <h2 class="text-3xl sm:text-4xl font-serif text-[#0B172A]">Clean, Modern Vehicles.</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-[#0B172A]">Choose Your Cab</h2>
             </div>
             <a href="{{ route('fleet') }}" class="btn-outline-blue px-6 py-2.5 text-xs font-semibold flex items-center gap-2 self-start sm:self-auto shadow-sm">
                 <span>View Full Fleet (6 Cabs)</span>
@@ -180,8 +175,8 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-serif text-xl font-bold text-[#0B172A]">Comfort Prime Sedan</h3>
-                            <span class="text-xl font-bold text-amber-600 font-serif">$35 <span class="text-xs text-slate-500 font-sans">base</span></span>
+                            <h3 class="text-xl font-bold text-[#0B172A]">Comfort Prime Sedan</h3>
+                            <span class="text-xl font-bold text-amber-600">$35 <span class="text-xs text-slate-500 font-sans">base</span></span>
                         </div>
                         <p class="text-xs text-[#475569] mb-4">Quiet, air-conditioned sedan ideal for daily commutes and executive meetings.</p>
                         
@@ -210,8 +205,8 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-serif text-xl font-bold text-[#0B172A]">Spacious Family SUV</h3>
-                            <span class="text-xl font-bold text-amber-600 font-serif">$55 <span class="text-xs text-slate-500 font-sans">base</span></span>
+                            <h3 class="text-xl font-bold text-[#0B172A]">Spacious Family SUV</h3>
+                            <span class="text-xl font-bold text-amber-600">$55 <span class="text-xs text-slate-500 font-sans">base</span></span>
                         </div>
                         <p class="text-xs text-[#475569] mb-4">Spacious legroom and large trunk space. Perfect for airport runs with family.</p>
                         
@@ -240,8 +235,8 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-serif text-xl font-bold text-[#0B172A]">Eco Silent Electric Cab</h3>
-                            <span class="text-xl font-bold text-amber-600 font-serif">$40 <span class="text-xs text-slate-500 font-sans">base</span></span>
+                            <h3 class="text-xl font-bold text-[#0B172A]">Eco Silent Electric Cab</h3>
+                            <span class="text-xl font-bold text-amber-600">$40 <span class="text-xs text-slate-500 font-sans">base</span></span>
                         </div>
                         <p class="text-xs text-[#475569] mb-4">Ultra-smooth, zero-noise electric ride. Clean air and modern technology.</p>
                         
@@ -268,13 +263,13 @@
     <div class="max-w-6xl mx-auto">
         <div class="text-center mb-14">
             <span class="text-amber-600 font-bold text-xs tracking-[0.3em] uppercase mb-3 block">Real Rider Experiences</span>
-            <h2 class="text-3xl sm:text-4xl font-serif text-[#0B172A]">Loved by Over 45,000 Riders.</h2>
+            <h2 class="text-3xl sm:text-4xl font-bold text-[#0B172A]">What Our Riders Say</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="p-8 rounded-[2rem] bg-[#F0F6FD] border border-[#D2E4F7] space-y-4">
                 <div class="flex text-amber-400 text-sm">★★★★★</div>
-                <p class="text-sm text-[#334155] font-light leading-relaxed">
+                <p class="text-sm text-[#334155] font-normal leading-relaxed">
                     "The cab arrived in 3 minutes. Clean seats, polite driver who didn't talk loudly on the phone, and the fare was exactly what was shown on the website."
                 </p>
                 <div class="pt-2">
@@ -285,7 +280,7 @@
 
             <div class="p-8 rounded-[2rem] bg-[#F0F6FD] border border-[#D2E4F7] space-y-4">
                 <div class="flex text-amber-400 text-sm">★★★★★</div>
-                <p class="text-sm text-[#334155] font-light leading-relaxed">
+                <p class="text-sm text-[#334155] font-normal leading-relaxed">
                     "Booked an airport cab at 4 AM. The driver was already waiting outside with AC turned on and helped with all three heavy bags. Highly recommended!"
                 </p>
                 <div class="pt-2">
@@ -296,7 +291,7 @@
 
             <div class="p-8 rounded-[2rem] bg-[#F0F6FD] border border-[#D2E4F7] space-y-4">
                 <div class="flex text-amber-400 text-sm">★★★★★</div>
-                <p class="text-sm text-[#334155] font-light leading-relaxed">
+                <p class="text-sm text-[#334155] font-normal leading-relaxed">
                     "Took the Outstation SUV for a weekend trip to Agra with my family. Smooth driving, zero motion sickness, and completely transparent toll breakdown."
                 </p>
                 <div class="pt-2">
@@ -313,8 +308,8 @@
     <div class="max-w-5xl mx-auto bg-gradient-to-r from-[#0C2340] via-[#0F3057] to-[#0C2340] text-white rounded-[2.5rem] p-8 sm:p-14 text-center relative overflow-hidden shadow-2xl border border-amber-500/30">
         <div class="relative z-10 max-w-2xl mx-auto space-y-4">
             <span class="text-amber-400 font-bold text-xs uppercase tracking-widest block">Instant Online Booking</span>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif leading-tight">Ready for a comfortable ride?</h2>
-            <p class="text-sky-200 text-sm sm:text-base font-light">
+            <h2 class="text-3xl sm:text-4xl font-bold leading-tight">Ready to Book Your Ride?</h2>
+            <p class="text-sky-200 text-sm sm:text-base font-normal">
                 Reserve your ride in under 60 seconds. Guaranteed confirmed driver with live tracking link sent straight to your phone.
             </p>
             <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
@@ -335,12 +330,12 @@
     <div class="max-w-4xl mx-auto">
         <div class="text-center mb-14">
             <span class="text-amber-600 font-bold text-xs tracking-[0.3em] uppercase mb-3 block">Common Questions</span>
-            <h2 class="text-3xl sm:text-4xl font-serif text-[#0B172A]">Frequently Asked Questions</h2>
+            <h2 class="text-3xl sm:text-4xl font-bold text-[#0B172A]">Frequently Asked Questions</h2>
         </div>
 
         <div class="space-y-4">
             <div class="border border-[#D2E4F7] rounded-2xl p-5 hover:border-sky-500 transition-colors bg-[#F0F6FD]">
-                <button type="button" onclick="toggleFaq(1)" class="w-full text-left flex items-center justify-between font-serif font-bold text-lg text-[#0B172A]">
+                <button type="button" onclick="toggleFaq(1)" class="w-full text-left flex items-center justify-between font-bold text-base sm:text-lg text-[#0B172A]">
                     <span>Are the prices fixed or will they change during rush hour?</span>
                     <span id="faqIcon1" class="text-amber-600 text-xl font-bold">+</span>
                 </button>
@@ -350,7 +345,7 @@
             </div>
 
             <div class="border border-[#D2E4F7] rounded-2xl p-5 hover:border-sky-500 transition-colors bg-[#F0F6FD]">
-                <button type="button" onclick="toggleFaq(2)" class="w-full text-left flex items-center justify-between font-serif font-bold text-lg text-[#0B172A]">
+                <button type="button" onclick="toggleFaq(2)" class="w-full text-left flex items-center justify-between font-bold text-base sm:text-lg text-[#0B172A]">
                     <span>What happens if my flight is delayed for an airport pickup?</span>
                     <span id="faqIcon2" class="text-amber-600 text-xl font-bold">+</span>
                 </button>
@@ -360,7 +355,7 @@
             </div>
 
             <div class="border border-[#D2E4F7] rounded-2xl p-5 hover:border-sky-500 transition-colors bg-[#F0F6FD]">
-                <button type="button" onclick="toggleFaq(3)" class="w-full text-left flex items-center justify-between font-serif font-bold text-lg text-[#0B172A]">
+                <button type="button" onclick="toggleFaq(3)" class="w-full text-left flex items-center justify-between font-bold text-base sm:text-lg text-[#0B172A]">
                     <span>Can I cancel or reschedule my ride?</span>
                     <span id="faqIcon3" class="text-amber-600 text-xl font-bold">+</span>
                 </button>

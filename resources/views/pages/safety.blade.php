@@ -14,8 +14,8 @@
             <span class="w-2 h-2 rounded-full bg-amber-400"></span>
             Your Safety is Our Top Priority
         </span>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif text-[#0B172A] mb-4">
-            Safe, Clean & <span class="text-amber-500 italic">Trusted Rides</span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0B172A] mb-4">
+            Safe, Clean & <span class="text-amber-500">Trusted Rides</span>
         </h1>
         <p class="text-[#475569] text-sm sm:text-base max-w-xl mx-auto font-light leading-relaxed">
             Every driver is background-checked, every cab is inspected daily, and your live ride details are tracked 24/7 for total peace of mind.

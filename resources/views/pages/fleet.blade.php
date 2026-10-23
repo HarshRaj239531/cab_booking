@@ -14,8 +14,8 @@
             <span class="w-2 h-2 rounded-full bg-amber-400"></span>
             Spotless & Well-Maintained Cabs
         </span>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif text-[#0B172A] mb-4">
-            Our Cabs & <span class="text-amber-500 italic">Clear Fares</span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0B172A] mb-4">
+            Our Cabs & <span class="text-amber-500">Clear Fares</span>
         </h1>
         <p class="text-[#475569] text-sm sm:text-base max-w-xl mx-auto font-light leading-relaxed">
             Choose the right cab for your journey. Clean interiors, working AC, polite verified drivers, and transparent pricing with zero hidden charges.
