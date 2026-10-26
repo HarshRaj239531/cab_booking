@@ -92,18 +92,20 @@
                     <!-- Pickup Location Input -->
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
-                            <label class="text-xs font-semibold uppercase tracking-wider text-[#475569]">Pickup Address</label>
+                            <label class="text-xs font-semibold uppercase tracking-wider text-[#475569]">Pickup Address in Patna</label>
                             <!-- Quick Landmark Chips -->
                             <div class="hidden sm:flex items-center gap-2 text-xs">
                                 <span class="text-[#64748B]">Quick Pick:</span>
-                                <button type="button" onclick="fillLocation('pickup', 'Airport Terminal 3 Arrivals')" class="text-[#0284C7] hover:underline font-medium">✈️ Airport T3</button>
+                                <button type="button" onclick="fillLocation('pickup', 'Boring Road Crossing, Patna')" class="text-[#004E92] hover:underline font-bold">📍 Boring Road</button>
                                 <span class="text-slate-300">•</span>
-                                <button type="button" onclick="fillLocation('pickup', 'Connaught Place Central Hub')" class="text-[#0284C7] hover:underline font-medium">🏢 City Center</button>
+                                <button type="button" onclick="fillLocation('pickup', 'Jay Prakash Narayan Airport (PAT)')" class="text-[#004E92] hover:underline font-bold">✈️ Patna Airport</button>
+                                <span class="text-slate-300">•</span>
+                                <button type="button" onclick="fillLocation('pickup', 'Patna Junction Railway Station')" class="text-[#004E92] hover:underline font-bold">🚂 Patna Jn</button>
                             </div>
                         </div>
                         <div class="relative">
                             <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-sky-600 text-lg">📍</span>
-                            <input type="text" id="bPickup" required value="{{ request('pickup') ?? 'Connaught Place Central Hub' }}" class="input-clean w-full pl-11 pr-4 py-3.5 text-sm font-medium">
+                            <input type="text" id="bPickup" required value="{{ request('pickup') ?? 'Boring Road, Patna' }}" class="input-clean w-full pl-11 pr-4 py-3.5 text-sm font-medium">
                         </div>
                     </div>
 
@@ -114,14 +116,16 @@
                             <!-- Quick Landmark Chips -->
                             <div class="hidden sm:flex items-center gap-2 text-xs">
                                 <span class="text-[#64748B]">Popular Drops:</span>
-                                <button type="button" onclick="fillLocation('dropoff', 'International Airport Terminal 3')" class="text-[#0284C7] hover:underline font-medium">✈️ Airport T3</button>
+                                <button type="button" onclick="fillLocation('dropoff', 'Jay Prakash Narayan Airport (PAT), Patna')" class="text-[#004E92] hover:underline font-bold">✈️ Patna Airport (PAT)</button>
                                 <span class="text-slate-300">•</span>
-                                <button type="button" onclick="fillLocation('dropoff', 'Grand Heritage Palace Hotel')" class="text-[#0284C7] hover:underline font-medium">🏨 Grand Hotel</button>
+                                <button type="button" onclick="fillLocation('dropoff', 'Bodh Gaya, Bihar')" class="text-[#004E92] hover:underline font-bold">🏛️ Bodh Gaya</button>
+                                <span class="text-slate-300">•</span>
+                                <button type="button" onclick="fillLocation('dropoff', 'Rajgir, Bihar')" class="text-[#004E92] hover:underline font-bold">⛰️ Rajgir</button>
                             </div>
                         </div>
                         <div class="relative">
                             <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-amber-500 text-lg">🏁</span>
-                            <input type="text" id="bDropoff" required value="{{ request('dropoff') ?? 'International Airport Terminal 3' }}" class="input-clean w-full pl-11 pr-4 py-3.5 text-sm font-medium">
+                            <input type="text" id="bDropoff" required value="{{ request('dropoff') ?? 'Jay Prakash Narayan Airport (PAT), Patna' }}" class="input-clean w-full pl-11 pr-4 py-3.5 text-sm font-medium">
                         </div>
                     </div>
 
@@ -129,10 +133,10 @@
                     <div id="bHourlyContainer" class="hidden">
                         <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-1.5">Dedicated Standby Duration</label>
                         <select id="bHourlyHours" onchange="calculateFare()" class="input-clean w-full px-4 py-3 text-sm font-medium">
-                            <option value="2">2 Hours Dedicated Standby (Quick stops & shopping)</option>
-                            <option value="4" selected>4 Hours Standby (Perfect for client meetings)</option>
-                            <option value="8">8 Hours Full Day Standby (Multiple city stops)</option>
-                            <option value="12">12 Hours Full Day City Tour</option>
+                            <option value="2">2 Hours Dedicated Standby (Local shopping & clinic visit)</option>
+                            <option value="4" selected>4 Hours Standby (Perfect for city meetings)</option>
+                            <option value="8">8 Hours Full Day Standby (Patna local sightseeing)</option>
+                            <option value="12">12 Hours Full Day Outstation Tour</option>
                         </select>
                     </div>
 
@@ -140,15 +144,15 @@
                     <div>
                         <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-2">When do you need the cab?</label>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
-                            <button type="button" onclick="setTimingOption('now')" id="btnTimeNow" class="p-3.5 rounded-2xl border-2 border-[#0284C7] bg-[#E1EFFD] text-[#0B172A] flex items-center gap-3 text-left font-semibold text-xs shadow-sm">
-                                <span class="w-8 h-8 rounded-full bg-[#0284C7] text-white flex items-center justify-center text-sm shrink-0 shadow">⚡</span>
+                            <button type="button" onclick="setTimingOption('now')" id="btnTimeNow" class="p-3.5 rounded-2xl border-2 border-[#004E92] bg-[#E1EFFD] text-[#0B172A] flex items-center gap-3 text-left font-semibold text-xs shadow-sm">
+                                <span class="w-8 h-8 rounded-full bg-[#004E92] text-white flex items-center justify-center text-sm shrink-0 shadow">⚡</span>
                                 <div>
                                     <div class="text-sm font-bold text-[#0B172A]">Leave Right Now</div>
-                                    <div class="text-[11px] text-[#475569] font-normal">Nearest cab arrives in ~3-4 mins</div>
+                                    <div class="text-[11px] text-[#475569] font-normal">Nearest cab arrives in ~3-5 mins from Boring Road</div>
                                 </div>
                             </button>
 
-                            <button type="button" onclick="setTimingOption('later')" id="btnTimeLater" class="p-3.5 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex items-center gap-3 text-left font-semibold text-xs hover:border-[#0284C7] transition-all">
+                            <button type="button" onclick="setTimingOption('later')" id="btnTimeLater" class="p-3.5 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex items-center gap-3 text-left font-semibold text-xs hover:border-[#004E92] transition-all">
                                 <span class="w-8 h-8 rounded-full bg-[#F0F6FD] text-[#0B172A] flex items-center justify-center text-sm shrink-0">📅</span>
                                 <div>
                                     <div class="text-sm font-bold text-[#0B172A]">Schedule for Later</div>
@@ -166,16 +170,16 @@
                     <!-- Dynamic Route & Travel Information Banner -->
                     <div class="p-5 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-2xl bg-sky-100 text-[#0284C7] flex items-center justify-center font-bold text-lg shadow-sm">
+                            <div class="w-10 h-10 rounded-2xl bg-sky-100 text-[#004E92] flex items-center justify-center font-bold text-lg shadow-sm">
                                 🗺️
                             </div>
                             <div>
-                                <span class="text-[10px] uppercase font-bold text-[#64748B] block">ESTIMATED ROUTE</span>
-                                <span class="text-sm font-bold text-[#0B172A]">24.5 km • Approx 32 mins</span>
+                                <span class="text-[10px] uppercase font-bold text-[#64748B] block">DISPATCH ORIGIN</span>
+                                <span class="text-sm font-bold text-[#0B172A]">Boring Road Dispatch Hub • Patna</span>
                             </div>
                         </div>
                         <div class="flex items-center gap-2 text-amber-700 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200 text-[11px] font-bold self-start sm:self-auto shadow-xs">
-                            <span>✨ Zero Surge Guarantee</span>
+                            <span>✨ Zero Surge Guarantee • Fixed Fares</span>
                         </div>
                     </div>
 
@@ -195,97 +199,97 @@
                 <div class="flex items-center justify-between border-b border-[#E1EFFD] pb-4">
                     <div>
                         <span class="text-xs font-bold uppercase tracking-wider text-amber-600 block">Step 02 of 03</span>
-                        <h2 class="font-serif text-2xl font-bold text-[#0B172A]">Select Your Cab Type</h2>
+                        <h2 class="text-2xl font-bold text-[#0B172A]">Select Your Cab Type</h2>
                     </div>
-                    <button type="button" onclick="goToStep(1)" class="text-xs font-semibold text-[#0284C7] hover:underline">← Modify Route</button>
+                    <button type="button" onclick="goToStep(1)" class="text-xs font-semibold text-[#004E92] hover:underline">← Modify Route</button>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     
-                    <!-- Cab 1: Sedan -->
-                    <div onclick="pickCab('sedan', 35, 'Comfort Prime Sedan', 'hero_sedan.jpg')" id="cabCardSedan" class="p-5 rounded-3xl border-2 border-[#0284C7] bg-[#E1EFFD]/60 cursor-pointer transition-all hover:shadow-lg relative group">
+                    <!-- Cab 1: Maruti Dzire -->
+                    <div onclick="pickCab('sedan', 899, 'Maruti Suzuki Dzire', 'hero_sedan.jpg')" id="cabCardSedan" class="p-5 rounded-3xl border-2 border-[#004E92] bg-[#E1EFFD]/60 cursor-pointer transition-all hover:shadow-lg relative group">
                         <div class="flex items-center justify-between mb-2">
                             <span class="px-3 py-1 rounded-full bg-white border border-[#C7E0FA] text-[10px] font-bold text-[#0B172A] shadow-sm">
                                 ⭐ MOST POPULAR
                             </span>
-                            <span class="text-2xl font-serif font-bold text-amber-600">$35.00</span>
+                            <span class="text-2xl font-bold text-amber-600">₹899</span>
                         </div>
                         <div class="h-32 rounded-2xl overflow-hidden mb-3">
-                            <img src="{{ asset('images/hero_sedan.jpg') }}" alt="Sedan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <img src="{{ asset('images/hero_sedan.jpg') }}" alt="Maruti Dzire" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
-                        <h3 class="font-serif font-bold text-lg text-[#0B172A]">Comfort Prime Sedan</h3>
-                        <p class="text-xs text-[#475569] mt-0.5">Air-conditioned sedan for daily rides, meetings, and station drops.</p>
+                        <h3 class="font-bold text-lg text-[#0B172A]">Maruti Suzuki Dzire</h3>
+                        <p class="text-xs text-[#475569] mt-0.5">AC Sedan for Patna Airport, station drops & daily city commutes.</p>
                         
                         <div class="flex items-center gap-3 text-xs text-[#64748B] mt-3 pt-2.5 border-t border-[#C7E0FA]/60">
                             <span>👤 4 Seats</span>
                             <span>🧳 3 Bags</span>
-                            <span>❄️ AC</span>
+                            <span>❄️ ₹11/KM</span>
                         </div>
-                        <span class="text-xs font-bold text-[#0284C7] mt-2 block" id="selectedBadgeSedan">Selected ✓</span>
+                        <span class="text-xs font-bold text-[#004E92] mt-2 block" id="selectedBadgeSedan">Selected ✓</span>
                     </div>
 
-                    <!-- Cab 2: SUV -->
-                    <div onclick="pickCab('suv', 55, 'Spacious Family SUV', 'fleet_suv.jpg')" id="cabCardSuv" class="p-5 rounded-3xl border border-[#C7E0FA] bg-white cursor-pointer transition-all hover:border-[#0284C7] hover:shadow-lg relative group">
+                    <!-- Cab 2: Mahindra Scorpio -->
+                    <div onclick="pickCab('suv', 1499, 'Mahindra Scorpio Classic', 'fleet_suv.jpg')" id="cabCardSuv" class="p-5 rounded-3xl border border-[#C7E0FA] bg-white cursor-pointer transition-all hover:border-[#004E92] hover:shadow-lg relative group">
                         <div class="flex items-center justify-between mb-2">
                             <span class="px-3 py-1 rounded-full bg-[#F0F6FD] border border-[#C7E0FA] text-[10px] font-bold text-[#475569]">
-                                🎒 EXTRA LUGGAGE
+                                👑 HIGHWAY KING
                             </span>
-                            <span class="text-2xl font-serif font-bold text-[#0B172A]">$55.00</span>
+                            <span class="text-2xl font-bold text-[#0B172A]">₹1,499</span>
                         </div>
                         <div class="h-32 rounded-2xl overflow-hidden mb-3">
-                            <img src="{{ asset('images/fleet_suv.jpg') }}" alt="SUV" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <img src="{{ asset('images/fleet_suv.jpg') }}" alt="Mahindra Scorpio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
-                        <h3 class="font-serif font-bold text-lg text-[#0B172A]">Spacious Family SUV</h3>
-                        <p class="text-xs text-[#475569] mt-0.5">Extra legroom and large trunk space. Ideal for family airport runs.</p>
+                        <h3 class="font-bold text-lg text-[#0B172A]">Mahindra Scorpio</h3>
+                        <p class="text-xs text-[#475569] mt-0.5">High clearance SUV for outstation trips across Bihar and weddings.</p>
                         
                         <div class="flex items-center gap-3 text-xs text-[#64748B] mt-3 pt-2.5 border-t border-[#C7E0FA]/60">
-                            <span>👤 6 Seats</span>
+                            <span>👤 7 Seats</span>
                             <span>🧳 5 Bags</span>
-                            <span>🏔️ High Ground</span>
+                            <span>🏔️ ₹16/KM</span>
                         </div>
                         <span class="text-xs text-[#64748B] mt-2 block" id="selectedBadgeSuv">Click to Select</span>
                     </div>
 
-                    <!-- Cab 3: Electric -->
-                    <div onclick="pickCab('electric', 40, 'Eco Silent Electric Cab', 'fleet_electric.jpg')" id="cabCardElectric" class="p-5 rounded-3xl border border-[#C7E0FA] bg-white cursor-pointer transition-all hover:border-[#0284C7] hover:shadow-lg relative group">
+                    <!-- Cab 3: Maruti Ertiga -->
+                    <div onclick="pickCab('electric', 1299, 'Maruti Suzuki Ertiga (7-Seater)', 'fleet_electric.jpg')" id="cabCardElectric" class="p-5 rounded-3xl border border-[#C7E0FA] bg-white cursor-pointer transition-all hover:border-[#004E92] hover:shadow-lg relative group">
                         <div class="flex items-center justify-between mb-2">
                             <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold">
-                                ⚡ ZERO EMISSION
+                                👥 7-SEATER MPV
                             </span>
-                            <span class="text-2xl font-serif font-bold text-[#0B172A]">$40.00</span>
+                            <span class="text-2xl font-bold text-[#0B172A]">₹1,299</span>
                         </div>
                         <div class="h-32 rounded-2xl overflow-hidden mb-3">
-                            <img src="{{ asset('images/fleet_electric.jpg') }}" alt="Electric" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <img src="{{ asset('images/fleet_electric.jpg') }}" alt="Maruti Ertiga" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
-                        <h3 class="font-serif font-bold text-lg text-[#0B172A]">Eco Silent Electric Cab</h3>
-                        <p class="text-xs text-[#475569] mt-0.5">Completely quiet ride with zero emissions and instant fast AC.</p>
+                        <h3 class="font-bold text-lg text-[#0B172A]">Maruti Suzuki Ertiga</h3>
+                        <p class="text-xs text-[#475569] mt-0.5">Comfortable 7-seater MPV with dual AC. Perfect for family airport trips.</p>
                         
                         <div class="flex items-center gap-3 text-xs text-[#64748B] mt-3 pt-2.5 border-t border-[#C7E0FA]/60">
-                            <span>👤 4 Seats</span>
-                            <span>🧳 3 Bags</span>
-                            <span>⚡ 100% Electric</span>
+                            <span>👤 7 Seats</span>
+                            <span>🧳 4 Bags</span>
+                            <span>❄️ ₹14/KM</span>
                         </div>
                         <span class="text-xs text-[#64748B] mt-2 block" id="selectedBadgeElectric">Click to Select</span>
                     </div>
 
-                    <!-- Cab 4: Van -->
-                    <div onclick="pickCab('van', 75, 'Executive Group Van', 'fleet_van.jpg')" id="cabCardVan" class="p-5 rounded-3xl border border-[#C7E0FA] bg-white cursor-pointer transition-all hover:border-[#0284C7] hover:shadow-lg relative group">
+                    <!-- Cab 4: Toyota Innova Crysta -->
+                    <div onclick="pickCab('van', 1699, 'Toyota Innova Crysta', 'fleet_van.jpg')" id="cabCardVan" class="p-5 rounded-3xl border border-[#C7E0FA] bg-white cursor-pointer transition-all hover:border-[#004E92] hover:shadow-lg relative group">
                         <div class="flex items-center justify-between mb-2">
                             <span class="px-3 py-1 rounded-full bg-[#F0F6FD] border border-[#C7E0FA] text-[10px] font-bold text-[#475569]">
-                                👥 GROUP TRAVEL
+                                💼 VIP CHAUFFEUR
                             </span>
-                            <span class="text-2xl font-serif font-bold text-[#0B172A]">$75.00</span>
+                            <span class="text-2xl font-bold text-[#0B172A]">₹1,699</span>
                         </div>
                         <div class="h-32 rounded-2xl overflow-hidden mb-3">
-                            <img src="{{ asset('images/fleet_van.jpg') }}" alt="Van" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <img src="{{ asset('images/fleet_van.jpg') }}" alt="Innova Crysta" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
-                        <h3 class="font-serif font-bold text-lg text-[#0B172A]">Executive Group Van</h3>
-                        <p class="text-xs text-[#475569] mt-0.5">High ceiling, comfortable individual seats, and huge baggage capacity.</p>
+                        <h3 class="font-bold text-lg text-[#0B172A]">Toyota Innova Crysta</h3>
+                        <p class="text-xs text-[#475569] mt-0.5">Plush captain seats, supreme legroom, and refined highway cruise.</p>
                         
                         <div class="flex items-center gap-3 text-xs text-[#64748B] mt-3 pt-2.5 border-t border-[#C7E0FA]/60">
                             <span>👤 7 Seats</span>
-                            <span>🧳 10 Bags</span>
-                            <span>🚌 High Roof</span>
+                            <span>🧳 6 Bags</span>
+                            <span>👑 ₹18/KM</span>
                         </div>
                         <span class="text-xs text-[#64748B] mt-2 block" id="selectedBadgeVan">Click to Select</span>
                     </div>
@@ -307,9 +311,9 @@
                 <div class="flex items-center justify-between border-b border-[#E1EFFD] pb-4">
                     <div>
                         <span class="text-xs font-bold uppercase tracking-wider text-amber-600 block">Step 03 of 03</span>
-                        <h2 class="font-serif text-2xl font-bold text-[#0B172A]">Passenger & Trip Details</h2>
+                        <h2 class="text-2xl font-bold text-[#0B172A]">Passenger & Trip Details</h2>
                     </div>
-                    <button type="button" onclick="goToStep(2)" class="text-xs font-semibold text-[#0284C7] hover:underline">← Change Cab</button>
+                    <button type="button" onclick="goToStep(2)" class="text-xs font-semibold text-[#004E92] hover:underline">← Change Cab</button>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -339,9 +343,9 @@
 
                 <!-- Privacy & Data Encryption Assurance Box -->
                 <div class="p-3.5 rounded-2xl bg-sky-50 border border-sky-100 flex items-center gap-3">
-                    <span class="text-sky-600 text-lg">🔒</span>
-                    <p class="text-xs text-sky-900 leading-relaxed font-medium">
-                        Your contact details are encrypted and shared only with your assigned driver for immediate pickup coordination.
+                    <span class="text-[#004E92] text-lg">🔒</span>
+                    <p class="text-xs text-sky-950 leading-relaxed font-medium">
+                        Your contact details are encrypted and shared only with your assigned Patna Transport driver for immediate pickup coordination.
                     </p>
                 </div>
 
@@ -349,19 +353,19 @@
                 <div class="space-y-3">
                     <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569]">Helpful Ride Options</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                        <label class="flex items-center gap-3 p-4 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] cursor-pointer hover:border-[#0284C7] transition-all">
-                            <input type="checkbox" id="addMeet" onchange="calculateFare()" class="w-4 h-4 accent-[#0284C7] rounded">
+                        <label class="flex items-center gap-3 p-4 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] cursor-pointer hover:border-[#004E92] transition-all">
+                            <input type="checkbox" id="addMeet" onchange="calculateFare()" class="w-4 h-4 accent-[#004E92] rounded">
                             <div>
-                                <span class="font-bold text-[#0B172A] block">Airport Nameboard Pickup (+$10)</span>
-                                <span class="text-[#64748B]">Driver waits in arrival terminal with your name</span>
+                                <span class="font-bold text-[#0B172A] block">Patna Airport Nameboard (+₹150)</span>
+                                <span class="text-[#64748B]">Driver waits in PAT arrival terminal with your name</span>
                             </div>
                         </label>
 
-                        <label class="flex items-center gap-3 p-4 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] cursor-pointer hover:border-[#0284C7] transition-all">
-                            <input type="checkbox" id="addChild" onchange="calculateFare()" class="w-4 h-4 accent-[#0284C7] rounded">
+                        <label class="flex items-center gap-3 p-4 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] cursor-pointer hover:border-[#004E92] transition-all">
+                            <input type="checkbox" id="addChild" onchange="calculateFare()" class="w-4 h-4 accent-[#004E92] rounded">
                             <div>
-                                <span class="font-bold text-[#0B172A] block">Child Safety Seat (+$8)</span>
-                                <span class="text-[#64748B]">Sanitized child car seat securely installed</span>
+                                <span class="font-bold text-[#0B172A] block">Child Seat / Extra Boot (+₹100)</span>
+                                <span class="text-[#64748B]">Clean child car seat or luggage carrier</span>
                             </div>
                         </label>
                     </div>
@@ -370,30 +374,30 @@
                 <!-- Itemized Fare Summary Box -->
                 <div class="p-6 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] space-y-2.5 text-xs text-[#475569]">
                     <div class="flex justify-between">
-                        <span>Base Ride Fare (<span id="sumCabName">Comfort Prime Sedan</span>):</span>
-                        <span id="sumBaseFare" class="font-bold text-[#0B172A]">$35.00</span>
+                        <span>Base Ride Fare (<span id="sumCabName">Maruti Suzuki Dzire</span>):</span>
+                        <span id="sumBaseFare" class="font-bold text-[#0B172A]">₹899</span>
                     </div>
                     <div class="flex justify-between">
                         <span>Selected Options:</span>
-                        <span id="sumAddons" class="font-bold text-[#0B172A]">$0.00</span>
+                        <span id="sumAddons" class="font-bold text-[#0B172A]">₹0</span>
                     </div>
                     <div class="flex justify-between text-amber-600 font-bold" id="discountRow" style="display: none;">
-                        <span>Discount Code (<span id="appliedCodeText">GOLD10</span>):</span>
-                        <span id="sumDiscount">-$3.50</span>
+                        <span>Discount Code (<span id="appliedCodeText">PATNA10</span>):</span>
+                        <span id="sumDiscount">-₹89</span>
                     </div>
                     <div class="flex justify-between text-slate-500 pt-1 text-[11px] border-t border-[#C7E0FA]/60">
-                        <span>Tolls, Taxes & Driver Tip:</span>
-                        <span class="text-[#0284C7] font-semibold">Included • No Surprise Fees</span>
+                        <span>Tolls, Taxes & Driver Allowance:</span>
+                        <span class="text-[#004E92] font-semibold">Included • No Surprise Fees</span>
                     </div>
                     <div class="flex justify-between text-base font-bold text-[#0B172A] pt-2 border-t border-[#C7E0FA]">
                         <span>Guaranteed Total Fare:</span>
-                        <span id="sumTotal" class="text-3xl text-amber-600 font-serif font-bold">$35.00</span>
+                        <span id="sumTotal" class="text-3xl text-amber-600 font-bold">₹899</span>
                     </div>
                 </div>
 
                 <!-- Promo Code Box -->
                 <div class="flex gap-2">
-                    <input type="text" id="promoInput" placeholder="Try Promo Code: GOLD10" class="input-clean flex-grow px-4 py-3 text-xs uppercase placeholder-slate-400 font-mono">
+                    <input type="text" id="promoInput" placeholder="Try Promo Code: PATNA10" class="input-clean flex-grow px-4 py-3 text-xs uppercase placeholder-slate-400 font-mono">
                     <button type="button" onclick="applyPromo()" class="btn-outline-blue px-6 py-2.5 text-xs font-semibold">Apply Code</button>
                 </div>
 
@@ -401,25 +405,25 @@
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-2">How would you like to pay?</label>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-                        <label class="p-3 rounded-2xl border-2 border-[#0284C7] bg-[#E1EFFD] font-bold text-[#0B172A] flex flex-col items-center justify-center text-center cursor-pointer shadow-sm">
+                        <label class="p-3 rounded-2xl border-2 border-[#004E92] bg-[#E1EFFD] font-bold text-[#0B172A] flex flex-col items-center justify-center text-center cursor-pointer shadow-sm">
                             <input type="radio" name="payMethod" checked class="hidden">
                             <span>Cash to Driver</span>
                             <span class="text-[10px] text-[#475569] font-normal">Pay after trip</span>
                         </label>
-                        <label class="p-3 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#0284C7] transition-all">
+                        <label class="p-3 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#004E92] transition-all">
                             <input type="radio" name="payMethod" class="hidden">
                             <span>UPI / QR Scan</span>
-                            <span class="text-[10px] text-[#64748B] font-normal">GooglePay / Paytm</span>
+                            <span class="text-[10px] text-[#64748B] font-normal">GPay / PhonePe / Paytm</span>
                         </label>
-                        <label class="p-3 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#0284C7] transition-all">
+                        <label class="p-3 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#004E92] transition-all">
                             <input type="radio" name="payMethod" class="hidden">
                             <span>Credit/Debit Card</span>
                             <span class="text-[10px] text-[#64748B] font-normal">Visa / Mastercard</span>
                         </label>
-                        <label class="p-3 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#0284C7] transition-all">
+                        <label class="p-3 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#004E92] transition-all">
                             <input type="radio" name="payMethod" class="hidden">
-                            <span>Apple Pay</span>
-                            <span class="text-[10px] text-[#64748B] font-normal">1-Touch Pay</span>
+                            <span>Net Banking</span>
+                            <span class="text-[10px] text-[#64748B] font-normal">All Major Banks</span>
                         </label>
                     </div>
                 </div>
@@ -435,23 +439,23 @@
 
             <!-- STEP 4: CONFIRMED RIDE PASS & LIVE ROUTE -->
             <div id="step4Box" class="hidden space-y-6">
-                <div class="bg-white rounded-[2.5rem] p-6 sm:p-10 border-2 border-[#0284C7] shadow-2xl space-y-6 relative overflow-hidden">
-                    <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-sky-400 via-amber-400 to-sky-600"></div>
+                <div class="bg-white rounded-[2.5rem] p-6 sm:p-10 border-2 border-[#004E92] shadow-2xl space-y-6 relative overflow-hidden">
+                    <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-sky-400 via-amber-400 to-[#004E92]"></div>
 
                     <!-- Pass Header -->
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#E1EFFD] pb-5 gap-3">
                         <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0284C7] to-amber-500 text-white flex items-center justify-center font-bold text-xl shadow-md">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#004E92] to-amber-500 text-white flex items-center justify-center font-bold text-xl shadow-md">
                                 ✓
                             </div>
                             <div>
-                                <span class="text-xs font-bold text-[#0284C7] uppercase tracking-wider">Ride Confirmed & Dispatched</span>
-                                <h3 class="font-serif text-2xl font-bold text-[#0B172A]">Your Cab is on the way!</h3>
+                                <span class="text-xs font-bold text-[#004E92] uppercase tracking-wider">Patna Transport • Dispatched</span>
+                                <h3 class="text-2xl font-bold text-[#0B172A]">Your Cab is on the way!</h3>
                             </div>
                         </div>
                         <div class="text-left sm:text-right">
                             <span class="text-[11px] text-[#64748B] block">BOOKING REFERENCE</span>
-                            <span class="text-xl font-bold text-[#0B172A] font-mono">VC-9824-DEL</span>
+                            <span class="text-xl font-bold text-[#0B172A] font-mono">PT-9824-PAT</span>
                         </div>
                     </div>
 
@@ -464,17 +468,17 @@
                             <div>
                                 <div class="flex items-center gap-2">
                                     <h4 class="font-bold text-lg text-[#0B172A]">Ramesh Kumar</h4>
-                                    <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full">4.96 ★ Verified Driver</span>
+                                    <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full">4.96 ★ Patna Transport</span>
                                 </div>
-                                <p class="text-xs text-[#475569]" id="passCabDisplay">Comfort Prime Sedan • White • Plate: DL 01 AB 8890</p>
-                                <p class="text-xs text-[#64748B] mt-1">Direct Call: <strong class="text-[#0B172A]">+91 98765 00112</strong></p>
+                                <p class="text-xs text-[#475569]" id="passCabDisplay">Maruti Suzuki Dzire • White • Plate: BR 01 PB 8877</p>
+                                <p class="text-xs text-[#64748B] mt-1">24x7 Helpline / Driver: <a href="tel:8877177161" class="text-[#004E92] font-bold hover:underline">📞 8877177161</a></p>
                             </div>
                         </div>
                         <div class="sm:text-right">
                             <span class="text-[11px] text-[#64748B] block">ESTIMATED ARRIVAL</span>
                             <span class="text-lg font-bold text-amber-600 flex items-center gap-1.5 sm:justify-end">
                                 <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping"></span>
-                                Arriving in 3 Mins
+                                Arriving in 3-5 Mins
                             </span>
                         </div>
                     </div>
@@ -482,8 +486,8 @@
                     <!-- Live Route Progress Bar with Moving Cab -->
                     <div class="p-6 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] space-y-4">
                         <div class="flex justify-between text-xs text-[#475569]">
-                            <span class="font-bold text-[#0B172A]">📍 Pickup: <span id="passPickupText">Connaught Place</span></span>
-                            <span class="font-bold text-[#0284C7]">🏁 Destination: <span id="passDropoffText">Airport T3</span></span>
+                            <span class="font-bold text-[#0B172A]">📍 Pickup: <span id="passPickupText">Boring Road, Patna</span></span>
+                            <span class="font-bold text-[#004E92]">🏁 Destination: <span id="passDropoffText">Patna Airport (PAT)</span></span>
                         </div>
 
                         <!-- Moving Cab Line -->
@@ -495,8 +499,8 @@
                         </div>
 
                         <div class="flex justify-between text-[11px] text-[#64748B]">
-                            <span>Driver Status: <strong class="text-[#0B172A]">On Route to Pickup Point</strong></span>
-                            <span class="text-[#0284C7] font-semibold">Live GPS Link sent via SMS</span>
+                            <span>Driver Status: <strong class="text-[#0B172A]">En route from Boring Road Dispatch</strong></span>
+                            <span class="text-[#004E92] font-semibold">Live GPS Link sent via SMS</span>
                         </div>
                     </div>
 
@@ -506,9 +510,9 @@
                             🖨️ Print / Save Receipt
                         </button>
                         <div class="flex gap-3">
-                            <button type="button" onclick="window.showToast('Live tracking link copied to clipboard!')" class="btn-outline-blue px-6 py-2.5 text-xs text-[#0284C7] border-[#0284C7]/50">
-                                🔗 Share Trip Link
-                            </button>
+                            <a href="tel:8877177161" class="btn-outline-blue px-6 py-2.5 text-xs text-[#004E92] border-[#004E92]/50 font-bold">
+                                📞 Call 8877177161
+                            </a>
                             <button type="button" onclick="resetWizard()" class="btn-gold px-8 py-2.5 text-xs font-bold shadow-md">
                                 Book Another Cab
                             </button>
@@ -530,10 +534,10 @@ let bookingState = {
     mode: 'city',
     timing: 'now',
     cabKey: 'sedan',
-    cabName: 'Comfort Prime Sedan',
-    baseFare: 35,
-    pickup: 'Connaught Place Central Hub',
-    dropoff: 'International Airport Terminal 3',
+    cabName: 'Maruti Suzuki Dzire',
+    baseFare: 899,
+    pickup: 'Boring Road, Patna',
+    dropoff: 'Jay Prakash Narayan Airport (PAT), Patna',
     addons: {
         meet: false,
         child: false
@@ -546,22 +550,22 @@ function setMode(mode) {
     const btns = ['btnModeCity', 'btnModeAirport', 'btnModeHourly'];
     btns.forEach(b => {
         const el = document.getElementById(b);
-        if (el) el.className = 'px-4 py-2 rounded-full text-[#1E3A5F] hover:text-[#0284C7] transition-all';
+        if (el) el.className = 'px-4 py-2 rounded-full text-[#1E3A5F] hover:text-[#004E92] transition-all';
     });
 
     const dropoffBox = document.getElementById('bDropoffContainer');
     const hourlyBox = document.getElementById('bHourlyContainer');
 
     if (mode === 'city') {
-        document.getElementById('btnModeCity').className = 'px-4 py-2 rounded-full bg-[#0284C7] text-white transition-all shadow-sm';
+        document.getElementById('btnModeCity').className = 'px-4 py-2 rounded-full bg-[#004E92] text-white transition-all shadow-sm';
         dropoffBox.classList.remove('hidden');
         hourlyBox.classList.add('hidden');
     } else if (mode === 'airport') {
-        document.getElementById('btnModeAirport').className = 'px-4 py-2 rounded-full bg-[#0284C7] text-white transition-all shadow-sm';
+        document.getElementById('btnModeAirport').className = 'px-4 py-2 rounded-full bg-[#004E92] text-white transition-all shadow-sm';
         dropoffBox.classList.remove('hidden');
         hourlyBox.classList.add('hidden');
     } else if (mode === 'hourly') {
-        document.getElementById('btnModeHourly').className = 'px-4 py-2 rounded-full bg-[#0284C7] text-white transition-all shadow-sm';
+        document.getElementById('btnModeHourly').className = 'px-4 py-2 rounded-full bg-[#004E92] text-white transition-all shadow-sm';
         dropoffBox.classList.add('hidden');
         hourlyBox.classList.remove('hidden');
     }
@@ -586,12 +590,12 @@ function setTimingOption(option) {
     const scheduleBox = document.getElementById('scheduleTimeGroup');
 
     if (option === 'now') {
-        nowBtn.className = 'p-3.5 rounded-2xl border-2 border-[#0284C7] bg-[#E1EFFD] text-[#0B172A] flex items-center gap-3 text-left font-semibold text-xs shadow-sm';
-        laterBtn.className = 'p-3.5 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex items-center gap-3 text-left font-semibold text-xs hover:border-[#0284C7] transition-all';
+        nowBtn.className = 'p-3.5 rounded-2xl border-2 border-[#004E92] bg-[#E1EFFD] text-[#0B172A] flex items-center gap-3 text-left font-semibold text-xs shadow-sm';
+        laterBtn.className = 'p-3.5 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex items-center gap-3 text-left font-semibold text-xs hover:border-[#004E92] transition-all';
         scheduleBox.classList.add('hidden');
     } else {
-        laterBtn.className = 'p-3.5 rounded-2xl border-2 border-[#0284C7] bg-[#E1EFFD] text-[#0B172A] flex items-center gap-3 text-left font-semibold text-xs shadow-sm';
-        nowBtn.className = 'p-3.5 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex items-center gap-3 text-left font-semibold text-xs hover:border-[#0284C7] transition-all';
+        laterBtn.className = 'p-3.5 rounded-2xl border-2 border-[#004E92] bg-[#E1EFFD] text-[#0B172A] flex items-center gap-3 text-left font-semibold text-xs shadow-sm';
+        nowBtn.className = 'p-3.5 rounded-2xl border border-[#C7E0FA] bg-white text-[#475569] flex items-center gap-3 text-left font-semibold text-xs hover:border-[#004E92] transition-all';
         scheduleBox.classList.remove('hidden');
     }
 }
@@ -647,7 +651,7 @@ function pickCab(key, fare, name, img) {
     cards.forEach(c => {
         const el = document.getElementById(c);
         if (el) {
-            el.className = 'p-5 rounded-3xl border border-[#C7E0FA] bg-white cursor-pointer transition-all hover:border-[#0284C7] hover:shadow-lg relative group';
+            el.className = 'p-5 rounded-3xl border border-[#C7E0FA] bg-white cursor-pointer transition-all hover:border-[#004E92] hover:shadow-lg relative group';
         }
     });
 
@@ -678,11 +682,11 @@ function pickCab(key, fare, name, img) {
     };
     const activeEl = document.getElementById(activeMap[key]);
     if (activeEl) {
-        activeEl.className = 'p-5 rounded-3xl border-2 border-[#0284C7] bg-[#E1EFFD]/60 cursor-pointer transition-all hover:shadow-lg relative group';
+        activeEl.className = 'p-5 rounded-3xl border-2 border-[#004E92] bg-[#E1EFFD]/60 cursor-pointer transition-all hover:shadow-lg relative group';
     }
     if (badges[key]) {
         badges[key].innerText = 'Selected ✓';
-        badges[key].className = 'text-xs font-bold text-[#0284C7] mt-2 block';
+        badges[key].className = 'text-xs font-bold text-[#004E92] mt-2 block';
     }
 
     window.showToast(`Selected: ${name}`);
@@ -694,17 +698,17 @@ function calculateFare() {
 
     if (bookingState.mode === 'hourly') {
         const h = parseInt(document.getElementById('bHourlyHours')?.value || 4);
-        base = bookingState.baseFare * (h / 2);
+        base = Math.round(bookingState.baseFare * (h / 2.5));
     }
 
     let addonTotal = 0;
-    if (document.getElementById('addMeet')?.checked) addonTotal += 10;
-    if (document.getElementById('addChild')?.checked) addonTotal += 8;
+    if (document.getElementById('addMeet')?.checked) addonTotal += 150;
+    if (document.getElementById('addChild')?.checked) addonTotal += 100;
 
     let subtotal = base + addonTotal;
     let discount = 0;
     if (bookingState.promoApplied) {
-        discount = subtotal * 0.10;
+        discount = Math.round(subtotal * 0.10);
     }
 
     const total = subtotal - discount;
@@ -713,20 +717,20 @@ function calculateFare() {
     if (nameEl) nameEl.innerText = bookingState.cabName;
 
     const baseEl = document.getElementById('sumBaseFare');
-    if (baseEl) baseEl.innerText = `$${base.toFixed(2)}`;
+    if (baseEl) baseEl.innerText = `₹${base.toLocaleString('en-IN')}`;
 
     const addonsEl = document.getElementById('sumAddons');
-    if (addonsEl) addonsEl.innerText = `$${addonTotal.toFixed(2)}`;
+    if (addonsEl) addonsEl.innerText = `₹${addonTotal.toLocaleString('en-IN')}`;
 
     const totalEl = document.getElementById('sumTotal');
-    if (totalEl) totalEl.innerText = `$${total.toFixed(2)}`;
+    if (totalEl) totalEl.innerText = `₹${total.toLocaleString('en-IN')}`;
 
     const discountRow = document.getElementById('discountRow');
     const discountEl = document.getElementById('sumDiscount');
     if (discountRow && discountEl) {
         if (bookingState.promoApplied) {
             discountRow.style.display = 'flex';
-            discountEl.innerText = `-$${discount.toFixed(2)}`;
+            discountEl.innerText = `-₹${discount.toLocaleString('en-IN')}`;
         } else {
             discountRow.style.display = 'none';
         }
@@ -735,30 +739,30 @@ function calculateFare() {
 
 function applyPromo() {
     const code = document.getElementById('promoInput')?.value.trim().toUpperCase();
-    if (code === 'GOLD10' || code === 'RIDE10' || code === 'LUXE10') {
+    if (code === 'PATNA10' || code === 'GOLD10' || code === 'RIDE10') {
         bookingState.promoApplied = true;
         document.getElementById('appliedCodeText').innerText = code;
         calculateFare();
         window.showToast(`Promo ${code} applied: 10% discount!`);
     } else {
-        window.showToast('Please enter coupon: GOLD10', 'error');
+        window.showToast('Please enter coupon: PATNA10', 'error');
     }
 }
 
 function confirmAndIssuePass() {
-    window.showToast('Cab confirmed! Driver dispatched to your location.');
+    window.showToast('Cab confirmed! Patna Transport driver dispatched.');
 
     document.getElementById('step3Box').classList.add('hidden');
     document.getElementById('step4Box').classList.remove('hidden');
 
-    document.getElementById('passCabDisplay').innerText = `${bookingState.cabName} • Plate: DL 01 AB 8890`;
-    document.getElementById('passPickupText').innerText = document.getElementById('bPickup')?.value || 'City Center';
-    document.getElementById('passDropoffText').innerText = document.getElementById('bDropoff')?.value || 'Destination';
+    document.getElementById('passCabDisplay').innerText = `${bookingState.cabName} • White • Plate: BR 01 PB 8877`;
+    document.getElementById('passPickupText').innerText = document.getElementById('bPickup')?.value || 'Boring Road, Patna';
+    document.getElementById('passDropoffText').innerText = document.getElementById('bDropoff')?.value || 'Patna Airport (PAT)';
 
     const marker4 = document.getElementById('stepMarker4');
     const label4 = document.getElementById('stepLabel4');
-    if (marker4) marker4.className = 'w-10 h-10 rounded-full bg-[#0284C7] text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-sky-100';
-    if (label4) label4.className = 'text-[11px] font-bold text-[#0284C7] mt-2 whitespace-nowrap';
+    if (marker4) marker4.className = 'w-10 h-10 rounded-full bg-[#004E92] text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-sky-100';
+    if (label4) label4.className = 'text-[11px] font-bold text-[#004E92] mt-2 whitespace-nowrap';
 
     const line = document.getElementById('stepLineProgress');
     if (line) line.style.width = '100%';
@@ -788,10 +792,12 @@ function resetWizard() {
 document.addEventListener('DOMContentLoaded', () => {
     const p = new URLSearchParams(window.location.search);
     const v = p.get('vehicle');
-    if (v === 'sedan') pickCab('sedan', 35, 'Comfort Prime Sedan', 'hero_sedan.jpg');
-    if (v === 'suv') pickCab('suv', 55, 'Spacious Family SUV', 'fleet_suv.jpg');
-    if (v === 'electric') pickCab('electric', 40, 'Eco Silent Electric Cab', 'fleet_electric.jpg');
-    if (v === 'van') pickCab('van', 75, 'Executive Travel Van', 'fleet_van.jpg');
+    if (v === 'sedan') pickCab('sedan', 899, 'Maruti Suzuki Dzire', 'hero_sedan.jpg');
+    if (v === 'suv') pickCab('suv', 1499, 'Mahindra Scorpio Classic', 'fleet_suv.jpg');
+    if (v === 'van') pickCab('electric', 1299, 'Maruti Suzuki Ertiga (7-Seater)', 'fleet_electric.jpg');
+    if (v === 'innova') pickCab('van', 1699, 'Toyota Innova Crysta', 'fleet_van.jpg');
+    if (v === 'electric') pickCab('sedan', 999, 'Tata Tigor EV', 'electric_hyper.jpg');
+    if (v === 'traveler') pickCab('van', 2499, 'Executive Tour Traveler', 'fleet_van.jpg');
 });
 </script>
 @endpush

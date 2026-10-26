@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Our Cabs & Transparent Fares')
+@section('title', 'Our Cabs & Transparent Fares | Patna Transport | Boring Road, Patna')
 
 @section('content')
 <!-- FLEET HERO HEADER (Light Blue Atmosphere with Golden Accents) -->
@@ -10,20 +10,20 @@
     <div class="absolute top-10 right-1/4 w-72 h-72 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="max-w-4xl mx-auto relative z-10">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-[#C7E0FA] text-[#0369A1] text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-[#C7E0FA] text-[#004E92] text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
             <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-            Spotless & Well-Maintained Cabs
+            Safe • Reliable • On-Time Travel Since Years
         </span>
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0B172A] mb-4">
-            Our Cabs & <span class="text-amber-500">Clear Fares</span>
+            Our Cabs & <span class="text-amber-500">Fixed Fares</span>
         </h1>
-        <p class="text-[#475569] text-sm sm:text-base max-w-xl mx-auto font-light leading-relaxed">
-            Choose the right cab for your journey. Clean interiors, working AC, polite verified drivers, and transparent pricing with zero hidden charges.
+        <p class="text-[#475569] text-sm sm:text-base max-w-xl mx-auto font-normal leading-relaxed">
+            Patna Transport fleet based at <strong>Boring Road, Patna</strong>. Clean air-conditioned cabs, polite verified drivers, and 100% transparent rates in Indian Rupees with zero hidden surge.
         </p>
 
         <!-- Category Filter Buttons (Light Blue Pill Style) -->
         <div class="flex flex-wrap items-center justify-center gap-2 pt-8">
-            <button type="button" onclick="filterCabs('all')" id="btnFilterAll" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-[#0284C7] text-white shadow-md">
+            <button type="button" onclick="filterCabs('all')" id="btnFilterAll" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-[#004E92] text-white shadow-md">
                 All Cabs (6)
             </button>
             <button type="button" onclick="filterCabs('sedan')" id="btnFilterSedan" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-white border border-[#C7E0FA] text-[#1E3A5F] hover:bg-[#E1EFFD]">
@@ -36,7 +36,7 @@
                 Electric Cabs
             </button>
             <button type="button" onclick="filterCabs('van')" id="btnFilterVan" class="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-white border border-[#C7E0FA] text-[#1E3A5F] hover:bg-[#E1EFFD]">
-                Family Vans
+                7-Seaters & Vans
             </button>
         </div>
     </div>
@@ -47,21 +47,21 @@
     <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="fleetContainer">
             
-            <!-- CAB 1: Comfort Sedan -->
+            <!-- CAB 1: Maruti Suzuki Dzire -->
             <div class="cab-card sedan card-clean overflow-hidden flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
-                        <img src="{{ asset('images/hero_sedan.jpg') }}" alt="Comfort Sedan" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <img src="{{ asset('images/hero_sedan.jpg') }}" alt="Maruti Suzuki Dzire" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                         <span class="absolute top-4 left-4 bg-white/95 border border-[#C7E0FA] px-3 py-1 rounded-full text-xs font-bold text-[#0B172A] shadow-sm">
-                            ⭐ CITY FAVORITE
+                            ⭐ CITY & AIRPORT FAVORITE
                         </span>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-1">
-                            <h3 class="font-serif text-xl font-bold text-[#0B172A]">Prime Comfort Sedan</h3>
-                            <span class="text-xl font-bold text-amber-600 font-serif">$35 <span class="text-xs text-slate-500 font-sans">base</span></span>
+                            <h3 class="text-xl font-bold text-[#0B172A]">Maruti Suzuki Dzire</h3>
+                            <span class="text-xl font-bold text-amber-600">₹11 <span class="text-xs text-slate-500 font-sans">/ KM</span></span>
                         </div>
-                        <p class="text-xs text-[#475569] mb-4">Comfortable 4-seater sedan. Perfect for city rides, business commutes, and station drops.</p>
+                        <p class="text-xs text-[#475569] mb-4">Quiet, air-conditioned sedan. Ideal for Patna Airport (PAT) transfers, Boring Road, and daily city travel.</p>
 
                         <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#E1EFFD] text-center text-xs text-[#475569]">
                             <div>
@@ -73,15 +73,15 @@
                                 <span class="font-bold text-[#0B172A]">3 Bags</span>
                             </div>
                             <div>
-                                <span class="text-[10px] text-[#64748B] block">PER KM</span>
-                                <span class="font-bold text-[#0284C7]">$1.20</span>
+                                <span class="text-[10px] text-[#64748B] block">BASE FARE</span>
+                                <span class="font-bold text-[#004E92]">₹899</span>
                             </div>
                         </div>
 
                         <div class="flex flex-wrap gap-1.5 pt-3">
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Dual AC</span>
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Clean Bottled Water</span>
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">USB Mobile Charger</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Chilled AC</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Bottled Water</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Phone Charger</span>
                         </div>
                     </div>
                 </div>
@@ -90,45 +90,45 @@
                         View Details & Features
                     </button>
                     <a href="{{ route('booking') }}?vehicle=sedan" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
-                        Book This Cab
+                        Book Dzire Now
                     </a>
                 </div>
             </div>
 
-            <!-- CAB 2: Spacious SUV -->
-            <div class="cab-card suv card-clean overflow-hidden flex flex-col justify-between">
+            <!-- CAB 2: Mahindra Scorpio Classic -->
+            <div class="cab-card suv card-clean overflow-hidden flex flex-col justify-between border-2 border-sky-300">
                 <div>
                     <div class="h-56 overflow-hidden relative">
-                        <img src="{{ asset('images/fleet_suv.jpg') }}" alt="Spacious SUV" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                        <span class="absolute top-4 left-4 bg-white/95 border border-[#C7E0FA] px-3 py-1 rounded-full text-xs font-bold text-[#0B172A] shadow-sm">
-                            🎒 FAMILY & AIRPORT
+                        <img src="{{ asset('images/fleet_suv.jpg') }}" alt="Mahindra Scorpio Classic" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-[#004E92] text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
+                            👑 HIGHWAY KING
                         </span>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-1">
-                            <h3 class="font-serif text-xl font-bold text-[#0B172A]">Spacious Family SUV</h3>
-                            <span class="text-xl font-bold text-amber-600 font-serif">$55 <span class="text-xs text-slate-500 font-sans">base</span></span>
+                            <h3 class="text-xl font-bold text-[#0B172A]">Mahindra Scorpio</h3>
+                            <span class="text-xl font-bold text-amber-600">₹16 <span class="text-xs text-slate-500 font-sans">/ KM</span></span>
                         </div>
-                        <p class="text-xs text-[#475569] mb-4">Big trunk space and ample legroom. Best for airport runs and outstation trips with family.</p>
+                        <p class="text-xs text-[#475569] mb-4">Commanding presence and high road clearance. Perfect for outstation Bihar trips, Bodh Gaya, and weddings.</p>
 
                         <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#E1EFFD] text-center text-xs text-[#475569]">
                             <div>
                                 <span class="text-[10px] text-[#64748B] block">SEATING</span>
-                                <span class="font-bold text-[#0B172A]">6 Seats</span>
+                                <span class="font-bold text-[#0B172A]">7 Seats</span>
                             </div>
                             <div>
                                 <span class="text-[10px] text-[#64748B] block">LUGGAGE</span>
-                                <span class="font-bold text-[#0B172A]">5 Large Bags</span>
+                                <span class="font-bold text-[#0B172A]">5 Bags</span>
                             </div>
                             <div>
-                                <span class="text-[10px] text-[#64748B] block">PER KM</span>
-                                <span class="font-bold text-[#0284C7]">$1.60</span>
+                                <span class="text-[10px] text-[#64748B] block">BASE FARE</span>
+                                <span class="font-bold text-[#004E92]">₹1,499</span>
                             </div>
                         </div>
 
                         <div class="flex flex-wrap gap-1.5 pt-3">
                             <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Rear AC Vents</span>
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Reclining Seats</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Rugged Suspension</span>
                             <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Highway Certified</span>
                         </div>
                     </div>
@@ -138,26 +138,122 @@
                         View Details & Features
                     </button>
                     <a href="{{ route('booking') }}?vehicle=suv" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
-                        Book This Cab
+                        Book Scorpio Now
                     </a>
                 </div>
             </div>
 
-            <!-- CAB 3: Eco Silent Electric Cab -->
-            <div class="cab-card electric card-clean overflow-hidden flex flex-col justify-between">
+            <!-- CAB 3: Maruti Suzuki Ertiga -->
+            <div class="cab-card van card-clean overflow-hidden flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
-                        <img src="{{ asset('images/fleet_electric.jpg') }}" alt="Eco Electric Cab" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <img src="{{ asset('images/fleet_electric.jpg') }}" alt="Maruti Suzuki Ertiga" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                         <span class="absolute top-4 left-4 bg-amber-500 text-slate-900 px-3 py-1 rounded-full text-xs font-bold shadow-sm">
-                            ⚡ ZERO NOISE
+                            👥 7-SEATER FAMILY
                         </span>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-1">
-                            <h3 class="font-serif text-xl font-bold text-[#0B172A]">Eco Silent Electric Cab</h3>
-                            <span class="text-xl font-bold text-amber-600 font-serif">$40 <span class="text-xs text-slate-500 font-sans">base</span></span>
+                            <h3 class="text-xl font-bold text-[#0B172A]">Maruti Suzuki Ertiga</h3>
+                            <span class="text-xl font-bold text-amber-600">₹14 <span class="text-xs text-slate-500 font-sans">/ KM</span></span>
                         </div>
-                        <p class="text-xs text-[#475569] mb-4">Silent, smooth, and 100% electric energy. Glide through city traffic with zero tailpipe emissions.</p>
+                        <p class="text-xs text-[#475569] mb-4">Comfortable 7-seater MPV with dual AC. Ideal for family airport runs and group travel in Bihar.</p>
+
+                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#E1EFFD] text-center text-xs text-[#475569]">
+                            <div>
+                                <span class="text-[10px] text-[#64748B] block">SEATING</span>
+                                <span class="font-bold text-[#0B172A]">7 Seats</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-[#64748B] block">LUGGAGE</span>
+                                <span class="font-bold text-[#0B172A]">4 Bags</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-[#64748B] block">BASE FARE</span>
+                                <span class="font-bold text-[#004E92]">₹1,299</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 pt-3">
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Dual Blower AC</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Flexible Seats</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Smooth Ride</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 space-y-2">
+                    <button type="button" onclick="openDetailsModal('van')" class="btn-outline-blue w-full py-2.5 text-xs block text-center">
+                        View Details & Features
+                    </button>
+                    <a href="{{ route('booking') }}?vehicle=van" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
+                        Book Ertiga Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- CAB 4: Toyota Innova Crysta -->
+            <div class="cab-card suv card-clean overflow-hidden flex flex-col justify-between">
+                <div>
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="{{ asset('images/luxe_interior.jpg') }}" alt="Toyota Innova Crysta" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-white/95 border border-[#C7E0FA] px-3 py-1 rounded-full text-xs font-bold text-[#0B172A] shadow-sm">
+                            💼 VIP CHAUFFEUR
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="text-xl font-bold text-[#0B172A]">Toyota Innova Crysta</h3>
+                            <span class="text-xl font-bold text-amber-600">₹18 <span class="text-xs text-slate-500 font-sans">/ KM</span></span>
+                        </div>
+                        <p class="text-xs text-[#475569] mb-4">Plush captain seats, supreme legroom, and refined highway cruise for VIP corporate and wedding travel.</p>
+
+                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#E1EFFD] text-center text-xs text-[#475569]">
+                            <div>
+                                <span class="text-[10px] text-[#64748B] block">SEATING</span>
+                                <span class="font-bold text-[#0B172A]">7 Seats</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-[#64748B] block">LUGGAGE</span>
+                                <span class="font-bold text-[#0B172A]">6 Bags</span>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-[#64748B] block">BASE FARE</span>
+                                <span class="font-bold text-[#004E92]">₹1,699</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 pt-3">
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Captain Chairs</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Individual AC</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Top-Rated Driver</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 space-y-2">
+                    <button type="button" onclick="openDetailsModal('innova')" class="btn-outline-blue w-full py-2.5 text-xs block text-center">
+                        View Details & Features
+                    </button>
+                    <a href="{{ route('booking') }}?vehicle=innova" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
+                        Book Innova Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- CAB 5: Tata Tigor EV -->
+            <div class="cab-card electric card-clean overflow-hidden flex flex-col justify-between">
+                <div>
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="{{ asset('images/electric_hyper.jpg') }}" alt="Tata Tigor EV" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                            ⚡ GREEN ELECTRIC
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="text-xl font-bold text-[#0B172A]">Tata Tigor EV (Electric)</h3>
+                            <span class="text-xl font-bold text-amber-600">₹12 <span class="text-xs text-slate-500 font-sans">/ KM</span></span>
+                        </div>
+                        <p class="text-xs text-[#475569] mb-4">Zero noise, eco-friendly electric cab for smooth travel across Patna city streets with instant climate AC.</p>
 
                         <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#E1EFFD] text-center text-xs text-[#475569]">
                             <div>
@@ -169,15 +265,15 @@
                                 <span class="font-bold text-[#0B172A]">3 Bags</span>
                             </div>
                             <div>
-                                <span class="text-[10px] text-[#64748B] block">PER KM</span>
-                                <span class="font-bold text-[#0284C7]">$1.30</span>
+                                <span class="text-[10px] text-[#64748B] block">BASE FARE</span>
+                                <span class="font-bold text-[#004E92]">₹999</span>
                             </div>
                         </div>
 
                         <div class="flex flex-wrap gap-1.5 pt-3">
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Zero Engine Noise</span>
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Fast Charging Tech</span>
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Instant Climate AC</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Silent Drive</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Eco Friendly</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Instant AC</span>
                         </div>
                     </div>
                 </div>
@@ -186,151 +282,55 @@
                         View Details & Features
                     </button>
                     <a href="{{ route('booking') }}?vehicle=electric" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
-                        Book This Cab
+                        Book Electric Now
                     </a>
                 </div>
             </div>
 
-            <!-- CAB 4: Family Group Van -->
+            <!-- CAB 6: Executive Tour Traveler / Van -->
             <div class="cab-card van card-clean overflow-hidden flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
-                        <img src="{{ asset('images/fleet_van.jpg') }}" alt="Family Van" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                        <img src="{{ asset('images/fleet_van.jpg') }}" alt="Executive Tour Traveler" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                         <span class="absolute top-4 left-4 bg-white/95 border border-[#C7E0FA] px-3 py-1 rounded-full text-xs font-bold text-[#0B172A] shadow-sm">
-                            👥 GROUP TRAVEL
+                            🚌 GROUP & WEDDINGS
                         </span>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-1">
-                            <h3 class="font-serif text-xl font-bold text-[#0B172A]">Executive Travel Van</h3>
-                            <span class="text-xl font-bold text-amber-600 font-serif">$75 <span class="text-xs text-slate-500 font-sans">base</span></span>
+                            <h3 class="text-xl font-bold text-[#0B172A]">Executive Tour Traveler</h3>
+                            <span class="text-xl font-bold text-amber-600">₹22 <span class="text-xs text-slate-500 font-sans">/ KM</span></span>
                         </div>
-                        <p class="text-xs text-[#475569] mb-4">Travel together with your entire group. Extra luggage space, high roof, and comfortable individual seats.</p>
+                        <p class="text-xs text-[#475569] mb-4">High roof, spacious seats, and huge boot space. Built for family tours to Bodh Gaya, Rajgir, and wedding parties.</p>
 
                         <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#E1EFFD] text-center text-xs text-[#475569]">
                             <div>
                                 <span class="text-[10px] text-[#64748B] block">SEATING</span>
-                                <span class="font-bold text-[#0B172A]">7 Seats</span>
+                                <span class="font-bold text-[#0B172A]">12 Seats</span>
                             </div>
                             <div>
                                 <span class="text-[10px] text-[#64748B] block">LUGGAGE</span>
-                                <span class="font-bold text-[#0B172A]">8-10 Bags</span>
+                                <span class="font-bold text-[#0B172A]">10+ Bags</span>
                             </div>
                             <div>
-                                <span class="text-[10px] text-[#64748B] block">PER KM</span>
-                                <span class="font-bold text-[#0284C7]">$2.10</span>
+                                <span class="text-[10px] text-[#64748B] block">BASE FARE</span>
+                                <span class="font-bold text-[#004E92]">₹2,499</span>
                             </div>
                         </div>
 
                         <div class="flex flex-wrap gap-1.5 pt-3">
                             <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">High Ceiling</span>
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Big Luggage Boot</span>
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Group Tour Special</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Huge Luggage Boot</span>
+                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Bihar Tour Special</span>
                         </div>
                     </div>
                 </div>
                 <div class="p-6 pt-0 space-y-2">
-                    <button type="button" onclick="openDetailsModal('van')" class="btn-outline-blue w-full py-2.5 text-xs block text-center">
+                    <button type="button" onclick="openDetailsModal('traveler')" class="btn-outline-blue w-full py-2.5 text-xs block text-center">
                         View Details & Features
                     </button>
-                    <a href="{{ route('booking') }}?vehicle=van" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
-                        Book This Cab
-                    </a>
-                </div>
-            </div>
-
-            <!-- CAB 5: Executive Business Sedan -->
-            <div class="cab-card sedan card-clean overflow-hidden flex flex-col justify-between">
-                <div>
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="{{ asset('images/luxe_interior.jpg') }}" alt="Executive Business Sedan" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                        <span class="absolute top-4 left-4 bg-white/95 border border-[#C7E0FA] px-3 py-1 rounded-full text-xs font-bold text-[#0B172A] shadow-sm">
-                            💼 BUSINESS CLASS
-                        </span>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-1">
-                            <h3 class="font-serif text-xl font-bold text-[#0B172A]">Executive Business Class</h3>
-                            <span class="text-xl font-bold text-amber-600 font-serif">$60 <span class="text-xs text-slate-500 font-sans">base</span></span>
-                        </div>
-                        <p class="text-xs text-[#475569] mb-4">Premium leather seats, laptop charger ports, and high-speed Wi-Fi. Designed for work on the move.</p>
-
-                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#E1EFFD] text-center text-xs text-[#475569]">
-                            <div>
-                                <span class="text-[10px] text-[#64748B] block">SEATING</span>
-                                <span class="font-bold text-[#0B172A]">3-4 Seats</span>
-                            </div>
-                            <div>
-                                <span class="text-[10px] text-[#64748B] block">LUGGAGE</span>
-                                <span class="font-bold text-[#0B172A]">3 Bags</span>
-                            </div>
-                            <div>
-                                <span class="text-[10px] text-[#64748B] block">PER KM</span>
-                                <span class="font-bold text-[#0284C7]">$1.80</span>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap gap-1.5 pt-3">
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Free Wi-Fi</span>
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Laptop Power</span>
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Top-Rated Chauffeur</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 space-y-2">
-                    <button type="button" onclick="openDetailsModal('sedan')" class="btn-outline-blue w-full py-2.5 text-xs block text-center">
-                        View Details & Features
-                    </button>
-                    <a href="{{ route('booking') }}?vehicle=sedan" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
-                        Book This Cab
-                    </a>
-                </div>
-            </div>
-
-            <!-- CAB 6: Outstation Cruiser SUV -->
-            <div class="cab-card suv card-clean overflow-hidden flex flex-col justify-between">
-                <div>
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="{{ asset('images/vip_chauffeur.jpg') }}" alt="Outstation Cruiser SUV" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                        <span class="absolute top-4 left-4 bg-white/95 border border-[#C7E0FA] px-3 py-1 rounded-full text-xs font-bold text-[#0B172A] shadow-sm">
-                            🛣️ LONG DISTANCE
-                        </span>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-1">
-                            <h3 class="font-serif text-xl font-bold text-[#0B172A]">Outstation Cruiser SUV</h3>
-                            <span class="text-xl font-bold text-amber-600 font-serif">$65 <span class="text-xs text-slate-500 font-sans">base</span></span>
-                        </div>
-                        <p class="text-xs text-[#475569] mb-4">Built for long journeys. Extra fuel range, soft suspension, and experienced highway drivers.</p>
-
-                        <div class="grid grid-cols-3 gap-2 py-3 border-y border-[#E1EFFD] text-center text-xs text-[#475569]">
-                            <div>
-                                <span class="text-[10px] text-[#64748B] block">SEATING</span>
-                                <span class="font-bold text-[#0B172A]">6 Seats</span>
-                            </div>
-                            <div>
-                                <span class="text-[10px] text-[#64748B] block">LUGGAGE</span>
-                                <span class="font-bold text-[#0B172A]">6 Bags</span>
-                            </div>
-                            <div>
-                                <span class="text-[10px] text-[#64748B] block">PER KM</span>
-                                <span class="font-bold text-[#0284C7]">$1.75</span>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap gap-1.5 pt-3">
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Emergency Kit</span>
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Highway Toll Pass</span>
-                            <span class="px-2.5 py-1 rounded-full bg-[#F0F6FD] text-[11px] text-[#334155] border border-[#C7E0FA]">Roof Carrier</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-6 pt-0 space-y-2">
-                    <button type="button" onclick="openDetailsModal('suv')" class="btn-outline-blue w-full py-2.5 text-xs block text-center">
-                        View Details & Features
-                    </button>
-                    <a href="{{ route('booking') }}?vehicle=suv" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
-                        Book This Cab
+                    <a href="{{ route('booking') }}?vehicle=traveler" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
+                        Book Traveler Now
                     </a>
                 </div>
             </div>
@@ -369,11 +369,11 @@
         </div>
 
         <div class="space-y-2">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-[#0B172A]">What's Included:</h4>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-[#0B172A]">What's Included with Patna Transport:</h4>
             <ul class="text-xs text-[#475569] space-y-1.5 font-medium">
                 <li>✓ 100% Sanitized and cleaned interior before every trip</li>
-                <li>✓ Verified, background-checked polite driver</li>
-                <li>✓ Automatic digital route and live trip tracking</li>
+                <li>✓ Verified, background-checked polite commercial driver</li>
+                <li>✓ Working Chilled AC guaranteed on every ride</li>
                 <li>✓ Free cancellation up to 1 hour before pickup</li>
             </ul>
         </div>
@@ -386,6 +386,32 @@
         </div>
     </div>
 </div>
+
+<!-- CALL & BOOKING STRIP -->
+<section class="py-16 px-6 bg-white border-t border-[#C7E0FA]">
+    <div class="max-w-5xl mx-auto p-8 sm:p-12 rounded-[2.5rem] bg-gradient-to-r from-[#002244] via-[#003B73] to-[#004E92] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl border border-sky-400/20">
+        <div class="text-center sm:text-left space-y-2">
+            <span class="text-amber-400 text-xs font-bold uppercase tracking-wider block">Safe • Reliable • On-Time Travel Since Years</span>
+            <h3 class="text-2xl sm:text-3xl font-bold">Need a Cab in Patna Right Now?</h3>
+            <p class="text-xs sm:text-sm text-sky-200">Local rides, Jay Prakash Narayan Airport (PAT) transfers, or outstation tours across Bihar.</p>
+            <div class="flex flex-wrap items-center gap-3 text-xs text-sky-200 font-semibold pt-1">
+                <span>📍 Boring Road, Patna</span>
+                <span>•</span>
+                <span>⚡ 3-5 Min Pickup</span>
+                <span>•</span>
+                <span>₹ Fixed Fares</span>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+            <a href="tel:8877177161" class="btn-gold px-8 py-4 text-xs font-bold flex items-center gap-2 shadow-lg">
+                <span>📞 CALL 24x7: 8877177161</span>
+            </a>
+            <a href="{{ route('booking') }}" class="btn-outline-blue border-white/30 text-white hover:text-slate-900 px-6 py-4 text-xs font-bold">
+                <span>Book Online</span>
+            </a>
+        </div>
+    </div>
+</section>
 @endsection
 
 @push('scripts')
@@ -406,7 +432,7 @@ function filterCabs(category) {
     });
 
     if (buttons[category]) {
-        buttons[category].className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-[#0284C7] text-white shadow-md';
+        buttons[category].className = 'px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-[#004E92] text-white shadow-md';
         if (window.animate) {
             window.animate(buttons[category], { scale: [0.93, 1.08, 1] }, { duration: 0.35, ease: [0.16, 1, 0.3, 1] });
         }
@@ -444,33 +470,47 @@ function openDetailsModal(type) {
     const link = document.getElementById('modalBookLink');
 
     if (type === 'sedan') {
-        title.innerText = 'Comfort Prime Sedan';
+        title.innerText = 'Maruti Suzuki Dzire';
         img.src = '{{ asset("images/hero_sedan.jpg") }}';
         pax.innerText = '4 Persons';
-        bags.innerText = '3 Large Bags';
-        fare.innerText = '$35.00 Base';
+        bags.innerText = '3 Bags';
+        fare.innerText = '₹899 Base (₹11/KM)';
         link.href = '{{ route("booking") }}?vehicle=sedan';
     } else if (type === 'suv') {
-        title.innerText = 'Spacious Family SUV';
+        title.innerText = 'Mahindra Scorpio Classic';
         img.src = '{{ asset("images/fleet_suv.jpg") }}';
-        pax.innerText = '6 Persons';
-        bags.innerText = '5 Large Bags';
-        fare.innerText = '$55.00 Base';
-        link.href = '{{ route("booking") }}?vehicle=suv';
-    } else if (type === 'electric') {
-        title.innerText = 'Eco Silent Electric Cab';
-        img.src = '{{ asset("images/fleet_electric.jpg") }}';
-        pax.innerText = '4 Persons';
-        bags.innerText = '3 Large Bags';
-        fare.innerText = '$40.00 Base';
-        link.href = '{{ route("booking") }}?vehicle=electric';
-    } else if (type === 'van') {
-        title.innerText = 'Executive Group Van';
-        img.src = '{{ asset("images/fleet_van.jpg") }}';
         pax.innerText = '7 Persons';
-        bags.innerText = '8-10 Large Bags';
-        fare.innerText = '$75.00 Base';
+        bags.innerText = '5 Bags';
+        fare.innerText = '₹1,499 Base (₹16/KM)';
+        link.href = '{{ route("booking") }}?vehicle=suv';
+    } else if (type === 'van') {
+        title.innerText = 'Maruti Suzuki Ertiga (7-Seater)';
+        img.src = '{{ asset("images/fleet_electric.jpg") }}';
+        pax.innerText = '7 Persons';
+        bags.innerText = '4 Bags';
+        fare.innerText = '₹1,299 Base (₹14/KM)';
         link.href = '{{ route("booking") }}?vehicle=van';
+    } else if (type === 'innova') {
+        title.innerText = 'Toyota Innova Crysta';
+        img.src = '{{ asset("images/luxe_interior.jpg") }}';
+        pax.innerText = '7 Persons';
+        bags.innerText = '6 Bags';
+        fare.innerText = '₹1,699 Base (₹18/KM)';
+        link.href = '{{ route("booking") }}?vehicle=innova';
+    } else if (type === 'electric') {
+        title.innerText = 'Tata Tigor EV (Electric)';
+        img.src = '{{ asset("images/electric_hyper.jpg") }}';
+        pax.innerText = '4 Persons';
+        bags.innerText = '3 Bags';
+        fare.innerText = '₹999 Base (₹12/KM)';
+        link.href = '{{ route("booking") }}?vehicle=electric';
+    } else if (type === 'traveler') {
+        title.innerText = 'Executive Tour Traveler';
+        img.src = '{{ asset("images/fleet_van.jpg") }}';
+        pax.innerText = '12 Persons';
+        bags.innerText = '10+ Bags';
+        fare.innerText = '₹2,499 Base (₹22/KM)';
+        link.href = '{{ route("booking") }}?vehicle=traveler';
     }
 
     modal.classList.remove('hidden');

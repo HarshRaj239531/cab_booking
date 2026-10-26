@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Safe, clean, and reliable cab booking. Book city rides, airport transfers, and outstation trips with fixed fares and verified drivers.">
-    <meta name="theme-color" content="#0284C7">
+    <meta name="description" content="Safe, clean, and reliable cab booking in Patna. Book city rides, airport transfers (PAT), and outstation trips with fixed fares and verified drivers.">
+    <meta name="theme-color" content="#003B73">
 
-    <title>@yield('title', 'Quick & Reliable Cab Booking') | Veloce Cabs</title>
+    <title>@yield('title', 'Safe & Reliable Cab Booking') | Patna Transport</title>
 
     <!-- Google Fonts: Plus Jakarta Sans (Clean, Modern, Simple) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,58 +21,71 @@
     <!-- Radiant Top Scroll Progress (Light Blue to Gold Gradient - Powered by Framer Motion scroll) -->
     <div id="scrollProgress" class="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-sky-400 via-sky-600 to-amber-400 z-[200] pointer-events-none" style="width: 0%;"></div>
 
-    <!-- Top Announcement Strip (Light Blue & Golden Touch) -->
-    <div class="bg-gradient-to-r from-[#0C2340] via-[#0F3057] to-[#0C2340] text-sky-100 text-xs py-2 px-4 z-[95] text-center font-medium flex items-center justify-center gap-3 border-b border-amber-500/20">
-        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-300 text-[10px] font-bold uppercase tracking-wider">
-            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-            Framer Motion
-        </span>
-        <span>✨ 24/7 Available across all major airports & city hubs • Use coupon <strong class="text-amber-300 underline cursor-pointer font-bold" onclick="window.showToast('Coupon GOLD10 copied to clipboard!')">GOLD10</strong> for 10% off</span>
+    <!-- Top Announcement Strip (Details from Poster: Phone, Location, Services) -->
+    <div class="bg-gradient-to-r from-[#002244] via-[#003B73] to-[#004E92] text-sky-100 text-xs py-2 px-4 z-[95] font-medium border-b border-sky-400/20 shadow-sm">
+        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/15 text-white text-[11px] font-bold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    24x7 Active
+                </span>
+                <span class="hidden sm:inline text-sky-200">📍 <strong>Our Location:</strong> Boring Road, Patna</span>
+                <span class="text-sky-200 hidden md:inline">• 24x7 Cab Service | Outstation | Local | Airport Pickup</span>
+            </div>
+            <div class="flex items-center gap-4 text-xs font-bold ml-auto sm:ml-0">
+                <a href="tel:8877177161" class="flex items-center gap-1.5 bg-amber-400 hover:bg-amber-300 text-slate-900 px-3 py-1 rounded-full transition-transform hover:scale-105 shadow-sm">
+                    <span>📞 CALL NOW 24x7:</span>
+                    <span class="tracking-wider">8877177161</span>
+                </a>
+            </div>
+        </div>
     </div>
 
     <!-- Floating Pill Glassmorphic Header -->
-    <div class="fixed top-9 inset-x-0 z-[100] flex justify-center px-4 pointer-events-none">
-        <nav id="floatingNav" class="pointer-events-auto flex items-center justify-between transition-all duration-500 ease-in-out w-full max-w-6xl bg-white/92 backdrop-blur-xl border border-[#C7E0FA] rounded-full py-3 px-6 sm:px-8 shadow-xl shadow-sky-600/8">
+    <div class="fixed top-10 inset-x-0 z-[100] flex justify-center px-4 pointer-events-none">
+        <nav id="floatingNav" class="pointer-events-auto flex items-center justify-between transition-all duration-500 ease-in-out w-full max-w-6xl bg-white/95 backdrop-blur-xl border border-[#C7E0FA] rounded-full py-3 px-5 sm:px-7 shadow-xl shadow-sky-950/8">
             
-            <!-- Brand Logo -->
+            <!-- Brand Logo (Airplane in Circle) -->
             <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#0284C7] to-[#0369A1] text-white flex items-center justify-center font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
-                    <svg class="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM5 11l1.5-4.5A2 2 0 018.4 5h7.2a2 2 0 011.9 1.5L19 11m-14 0h14m-14 0a2 2 0 00-2 2v3a1 1 0 001 1h1m14-6a2 2 0 012 2v3a1 1 0 01-1 1h-1"/>
+                <div class="w-10 h-10 rounded-full bg-[#004E92] text-white flex items-center justify-center font-bold text-base shadow-md ring-2 ring-white group-hover:scale-105 transition-transform">
+                    <svg class="w-5 h-5 text-white transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                     </svg>
                 </div>
-                <div>
-                    <span class="font-bold text-xl text-[#0B172A] tracking-tight">Veloce</span>
-                    <span class="text-xs text-amber-600 font-bold tracking-wider uppercase ml-1">Gold</span>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-lg text-[#003B73] tracking-tight leading-none">Patna Transport</span>
+                    <span class="text-[10px] text-slate-500 font-semibold tracking-tight mt-0.5 hidden xs:block">Safe • Reliable • On-Time Travel Since Years</span>
                 </div>
             </a>
 
             <!-- Desktop Nav Links -->
-            <div class="hidden md:flex items-center gap-8 text-xs font-bold tracking-[0.15em] uppercase text-[#1B365D]">
-                <a href="{{ route('home') }}" class="nav-link-underline transition-colors hover:text-[#0284C7] {{ request()->routeIs('home') ? 'active text-[#0284C7]' : '' }}">
+            <div class="hidden md:flex items-center gap-7 text-xs font-bold tracking-[0.12em] uppercase text-[#1B365D]">
+                <a href="{{ route('home') }}" class="nav-link-underline transition-colors hover:text-[#004E92] {{ request()->routeIs('home') ? 'active text-[#004E92]' : '' }}">
                     Home
                 </a>
-                <a href="{{ route('fleet') }}" class="nav-link-underline transition-colors hover:text-[#0284C7] {{ request()->routeIs('fleet') ? 'active text-[#0284C7]' : '' }}">
+                <a href="{{ route('fleet') }}" class="nav-link-underline transition-colors hover:text-[#004E92] {{ request()->routeIs('fleet') ? 'active text-[#004E92]' : '' }}">
                     Our Cabs
                 </a>
-                <a href="{{ route('booking') }}" class="nav-link-underline transition-colors hover:text-[#0284C7] {{ request()->routeIs('booking') ? 'active text-[#0284C7]' : '' }}">
+                <a href="{{ route('booking') }}" class="nav-link-underline transition-colors hover:text-[#004E92] {{ request()->routeIs('booking') ? 'active text-[#004E92]' : '' }}">
                     Book Ride
                 </a>
-                <a href="{{ route('safety') }}" class="nav-link-underline transition-colors hover:text-[#0284C7] {{ request()->routeIs('safety') ? 'active text-[#0284C7]' : '' }}">
+                <a href="{{ route('safety') }}" class="nav-link-underline transition-colors hover:text-[#004E92] {{ request()->routeIs('safety') ? 'active text-[#004E92]' : '' }}">
                     Safety & Drivers
                 </a>
-                <a href="{{ route('contact') }}" class="nav-link-underline transition-colors hover:text-[#0284C7] {{ request()->routeIs('contact') ? 'active text-[#0284C7]' : '' }}">
-                    Support
+                <a href="{{ route('contact') }}" class="nav-link-underline transition-colors hover:text-[#004E92] {{ request()->routeIs('contact') ? 'active text-[#004E92]' : '' }}">
+                    Contact
                 </a>
             </div>
 
-            <!-- Action Button: Golden Shine Button -->
+            <!-- Action Buttons: Phone & Book -->
             <div class="hidden sm:flex items-center gap-3">
-                <a href="{{ route('booking') }}" class="btn-gold text-xs font-bold px-6 py-2.5 flex items-center gap-2 group shadow-lg">
-                    <span>Book a Cab</span>
-                    <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                    </svg>
+                <a href="tel:8877177161" class="btn-blue text-xs font-bold px-4 py-2.5 flex items-center gap-2 shadow-md">
+                    <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    <span>8877177161</span>
+                </a>
+                <a href="{{ route('booking') }}" class="btn-gold text-xs font-bold px-5 py-2.5 flex items-center gap-1.5 shadow-md">
+                    <span>Book Ride</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
             </div>
 
@@ -94,9 +107,15 @@
         <a href="{{ route('fleet') }}" class="block px-4 py-2.5 rounded-xl hover:bg-[#E1EFFD] text-[#0B172A]">Our Cabs</a>
         <a href="{{ route('booking') }}" class="block px-4 py-2.5 rounded-xl hover:bg-[#E1EFFD] text-[#0B172A]">Book a Ride</a>
         <a href="{{ route('safety') }}" class="block px-4 py-2.5 rounded-xl hover:bg-[#E1EFFD] text-[#0B172A]">Safety & Drivers</a>
-        <a href="{{ route('contact') }}" class="block px-4 py-2.5 rounded-xl hover:bg-[#E1EFFD] text-[#0B172A]">Contact & Support</a>
-        <div class="pt-2">
-            <a href="{{ route('booking') }}" class="w-full btn-gold text-center py-3 block text-sm shadow-md">Book a Cab Now</a>
+        <a href="{{ route('contact') }}" class="block px-4 py-2.5 rounded-xl hover:bg-[#E1EFFD] text-[#0B172A]">Contact & Location</a>
+        
+        <div class="pt-3 border-t border-slate-100 space-y-2">
+            <a href="tel:8877177161" class="w-full btn-blue text-center py-3 block text-sm shadow-md font-bold">
+                📞 Call 8877177161 (24x7)
+            </a>
+            <a href="{{ route('booking') }}" class="w-full btn-gold text-center py-3 block text-sm shadow-md font-bold">
+                Book a Cab Online
+            </a>
         </div>
     </div>
 
@@ -105,71 +124,77 @@
         @yield('content')
     </main>
 
-    <!-- Refined Footer (Deep Royal Navy + Golden Glow + Sky Blue Details) -->
-    <footer class="bg-gradient-to-b from-[#0B172A] to-[#060E1A] text-slate-300 border-t border-[#1E3A5F] pt-16 pb-12 z-10 relative mt-20">
+    <!-- Refined Footer (Patna Transport Details) -->
+    <footer class="bg-gradient-to-b from-[#002244] to-[#001326] text-slate-300 border-t border-[#003B73] pt-16 pb-12 z-10 relative mt-20">
         <div class="max-w-6xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
                 
-                <!-- Col 1 -->
+                <!-- Col 1: Brand Info -->
                 <div class="md:col-span-2 space-y-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#0284C7] to-amber-500 text-white flex items-center justify-center font-bold text-base shadow-md">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 17a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4zM5 11l1.5-4.5A2 2 0 018.4 5h7.2a2 2 0 011.9 1.5L19 11m-14 0h14m-14 0a2 2 0 00-2 2v3a1 1 0 001 1h1m14-6a2 2 0 012 2v3a1 1 0 01-1 1h-1"/>
+                        <div class="w-11 h-11 rounded-full bg-[#004E92] text-white flex items-center justify-center font-bold text-base shadow-lg ring-2 ring-white/20">
+                            <svg class="w-6 h-6 text-white transform -rotate-45" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                             </svg>
                         </div>
-                        <span class="font-bold text-2xl text-white">Veloce <span class="text-amber-400">Cabs</span></span>
+                        <div>
+                            <span class="font-bold text-2xl text-white tracking-tight">Patna Transport</span>
+                            <span class="text-xs text-sky-300 font-semibold block">Safe • Reliable • On-Time Travel Since Years</span>
+                        </div>
                     </div>
-                    <p class="text-sm text-slate-400 max-w-sm leading-relaxed font-light">
-                        Premium comfort, crystal-clear pricing, and courteous drivers. Dedicated to providing smooth airport transfers, city travel, and outstation holiday journeys.
+                    <p class="text-sm text-slate-300 max-w-sm leading-relaxed font-light">
+                        Patna's premier cab service based at Boring Road. Delivering reliable 24x7 local rides, on-time airport pickups at Jay Prakash Narayan Airport (PAT), and smooth outstation journeys across Bihar and Jharkhand.
                     </p>
-                    <div class="flex items-center gap-4 text-xs text-amber-400 font-semibold pt-1">
-                        <span>✨ Verified Drivers</span>
-                        <span>✨ Fixed Transparent Rates</span>
-                        <span>✨ 24/7 Support</span>
+                    <div class="flex flex-wrap items-center gap-4 text-xs text-amber-400 font-semibold pt-1">
+                        <span>✨ 24x7 Cab Service</span>
+                        <span>✨ Outstation Trips</span>
+                        <span>✨ Airport Pickup</span>
+                        <span>✨ Boring Road, Patna</span>
                     </div>
                 </div>
 
                 <!-- Col 2: Quick Links -->
                 <div>
                     <h4 class="text-white font-bold text-base mb-4">Quick Links</h4>
-                    <ul class="space-y-2.5 text-xs text-slate-400">
+                    <ul class="space-y-2.5 text-xs text-slate-300">
                         <li><a href="{{ route('home') }}" class="hover:text-amber-400 transition-colors">Home</a></li>
-                        <li><a href="{{ route('fleet') }}" class="hover:text-amber-400 transition-colors">Our Fleet & Pricing</a></li>
+                        <li><a href="{{ route('fleet') }}" class="hover:text-amber-400 transition-colors">Our Cabs & Pricing</a></li>
                         <li><a href="{{ route('booking') }}" class="hover:text-amber-400 transition-colors">Book a Cab Online</a></li>
-                        <li><a href="{{ route('safety') }}" class="hover:text-amber-400 transition-colors">Safety Standards</a></li>
-                        <li><a href="{{ route('contact') }}" class="hover:text-amber-400 transition-colors">Help & Contact</a></li>
+                        <li><a href="{{ route('safety') }}" class="hover:text-amber-400 transition-colors">Safety & Drivers</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-amber-400 transition-colors">Contact & Office Location</a></li>
                     </ul>
                 </div>
 
-                <!-- Col 3: Need Help -->
+                <!-- Col 3: Direct Contact Details -->
                 <div>
-                    <h4 class="text-white font-bold text-base mb-4">24/7 Helpline</h4>
-                    <p class="text-xs text-slate-400 mb-3 leading-relaxed">
-                        Need immediate assistance or have a special ride inquiry?
-                    </p>
-                    <div class="space-y-2">
-                        <a href="tel:+18008356231" class="text-sm font-bold text-amber-300 block hover:text-white transition-colors">
-                            📞 1800-835-6231 (Toll-Free)
-                        </a>
-                        <p class="text-xs text-slate-400">
-                            ✉️ support@velocecabs.com
-                        </p>
-                        <p class="text-xs text-sky-300 pt-1">
-                            🕒 Average cab pickup time: <strong>3-4 mins</strong>
-                        </p>
+                    <h4 class="text-white font-bold text-base mb-4">Contact & Location</h4>
+                    <div class="space-y-3 text-xs">
+                        <div class="bg-white/10 p-3.5 rounded-2xl border border-white/10">
+                            <span class="text-[10px] uppercase font-bold text-amber-300 tracking-wider block mb-1">CALL NOW 24x7</span>
+                            <a href="tel:8877177161" class="text-lg font-black text-white hover:text-amber-300 transition-colors block">
+                                📞 8877177161
+                            </a>
+                        </div>
+                        <div class="text-slate-300">
+                            <strong class="text-white block">📍 Office Location:</strong>
+                            Boring Road, Patna, Bihar - 800001
+                        </div>
+                        <div class="text-slate-300">
+                            <strong class="text-white block">✈️ Airport Desk:</strong>
+                            Jay Prakash Narayan Airport (PAT), Patna
+                        </div>
                     </div>
                 </div>
 
             </div>
 
             <!-- Bottom Line -->
-            <div class="border-t border-[#1E3A5F] pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
-                <p>&copy; {{ date('Y') }} Veloce Cabs. Designed for supreme comfort and reliable arrival.</p>
+            <div class="border-t border-sky-900/60 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-3">
+                <p>&copy; {{ date('Y') }} Patna Transport. Safe • Reliable • On-Time Travel Since Years. Boring Road, Patna.</p>
                 <div class="flex items-center gap-6">
-                    <a href="{{ route('safety') }}" class="hover:text-amber-300 transition-colors">Safety Guide</a>
-                    <a href="{{ route('booking') }}" class="hover:text-amber-300 transition-colors">Instant Booking</a>
-                    <a href="{{ route('contact') }}" class="hover:text-amber-300 transition-colors">Contact Support</a>
+                    <a href="tel:8877177161" class="text-amber-300 font-bold hover:underline">📞 8877177161</a>
+                    <a href="{{ route('safety') }}" class="hover:text-amber-300 transition-colors">Safety Standards</a>
+                    <a href="{{ route('contact') }}" class="hover:text-amber-300 transition-colors">Contact Us</a>
                 </div>
             </div>
         </div>

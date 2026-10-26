@@ -91,34 +91,34 @@
                         <tr>
                             <th class="p-4 sm:p-5">Service Feature</th>
                             <th class="p-4 sm:p-5 text-[#64748B]">Ordinary Taxi / Rickshaw</th>
-                            <th class="p-4 sm:p-5 text-[#0284C7] bg-[#E1EFFD]/80 border-l border-[#C7E0FA]">VELOCE GOLD CABS</th>
+                            <th class="p-4 sm:p-5 text-[#004E92] bg-[#E1EFFD]/80 border-l border-[#C7E0FA]">PATNA TRANSPORT</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-[#E1EFFD] text-[#475569]">
                         <tr>
                             <td class="p-4 sm:p-5 font-semibold text-[#0B172A]">Pricing & Fares</td>
                             <td class="p-4 sm:p-5 text-[#64748B]">Bargaining or sudden surge multipliers</td>
-                            <td class="p-4 sm:p-5 text-[#0284C7] bg-sky-50/50 border-l border-[#C7E0FA] font-bold">Fixed price quote (Zero surge)</td>
+                            <td class="p-4 sm:p-5 text-[#004E92] bg-sky-50/50 border-l border-[#C7E0FA] font-bold">100% Fixed Rates (Zero Surge Pricing)</td>
                         </tr>
                         <tr>
                             <td class="p-4 sm:p-5 font-semibold text-[#0B172A]">Driver Background</td>
                             <td class="p-4 sm:p-5 text-[#64748B]">Not verified, unknown driver identity</td>
-                            <td class="p-4 sm:p-5 text-[#0284C7] bg-sky-50/50 border-l border-[#C7E0FA] font-bold">100% Police & Document Verified</td>
+                            <td class="p-4 sm:p-5 text-[#004E92] bg-sky-50/50 border-l border-[#C7E0FA] font-bold">100% Police & Document Verified</td>
                         </tr>
                         <tr>
                             <td class="p-4 sm:p-5 font-semibold text-[#0B172A]">AC & Car Cleanliness</td>
                             <td class="p-4 sm:p-5 text-[#64748B]">Often unwashed, AC refusal common</td>
-                            <td class="p-4 sm:p-5 text-[#0284C7] bg-sky-50/50 border-l border-[#C7E0FA] font-bold">Clean interior & AC always switched on</td>
+                            <td class="p-4 sm:p-5 text-[#004E92] bg-sky-50/50 border-l border-[#C7E0FA] font-bold">Clean interior & AC always switched on</td>
                         </tr>
                         <tr>
                             <td class="p-4 sm:p-5 font-semibold text-[#0B172A]">Airport Delay Support</td>
                             <td class="p-4 sm:p-5 text-[#64748B]">Driver leaves or charges heavy extra wait</td>
-                            <td class="p-4 sm:p-5 text-[#0284C7] bg-sky-50/50 border-l border-[#C7E0FA] font-bold">Flight tracked with 60 mins free wait</td>
+                            <td class="p-4 sm:p-5 text-[#004E92] bg-sky-50/50 border-l border-[#C7E0FA] font-bold">Patna Airport flight tracked (Free wait time)</td>
                         </tr>
                         <tr>
                             <td class="p-4 sm:p-5 font-semibold text-[#0B172A]">Cancellations</td>
                             <td class="p-4 sm:p-5 text-[#64748B]">Frequent cancellations by drivers</td>
-                            <td class="p-4 sm:p-5 text-[#0284C7] bg-sky-50/50 border-l border-[#C7E0FA] font-bold">Guaranteed confirmed ride dispatch</td>
+                            <td class="p-4 sm:p-5 text-[#004E92] bg-sky-50/50 border-l border-[#C7E0FA] font-bold">Guaranteed on-time cab dispatch</td>
                         </tr>
                     </tbody>
                 </table>
@@ -132,8 +132,8 @@
     <div class="max-w-6xl mx-auto">
         <div class="text-center mb-14">
             <span class="text-amber-600 font-bold text-xs tracking-[0.3em] uppercase mb-2 block">Our People</span>
-            <h2 class="text-3xl sm:text-4xl font-serif text-[#0B172A]">Meet Our Top-Rated Drivers</h2>
-            <p class="text-[#475569] text-sm max-w-md mx-auto mt-2 font-light">Experienced, respectful, and verified professionals who care for your comfort.</p>
+            <h2 class="text-3xl sm:text-4xl font-bold text-[#0B172A]">Meet Our Verified Patna Drivers</h2>
+            <p class="text-[#475569] text-sm max-w-md mx-auto mt-2 font-normal">Experienced, courteous, and police-verified professionals dedicated to safe travel across Patna and Bihar.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -142,11 +142,11 @@
                     <img src="{{ asset('images/vip_chauffeur.jpg') }}" alt="Ramesh Kumar" class="w-full h-full object-cover rounded-full">
                 </div>
                 <div>
-                    <h3 class="font-serif font-bold text-lg text-[#0B172A]">Ramesh Kumar</h3>
-                    <p class="text-xs text-[#0284C7] font-semibold">City & Airport Specialist</p>
+                    <h3 class="font-bold text-lg text-[#0B172A]">Ramesh Kumar</h3>
+                    <p class="text-xs text-[#004E92] font-semibold">City & Patna Airport Specialist</p>
                 </div>
                 <p class="text-xs text-[#64748B] leading-relaxed">
-                    8 years with Veloce Cabs. Known for polite driving, punctuality, and route knowledge.
+                    8 years with Patna Transport. Known for polite driving, punctuality, and thorough Patna route knowledge.
                 </p>
                 <div class="pt-2 border-t border-[#E1EFFD] text-xs font-bold text-[#0B172A]">
                     <span class="text-amber-500">★ 4.96</span> Rating • 3,420 Trips
@@ -158,11 +158,11 @@
                     <img src="{{ asset('images/vip_chauffeur.jpg') }}" alt="Sunil Verma" class="w-full h-full object-cover rounded-full filter saturate-150">
                 </div>
                 <div>
-                    <h3 class="font-serif font-bold text-lg text-[#0B172A]">Sunil Verma</h3>
-                    <p class="text-xs text-[#0284C7] font-semibold">Outstation Highway Senior Driver</p>
+                    <h3 class="font-bold text-lg text-[#0B172A]">Sunil Verma</h3>
+                    <p class="text-xs text-[#004E92] font-semibold">Bihar Highway Senior Driver</p>
                 </div>
                 <p class="text-xs text-[#64748B] leading-relaxed">
-                    12 years experience on mountain and highway routes. Expert in defensive driving.
+                    12 years experience on Bodh Gaya, Rajgir, and Varanasi routes. Expert in safe defensive highway driving.
                 </p>
                 <div class="pt-2 border-t border-[#E1EFFD] text-xs font-bold text-[#0B172A]">
                     <span class="text-amber-500">★ 4.98</span> Rating • 4,110 Trips
@@ -174,16 +174,28 @@
                     <img src="{{ asset('images/vip_chauffeur.jpg') }}" alt="Mohammad Aslam" class="w-full h-full object-cover rounded-full filter contrast-125">
                 </div>
                 <div>
-                    <h3 class="font-serif font-bold text-lg text-[#0B172A]">Mohammad Aslam</h3>
-                    <p class="text-xs text-[#0284C7] font-semibold">Executive & Corporate Chauffeur</p>
+                    <h3 class="font-bold text-lg text-[#0B172A]">Mohammad Aslam</h3>
+                    <p class="text-xs text-[#004E92] font-semibold">Corporate & VIP Fleet Chauffeur</p>
                 </div>
                 <p class="text-xs text-[#64748B] leading-relaxed">
-                    Specialist for business delegations and silent, comfortable executive rides.
+                    Specialist for business delegations, wedding fleets, and silent executive rides from Boring Road.
                 </p>
                 <div class="pt-2 border-t border-[#E1EFFD] text-xs font-bold text-[#0B172A]">
                     <span class="text-amber-500">★ 4.99</span> Rating • 2,890 Trips
                 </div>
             </div>
+        </div>
+
+        <!-- 24x7 Safety Helpline Strip -->
+        <div class="mt-14 p-6 sm:p-8 rounded-3xl bg-[#002244] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl border border-sky-400/20">
+            <div class="text-center sm:text-left space-y-1">
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-wider block">Safe • Reliable • On-Time Travel Since Years</span>
+                <h3 class="text-xl sm:text-2xl font-bold">24x7 Passenger Safety & Helpline</h3>
+                <p class="text-xs text-sky-200">Our Boring Road operations center monitors every ride live until you reach safely.</p>
+            </div>
+            <a href="tel:8877177161" class="btn-gold px-8 py-3.5 text-xs font-bold flex items-center gap-2 shadow-lg shrink-0">
+                <span>📞 Call Safety Desk: 8877177161</span>
+            </a>
         </div>
     </div>
 </section>

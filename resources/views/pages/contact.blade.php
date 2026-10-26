@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Help & Contact | 24/7 Cab Support')
+@section('title', 'Contact Us | Patna Transport | Boring Road, Patna | 8877177161')
 
 @section('content')
 <!-- CONTACT HERO (Light Blue & Golden Radiant Atmosphere) -->
@@ -10,15 +10,15 @@
     <div class="absolute top-10 right-1/4 w-72 h-72 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="max-w-4xl mx-auto relative z-10">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-[#C7E0FA] text-[#0369A1] text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
-            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-            We Are Here For You 24/7
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-[#C7E0FA] text-[#004E92] text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            24x7 Dispatch Office: Boring Road, Patna
         </span>
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0B172A] mb-4">
-            Help & <span class="text-amber-500">Support Center</span>
+            Contact <span class="text-amber-500">Patna Transport</span>
         </h1>
         <p class="text-[#475569] text-sm sm:text-base max-w-xl mx-auto font-light leading-relaxed">
-            Need help with an ongoing ride, corporate monthly cab billing, or lost an item in a cab? Contact our 24/7 dedicated support team.
+            Need an urgent cab in Patna, planning an outstation trip across Bihar, or looking for airport pickup? Call our 24/7 Boring Road helpline directly.
         </p>
     </div>
 </section>
@@ -33,58 +33,58 @@
                 
                 <!-- Quick Contact Card -->
                 <div class="bg-white rounded-[2rem] p-6 sm:p-8 border-2 border-[#C7E0FA] shadow-lg space-y-4">
-                    <h3 class="font-serif text-2xl font-bold text-[#0B172A]">Get in Touch</h3>
+                    <h3 class="text-2xl font-bold text-[#0B172A]">Get in Touch</h3>
                     <p class="text-xs text-[#475569] leading-relaxed">
-                        For immediate cab dispatch or trip inquiries, call our direct helpline.
+                        For instant cab booking or trip inquiries anywhere in Patna, call our direct 24x7 line.
                     </p>
 
                     <div class="space-y-3 pt-2">
-                        <div class="p-4 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-2xl bg-sky-100 text-[#0284C7] flex items-center justify-center font-bold text-xl shrink-0 shadow-sm">
+                        <div class="p-4 rounded-2xl bg-[#004E92] text-white flex items-center gap-4 shadow-md">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center font-bold text-xl shrink-0 shadow-sm">
                                 📞
                             </div>
                             <div>
-                                <span class="text-[10px] text-[#64748B] uppercase font-bold block">TOLL-FREE HELPLINE</span>
-                                <a href="tel:+18008356231" class="text-base font-bold text-[#0B172A] hover:text-[#0284C7] transition-colors">1800-835-6231</a>
+                                <span class="text-[10px] text-amber-300 uppercase font-black tracking-wider block">CALL NOW 24x7</span>
+                                <a href="tel:8877177161" class="text-lg font-black text-white hover:text-amber-300 transition-colors">8877177161</a>
                             </div>
                         </div>
 
                         <div class="p-4 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xl shrink-0 shadow-sm">
-                                💬
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl shrink-0 shadow-sm">
+                                📍
                             </div>
                             <div>
-                                <span class="text-[10px] text-[#64748B] uppercase font-bold block">WHATSAPP BOOKING SUPPORT</span>
-                                <a href="#" onclick="window.showToast('Connecting to WhatsApp support...')" class="text-base font-bold text-[#0B172A] hover:text-[#0284C7] transition-colors">+91 98765 43210</a>
+                                <span class="text-[10px] text-[#64748B] uppercase font-bold block">OUR OFFICE LOCATION</span>
+                                <span class="text-sm font-bold text-[#0B172A] block">Boring Road, Patna, Bihar - 800001</span>
                             </div>
                         </div>
 
                         <div class="p-4 rounded-2xl bg-[#F0F6FD] border border-[#C7E0FA] flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-2xl bg-sky-100 text-[#0284C7] flex items-center justify-center font-bold text-xl shrink-0 shadow-sm">
-                                ✉️
+                            <div class="w-12 h-12 rounded-2xl bg-sky-100 text-[#004E92] flex items-center justify-center font-bold text-xl shrink-0 shadow-sm">
+                                ✈️
                             </div>
                             <div>
-                                <span class="text-[10px] text-[#64748B] uppercase font-bold block">EMAIL SUPPORT</span>
-                                <a href="mailto:support@velocecabs.com" class="text-base font-bold text-[#0B172A] hover:text-[#0284C7] transition-colors">support@velocecabs.com</a>
+                                <span class="text-[10px] text-[#64748B] uppercase font-bold block">AIRPORT DESK</span>
+                                <span class="text-sm font-bold text-[#0B172A] block">Jay Prakash Narayan Airport (PAT), Patna</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Corporate Bulk Booking Estimator -->
+                <!-- Corporate / Wedding Bulk Booking Estimator -->
                 <div class="bg-white rounded-[2rem] p-6 sm:p-8 border-2 border-[#C7E0FA] shadow-lg space-y-4">
-                    <span class="text-xs font-bold text-amber-600 uppercase tracking-wider block">Office & Events</span>
-                    <h3 class="font-serif text-xl font-bold text-[#0B172A]">Corporate Fleet Booking</h3>
-                    <p class="text-xs text-[#475569]">Need multiple cabs for an event, wedding, or daily employee commute?</p>
+                    <span class="text-xs font-bold text-amber-600 uppercase tracking-wider block">Weddings & Corporate Fleet</span>
+                    <h3 class="text-xl font-bold text-[#0B172A]">Bulk Cab Estimator</h3>
+                    <p class="text-xs text-[#475569]">Need multiple Scorpio, Dzire, or Ertiga cabs for an event or family wedding in Bihar?</p>
 
                     <div class="space-y-3">
                         <div>
                             <label class="block text-xs font-semibold text-[#475569] mb-1">Number of Cabs</label>
                             <select id="corpCabs" onchange="calcCorpQuote()" class="input-clean w-full px-4 py-2.5 text-xs text-[#0B172A] font-medium">
                                 <option value="2">2 Cabs</option>
-                                <option value="5" selected>5 Cabs (Team Travel)</option>
-                                <option value="10">10 Cabs (Event Fleet)</option>
-                                <option value="20">20+ Cabs (Corporate Event)</option>
+                                <option value="5" selected>5 Cabs (Family / Team)</option>
+                                <option value="10">10 Cabs (Wedding Fleet)</option>
+                                <option value="20">20+ Cabs (Large Event)</option>
                             </select>
                         </div>
 
@@ -92,8 +92,8 @@
                             <label class="block text-xs font-semibold text-[#475569] mb-1">Number of Days</label>
                             <select id="corpDays" onchange="calcCorpQuote()" class="input-clean w-full px-4 py-2.5 text-xs text-[#0B172A] font-medium">
                                 <option value="1">1 Day</option>
-                                <option value="3" selected>3 Days (Weekend Event)</option>
-                                <option value="7">7 Days (Full Week)</option>
+                                <option value="3" selected>3 Days (Wedding Event)</option>
+                                <option value="7">7 Days (Full Week Tour)</option>
                                 <option value="30">Monthly Ongoing Contract</option>
                             </select>
                         </div>
@@ -101,11 +101,11 @@
                         <div class="p-4 rounded-2xl bg-[#E1EFFD] border border-[#C7E0FA] flex items-center justify-between">
                             <div>
                                 <span class="text-[10px] text-[#64748B] uppercase font-bold block">Estimated Package Price</span>
-                                <span class="text-2xl font-serif font-bold text-amber-600" id="corpPriceDisplay">$1,275.00</span>
+                                <span class="text-2xl font-bold text-amber-600" id="corpPriceDisplay">₹30,000</span>
                             </div>
-                            <button type="button" onclick="window.showToast('Corporate quote generated! We will call you shortly.')" class="btn-gold px-5 py-2 text-xs font-bold shadow-md">
-                                Request Deal
-                            </button>
+                            <a href="tel:8877177161" class="btn-gold px-5 py-2 text-xs font-bold shadow-md">
+                                Call for Deal
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -117,58 +117,60 @@
                 <div class="bg-white rounded-[2.5rem] p-6 sm:p-10 border-2 border-[#C7E0FA] shadow-xl space-y-6">
                     <div>
                         <span class="text-xs font-bold uppercase tracking-wider text-amber-600 block">Fast Response</span>
-                        <h2 class="font-serif text-2xl font-bold text-[#0B172A]">Send Us a Message</h2>
-                        <p class="text-xs text-[#475569] mt-1">Our support team usually replies within 10 minutes.</p>
+                        <h2 class="text-2xl font-bold text-[#0B172A]">Send Patna Transport a Message</h2>
+                        <p class="text-xs text-[#475569] mt-1">Our Boring Road dispatch team replies or calls back within 5 minutes.</p>
                     </div>
 
                     <form onsubmit="handleContactSubmit(event)" class="space-y-4">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-1.5">Your Name</label>
-                                <input type="text" required placeholder="e.g. Priya Sharma" class="input-clean w-full px-4 py-3 text-sm font-medium">
+                                <input type="text" required placeholder="e.g. Ramesh Singh" class="input-clean w-full px-4 py-3 text-sm font-medium">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-1.5">Phone Number</label>
-                                <input type="tel" required placeholder="+91 98765 00000" class="input-clean w-full px-4 py-3 text-sm font-medium">
+                                <input type="tel" required placeholder="e.g. 98765 00000" class="input-clean w-full px-4 py-3 text-sm font-medium">
                             </div>
                         </div>
 
                         <div>
                             <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-1.5">Email Address</label>
-                            <input type="email" required placeholder="yourname@gmail.com" class="input-clean w-full px-4 py-3 text-sm font-medium">
+                            <input type="email" placeholder="yourname@gmail.com" class="input-clean w-full px-4 py-3 text-sm font-medium">
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-1.5">Inquiry Type</label>
                                 <select class="input-clean w-full px-4 py-3 text-xs font-medium">
-                                    <option>Ride Booking Inquiry</option>
-                                    <option>Airport Pickup Question</option>
-                                    <option>Corporate / Monthly Cabs</option>
-                                    <option>Lost Item in Cab</option>
-                                    <option>Driver Feedback & Rating</option>
+                                    <option>Local Patna Ride</option>
+                                    <option>Patna Airport (PAT) Pickup</option>
+                                    <option>Outstation Trip (Bodh Gaya / Rajgir / Varanasi)</option>
+                                    <option>Wedding & Corporate Fleet Booking</option>
+                                    <option>Other Inquiry</option>
                                 </select>
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-1.5">Your City</label>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-1.5">Pickup Location in Patna</label>
                                 <select class="input-clean w-full px-4 py-3 text-xs font-medium">
-                                    <option>New Delhi / NCR</option>
-                                    <option>Mumbai</option>
-                                    <option>Bengaluru</option>
-                                    <option>Hyderabad</option>
-                                    <option>Kolkata</option>
-                                    <option>Other City</option>
+                                    <option>Boring Road</option>
+                                    <option>Patna Airport (PAT)</option>
+                                    <option>Patna Junction</option>
+                                    <option>Bailey Road</option>
+                                    <option>Kankarbagh</option>
+                                    <option>Danapur</option>
+                                    <option>Patliputra</option>
+                                    <option>Other Patna Location</option>
                                 </select>
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-1.5">Your Message or Booking Details</label>
-                            <textarea rows="4" required placeholder="Tell us about your date, stops, passenger count, or any question..." class="input-clean w-full p-4 text-sm leading-relaxed"></textarea>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-[#475569] mb-1.5">Trip Details or Special Request</label>
+                            <textarea rows="4" required placeholder="Tell us about your date, stops, passenger count, or required car (Scorpio, Dzire, Ertiga)..." class="input-clean w-full p-4 text-sm leading-relaxed"></textarea>
                         </div>
 
                         <button type="submit" class="w-full btn-gold py-3.5 text-xs font-bold uppercase tracking-wider shadow-xl">
-                            Send Message to Support Team
+                            Send Booking Request to Dispatch
                         </button>
                     </form>
                 </div>
@@ -185,15 +187,15 @@ function calcCorpQuote() {
     const cabs = parseInt(document.getElementById('corpCabs').value);
     const days = parseInt(document.getElementById('corpDays').value);
     
-    // Clear transparent rate: $100 per cab per day with 15% discount
-    let total = cabs * days * 100 * 0.85;
+    // ₹2,000 per cab per day for bulk wedding/corporate booking
+    let total = cabs * days * 2000;
 
-    document.getElementById('corpPriceDisplay').innerText = `$${total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    document.getElementById('corpPriceDisplay').innerText = `₹${total.toLocaleString('en-IN')}`;
 }
 
 function handleContactSubmit(e) {
     e.preventDefault();
-    window.showToast('Thank you! Your message has been received. Our team will contact you within 10 minutes.');
+    window.showToast('Thank you! Patna Transport dispatch (8877177161) has received your request and will call you in 5 mins.');
     e.target.reset();
 }
 </script>
