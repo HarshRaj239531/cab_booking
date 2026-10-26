@@ -42,8 +42,8 @@
     </div>
 
     <!-- Floating Pill Glassmorphic Header -->
-    <div id="navContainer" class="fixed top-11 inset-x-0 z-[100] flex justify-center px-4 pointer-events-none transition-all duration-300">
-        <nav id="floatingNav" class="pointer-events-auto flex items-center justify-between transition-all duration-300 ease-in-out w-full max-w-6xl bg-white/95 backdrop-blur-xl border border-white/60 rounded-full py-3 px-5 sm:px-7 shadow-xl shadow-sky-950/10">
+    <div id="navContainer" class="fixed top-11 inset-x-0 z-[100] flex justify-center px-4 pointer-events-none">
+        <nav id="floatingNav" class="pointer-events-auto flex items-center justify-between w-full max-w-6xl bg-white/95 backdrop-blur-xl border border-white/60 rounded-full py-3 px-5 sm:px-7 shadow-xl shadow-sky-950/10">
             
             <!-- Brand Logo (Airplane in Circle) -->
             <a href="{{ route('home') }}" class="flex items-center gap-3 group">

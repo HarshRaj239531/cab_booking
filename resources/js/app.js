@@ -43,7 +43,7 @@ window.showToast = function(message, type = 'success') {
 
 // Main Framer Motion Initialization
 function initFramerMotion() {
-    console.log('%c🚀 [Framer Motion] Initialized successfully on Veloce Cabs', 'color: #38bdf8; font-weight: bold; font-size: 13px;');
+    console.log('%c🚀 [Framer Motion] Initialized successfully on Patna Transport', 'color: #38bdf8; font-weight: bold; font-size: 13px;');
 
     // 1. Hardware-Accelerated Scroll Progress Bar (Framer Motion scroll)
     const progressBar = document.getElementById('scrollProgress');
@@ -57,35 +57,63 @@ function initFramerMotion() {
     const floatingNav = document.getElementById('floatingNav');
     const navContainer = document.getElementById('navContainer');
     const mobileMenu = document.getElementById('mobileMenu');
-    if (floatingNav) {
-        animate(floatingNav, { y: [-20, 0], opacity: [0, 1] }, { duration: 0.6, ease: [0.16, 1, 0.3, 1] });
 
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            if (scrollTop > 35) {
-                if (navContainer) {
-                    navContainer.classList.remove('top-11');
-                    navContainer.classList.add('top-3');
+    if (floatingNav && navContainer) {
+        // Dramatic smooth entrance from above
+        animate(floatingNav, { y: [-30, 0], opacity: [0, 1], scale: [0.96, 1] }, { duration: 0.75, ease: [0.16, 1, 0.3, 1] });
+
+        // Staggered reveal of nav links & buttons
+        const navElements = floatingNav.querySelectorAll('.nav-link-underline, .btn-blue, .btn-gold');
+        if (navElements.length > 0) {
+            animate(
+                Array.from(navElements),
+                { opacity: [0, 1], y: [8, 0] },
+                { delay: stagger(0.04, { startDelay: 0.2 }), duration: 0.45, ease: [0.16, 1, 0.3, 1] }
+            );
+        }
+
+        // Airplane icon gentle interactive hover in logo
+        const brandLogo = floatingNav.querySelector('a.group');
+        const planeSvg = brandLogo?.querySelector('svg');
+        if (brandLogo && planeSvg) {
+            brandLogo.addEventListener('mouseenter', () => {
+                animate(planeSvg, { rotate: [-45, -20, -45], scale: [1, 1.2, 1] }, { duration: 0.5, ease: 'easeInOut' });
+            });
+        }
+
+        // True Framer Motion scroll tracking
+        let isScrolled = false;
+        scroll((info) => {
+            const shouldScroll = info.y.current > 30;
+            if (shouldScroll !== isScrolled) {
+                isScrolled = shouldScroll;
+                if (isScrolled) {
+                    // Smoothly morph into floating elevated island
+                    animate(navContainer, { y: -28 }, { duration: 0.35, ease: [0.16, 1, 0.3, 1] });
+                    animate(floatingNav, {
+                        scale: 0.985,
+                        paddingTop: '10px',
+                        paddingBottom: '10px',
+                        boxShadow: '0 25px 50px -12px rgba(2, 44, 90, 0.22), 0 0 0 1px rgba(199, 224, 250, 0.5)'
+                    }, { duration: 0.35, ease: [0.16, 1, 0.3, 1] });
+                    if (mobileMenu) {
+                        animate(mobileMenu, { y: -28 }, { duration: 0.35, ease: [0.16, 1, 0.3, 1] });
+                    }
+                } else {
+                    // Smoothly return to top resting position
+                    animate(navContainer, { y: 0 }, { duration: 0.35, ease: [0.16, 1, 0.3, 1] });
+                    animate(floatingNav, {
+                        scale: 1,
+                        paddingTop: '12px',
+                        paddingBottom: '12px',
+                        boxShadow: '0 20px 30px -10px rgba(2, 44, 90, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.6)'
+                    }, { duration: 0.35, ease: [0.16, 1, 0.3, 1] });
+                    if (mobileMenu) {
+                        animate(mobileMenu, { y: 0 }, { duration: 0.35, ease: [0.16, 1, 0.3, 1] });
+                    }
                 }
-                if (mobileMenu) {
-                    mobileMenu.classList.remove('top-24');
-                    mobileMenu.classList.add('top-16');
-                }
-                floatingNav.classList.add('shadow-2xl', 'shadow-sky-950/20', 'py-2.5');
-                floatingNav.classList.remove('py-3');
-            } else {
-                if (navContainer) {
-                    navContainer.classList.remove('top-3');
-                    navContainer.classList.add('top-11');
-                }
-                if (mobileMenu) {
-                    mobileMenu.classList.remove('top-16');
-                    mobileMenu.classList.add('top-24');
-                }
-                floatingNav.classList.remove('shadow-2xl', 'shadow-sky-950/20', 'py-2.5');
-                floatingNav.classList.add('py-3');
             }
-        }, { passive: true });
+        });
     }
 
     // 3. Mobile Menu Toggle with Spring Motion
@@ -95,18 +123,31 @@ function initFramerMotion() {
             const isHidden = mobileMenu.classList.contains('hidden');
             if (isHidden) {
                 mobileMenu.classList.remove('hidden');
-                animate(mobileMenu, { opacity: [0, 1], y: [-15, 0], scale: [0.95, 1] }, { duration: 0.28, ease: [0.16, 1, 0.3, 1] });
+                animate(mobileMenu, { opacity: [0, 1], y: [-20, 0], scale: [0.93, 1] }, { duration: 0.32, ease: [0.16, 1, 0.3, 1] });
+                const menuLinks = mobileMenu.querySelectorAll('a');
+                if (menuLinks.length > 0) {
+                    animate(Array.from(menuLinks), { opacity: [0, 1], x: [-10, 0] }, { delay: stagger(0.04, { startDelay: 0.08 }), duration: 0.3 });
+                }
             } else {
-                animate(mobileMenu, { opacity: [1, 0], y: [0, -10], scale: [1, 0.95] }, { duration: 0.2 }).then(() => {
+                animate(mobileMenu, { opacity: [1, 0], y: [0, -12], scale: [1, 0.94] }, { duration: 0.22 }).then(() => {
                     mobileMenu.classList.add('hidden');
                 });
             }
         });
     }
 
-    // 4. Hero / Page Header Staggered Entrance Animations
+    // 4. Hero Parallax & Page Header Staggered Entrance Animations
     const heroSection = document.querySelector('section');
     if (heroSection) {
+        // Hero Background Subtle Parallax (Framer Motion scroll)
+        const heroBgImg = heroSection.querySelector('img');
+        if (heroBgImg) {
+            scroll((info) => {
+                if (info.y.current < window.innerHeight * 1.2) {
+                    heroBgImg.style.transform = `translate3d(0, ${info.y.current * 0.18}px, 0) scale(1.04)`;
+                }
+            });
+        }
         // Tag Pill Badge
         const heroPill = heroSection.querySelector('.motion-float-badge') || heroSection.querySelector('.inline-flex');
         if (heroPill) {
