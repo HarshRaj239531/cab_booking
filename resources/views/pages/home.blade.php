@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- HERO SECTION (Refined Soft Dark Wash with Clean Luminous Console & Gold Accents) -->
-<section class="relative min-h-[90vh] pt-16 pb-20 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#1A2638] via-[#213046] to-[#283C56] border-b border-[#334B6B]/40">
+<section class="relative min-h-[90vh] pt-32 sm:pt-36 pb-20 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#1A2638] via-[#213046] to-[#283C56] border-b border-[#334B6B]/40">
     
     <!-- Hero Background Image with Very Light, Subtle Dark Wash (Halka Dark Tint) -->
     <div class="absolute inset-0 z-0 pointer-events-none">

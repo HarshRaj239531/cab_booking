@@ -3,7 +3,7 @@
 @section('title', 'Book a Cab Online | Instant Fare & Live Ride Tracking')
 
 @section('content')
-<section class="py-12 px-4 sm:px-6 lg:px-8 bg-[#F0F6FD] min-h-screen relative overflow-hidden">
+<section class="pt-32 sm:pt-36 pb-12 px-4 sm:px-6 lg:px-8 bg-[#F0F6FD] min-h-screen relative overflow-hidden">
     
     <!-- Ambient Blue & Gold Glow Elements -->
     <div class="absolute top-10 left-1/4 w-96 h-96 bg-sky-400/10 rounded-full blur-3xl pointer-events-none"></div>

@@ -55,24 +55,41 @@ function initFramerMotion() {
 
     // 2. Floating Navbar Entrance & Scroll Morphing (Framer Motion)
     const floatingNav = document.getElementById('floatingNav');
+    const navContainer = document.getElementById('navContainer');
+    const mobileMenu = document.getElementById('mobileMenu');
     if (floatingNav) {
-        animate(floatingNav, { y: [-30, 0], opacity: [0, 1] }, { duration: 0.7, ease: [0.16, 1, 0.3, 1] });
+        animate(floatingNav, { y: [-20, 0], opacity: [0, 1] }, { duration: 0.6, ease: [0.16, 1, 0.3, 1] });
 
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
-            if (scrollTop > 40) {
-                floatingNav.classList.add('bg-white/95', 'shadow-xl', 'shadow-sky-950/10', 'border-[#C7E0FA]', 'py-2.5');
-                floatingNav.classList.remove('bg-white/80', 'py-3.5');
+            if (scrollTop > 35) {
+                if (navContainer) {
+                    navContainer.classList.remove('top-11');
+                    navContainer.classList.add('top-3');
+                }
+                if (mobileMenu) {
+                    mobileMenu.classList.remove('top-24');
+                    mobileMenu.classList.add('top-16');
+                }
+                floatingNav.classList.add('shadow-2xl', 'shadow-sky-950/20', 'py-2.5');
+                floatingNav.classList.remove('py-3');
             } else {
-                floatingNav.classList.remove('bg-white/95', 'shadow-xl', 'shadow-sky-950/10', 'border-[#C7E0FA]', 'py-2.5');
-                floatingNav.classList.add('bg-white/80', 'py-3.5');
+                if (navContainer) {
+                    navContainer.classList.remove('top-3');
+                    navContainer.classList.add('top-11');
+                }
+                if (mobileMenu) {
+                    mobileMenu.classList.remove('top-16');
+                    mobileMenu.classList.add('top-24');
+                }
+                floatingNav.classList.remove('shadow-2xl', 'shadow-sky-950/20', 'py-2.5');
+                floatingNav.classList.add('py-3');
             }
         }, { passive: true });
     }
 
     // 3. Mobile Menu Toggle with Spring Motion
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
             const isHidden = mobileMenu.classList.contains('hidden');
