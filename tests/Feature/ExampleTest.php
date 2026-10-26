@@ -25,12 +25,6 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_booking_page_loads_successfully(): void
-    {
-        $response = $this->get('/booking');
-        $response->assertStatus(200);
-    }
-
     public function test_safety_page_loads_successfully(): void
     {
         $response = $this->get('/safety');
@@ -41,5 +35,18 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/contact');
         $response->assertStatus(200);
+    }
+
+    public function test_booking_redirects_to_home(): void
+    {
+        $response = $this->get('/booking');
+        $response->assertRedirect('/');
+    }
+
+    public function test_404_page_loads_gracefully(): void
+    {
+        $response = $this->get('/non-existent-page-xyz');
+        $response->assertStatus(404);
+        $response->assertSee('404');
     }
 }

@@ -89,8 +89,8 @@
                     <button type="button" onclick="openDetailsModal('sedan')" class="btn-outline-blue w-full py-2.5 text-xs block text-center">
                         View Details & Features
                     </button>
-                    <a href="{{ route('booking') }}?vehicle=sedan" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
-                        Book Dzire Now
+                    <a href="tel:8877177161" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
+                        📞 Call to Book Dzire
                     </a>
                 </div>
             </div>
@@ -137,8 +137,8 @@
                     <button type="button" onclick="openDetailsModal('suv')" class="btn-outline-blue w-full py-2.5 text-xs block text-center">
                         View Details & Features
                     </button>
-                    <a href="{{ route('booking') }}?vehicle=suv" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
-                        Book Scorpio Now
+                    <a href="tel:8877177161" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
+                        📞 Call to Book Scorpio
                     </a>
                 </div>
             </div>
@@ -185,8 +185,8 @@
                     <button type="button" onclick="openDetailsModal('van')" class="btn-outline-blue w-full py-2.5 text-xs block text-center">
                         View Details & Features
                     </button>
-                    <a href="{{ route('booking') }}?vehicle=van" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
-                        Book Ertiga Now
+                    <a href="tel:8877177161" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
+                        📞 Call to Book Ertiga
                     </a>
                 </div>
             </div>
@@ -233,8 +233,8 @@
                     <button type="button" onclick="openDetailsModal('innova')" class="btn-outline-blue w-full py-2.5 text-xs block text-center">
                         View Details & Features
                     </button>
-                    <a href="{{ route('booking') }}?vehicle=innova" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
-                        Book Innova Now
+                    <a href="tel:8877177161" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
+                        📞 Call to Book Innova
                     </a>
                 </div>
             </div>
@@ -281,8 +281,8 @@
                     <button type="button" onclick="openDetailsModal('electric')" class="btn-outline-blue w-full py-2.5 text-xs block text-center">
                         View Details & Features
                     </button>
-                    <a href="{{ route('booking') }}?vehicle=electric" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
-                        Book Electric Now
+                    <a href="tel:8877177161" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
+                        📞 Call to Book Electric
                     </a>
                 </div>
             </div>
@@ -329,8 +329,8 @@
                     <button type="button" onclick="openDetailsModal('traveler')" class="btn-outline-blue w-full py-2.5 text-xs block text-center">
                         View Details & Features
                     </button>
-                    <a href="{{ route('booking') }}?vehicle=traveler" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
-                        Book Traveler Now
+                    <a href="tel:8877177161" class="btn-gold w-full py-2.5 text-xs block text-center font-bold shadow-md">
+                        📞 Call to Book Traveler
                     </a>
                 </div>
             </div>
@@ -380,8 +380,8 @@
 
         <div class="flex items-center justify-between pt-4 border-t border-[#E1EFFD]">
             <button type="button" onclick="closeDetailsModal()" class="btn-outline-blue px-6 py-2.5 text-xs">Close</button>
-            <a id="modalBookLink" href="{{ route('booking') }}?vehicle=sedan" class="btn-gold px-8 py-2.5 text-xs font-bold shadow-md">
-                Book This Cab Now
+            <a id="modalBookLink" href="tel:8877177161" class="btn-gold px-8 py-2.5 text-xs font-bold shadow-md">
+                📞 Call to Book Now: 8877177161
             </a>
         </div>
     </div>
@@ -406,8 +406,8 @@
             <a href="tel:8877177161" class="btn-gold px-8 py-4 text-xs font-bold flex items-center gap-2 shadow-lg">
                 <span>📞 CALL 24x7: 8877177161</span>
             </a>
-            <a href="{{ route('booking') }}" class="btn-outline-blue border-white/30 text-white hover:text-slate-900 px-6 py-4 text-xs font-bold">
-                <span>Book Online</span>
+            <a href="{{ route('contact') }}" class="btn-outline-blue border-white/30 text-white hover:text-slate-900 px-6 py-4 text-xs font-bold">
+                <span>Contact & Office</span>
             </a>
         </div>
     </div>
@@ -475,42 +475,7 @@ function openDetailsModal(type) {
         pax.innerText = '4 Persons';
         bags.innerText = '3 Bags';
         fare.innerText = '₹899 Base (₹11/KM)';
-        link.href = '{{ route("booking") }}?vehicle=sedan';
-    } else if (type === 'suv') {
-        title.innerText = 'Mahindra Scorpio Classic';
-        img.src = '{{ asset("images/fleet_suv.jpg") }}';
-        pax.innerText = '7 Persons';
-        bags.innerText = '5 Bags';
-        fare.innerText = '₹1,499 Base (₹16/KM)';
-        link.href = '{{ route("booking") }}?vehicle=suv';
-    } else if (type === 'van') {
-        title.innerText = 'Maruti Suzuki Ertiga (7-Seater)';
-        img.src = '{{ asset("images/fleet_electric.jpg") }}';
-        pax.innerText = '7 Persons';
-        bags.innerText = '4 Bags';
-        fare.innerText = '₹1,299 Base (₹14/KM)';
-        link.href = '{{ route("booking") }}?vehicle=van';
-    } else if (type === 'innova') {
-        title.innerText = 'Toyota Innova Crysta';
-        img.src = '{{ asset("images/luxe_interior.jpg") }}';
-        pax.innerText = '7 Persons';
-        bags.innerText = '6 Bags';
-        fare.innerText = '₹1,699 Base (₹18/KM)';
-        link.href = '{{ route("booking") }}?vehicle=innova';
-    } else if (type === 'electric') {
-        title.innerText = 'Tata Tigor EV (Electric)';
-        img.src = '{{ asset("images/electric_hyper.jpg") }}';
-        pax.innerText = '4 Persons';
-        bags.innerText = '3 Bags';
-        fare.innerText = '₹999 Base (₹12/KM)';
-        link.href = '{{ route("booking") }}?vehicle=electric';
-    } else if (type === 'traveler') {
-        title.innerText = 'Executive Tour Traveler';
-        img.src = '{{ asset("images/fleet_van.jpg") }}';
-        pax.innerText = '12 Persons';
-        bags.innerText = '10+ Bags';
-        fare.innerText = '₹2,499 Base (₹22/KM)';
-        link.href = '{{ route("booking") }}?vehicle=traveler';
+    link.href = 'tel:8877177161';
     }
 
     modal.classList.remove('hidden');

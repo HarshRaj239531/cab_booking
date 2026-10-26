@@ -10,10 +10,6 @@ Route::get('/fleet', function () {
     return view('pages.fleet');
 })->name('fleet');
 
-Route::get('/booking', function () {
-    return view('pages.booking');
-})->name('booking');
-
 Route::get('/safety', function () {
     return view('pages.safety');
 })->name('safety');
@@ -21,3 +17,8 @@ Route::get('/safety', function () {
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
+
+// Graceful redirect for old booking URL to homepage
+Route::redirect('/booking', '/');
+Route::redirect('/book-ride', '/');
+Route::redirect('/book', '/');

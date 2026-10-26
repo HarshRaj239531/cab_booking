@@ -44,12 +44,12 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                 <span>CALL NOW: 8877177161</span>
             </a>
-            <a href="{{ route('booking') }}" class="btn-blue text-base font-bold px-8 py-4 flex items-center gap-3 shadow-xl hover:scale-105 transition-transform">
-                <span>Book a Ride Online</span>
+            <a href="{{ route('fleet') }}" class="btn-blue text-base font-bold px-8 py-4 flex items-center gap-3 shadow-xl hover:scale-105 transition-transform">
+                <span>Explore Fleet & Fares</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
-            <a href="{{ route('fleet') }}" class="px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-base border border-white/25 backdrop-blur-md transition-all shadow-md">
-                <span>Explore Fleet & Fares</span>
+            <a href="{{ route('contact') }}" class="px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-base border border-white/25 backdrop-blur-md transition-all shadow-md">
+                <span>Contact & Office</span>
             </a>
         </div>
 
@@ -187,8 +187,8 @@
                     </div>
                 </div>
                 <div class="p-6 pt-0">
-                    <a href="{{ route('booking') }}?vehicle=sedan" class="btn-blue w-full text-center py-3 text-xs block font-bold">
-                        Select Dzire
+                    <a href="tel:8877177161" class="btn-blue w-full text-center py-3 text-xs block font-bold">
+                        📞 Call to Book Dzire (8877177161)
                     </a>
                 </div>
             </div>
@@ -217,8 +217,8 @@
                     </div>
                 </div>
                 <div class="p-6 pt-0">
-                    <a href="{{ route('booking') }}?vehicle=scorpio" class="btn-blue w-full text-center py-3 text-xs block font-bold">
-                        Select Scorpio
+                    <a href="tel:8877177161" class="btn-blue w-full text-center py-3 text-xs block font-bold">
+                        📞 Call to Book Scorpio (8877177161)
                     </a>
                 </div>
             </div>
@@ -247,8 +247,8 @@
                     </div>
                 </div>
                 <div class="p-6 pt-0">
-                    <a href="{{ route('booking') }}?vehicle=ertiga" class="btn-blue w-full text-center py-3 text-xs block font-bold">
-                        Select Ertiga
+                    <a href="tel:8877177161" class="btn-blue w-full text-center py-3 text-xs block font-bold">
+                        📞 Call to Book Ertiga (8877177161)
                     </a>
                 </div>
             </div>
@@ -312,12 +312,12 @@
                 Reserve online in under 60 seconds or call our 24x7 Boring Road dispatch office directly.
             </p>
             <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
-                <a href="{{ route('booking') }}" class="btn-gold text-sm font-bold px-8 py-4 flex items-center gap-2 shadow-xl">
-                    <span>Book Your Ride Now</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <a href="tel:8877177161" class="btn-gold text-sm font-bold px-8 py-4 flex items-center gap-2 shadow-xl">
+                    <svg class="w-4 h-4 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    <span>CALL NOW 24x7: 8877177161</span>
                 </a>
-                <a href="tel:8877177161" class="btn-outline-blue border-white/20 text-white hover:text-[#0B172A] px-6 py-4 text-sm font-semibold flex items-center gap-2">
-                    <span>📞 CALL NOW 24x7: 8877177161</span>
+                <a href="{{ route('contact') }}" class="btn-outline-blue border-white/20 text-white hover:text-[#0B172A] px-6 py-4 text-sm font-semibold flex items-center gap-2">
+                    <span>Contact & Dispatch Office</span>
                 </a>
             </div>
         </div>

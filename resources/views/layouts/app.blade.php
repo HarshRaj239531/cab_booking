@@ -66,9 +66,6 @@
                 <a href="{{ route('fleet') }}" class="nav-link-underline transition-colors hover:text-[#004E92] {{ request()->routeIs('fleet') ? 'active text-[#004E92]' : '' }}">
                     Our Cabs
                 </a>
-                <a href="{{ route('booking') }}" class="nav-link-underline transition-colors hover:text-[#004E92] {{ request()->routeIs('booking') ? 'active text-[#004E92]' : '' }}">
-                    Book Ride
-                </a>
                 <a href="{{ route('safety') }}" class="nav-link-underline transition-colors hover:text-[#004E92] {{ request()->routeIs('safety') ? 'active text-[#004E92]' : '' }}">
                     Safety & Drivers
                 </a>
@@ -77,15 +74,11 @@
                 </a>
             </div>
 
-            <!-- Action Buttons: Phone & Book -->
+            <!-- Action Buttons: Phone Call -->
             <div class="hidden sm:flex items-center gap-3">
-                <a href="tel:8877177161" class="btn-blue text-xs font-bold px-4 py-2.5 flex items-center gap-2 shadow-md">
-                    <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                    <span>8877177161</span>
-                </a>
-                <a href="{{ route('booking') }}" class="btn-gold text-xs font-bold px-5 py-2.5 flex items-center gap-1.5 shadow-md">
-                    <span>Book Ride</span>
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <a href="tel:8877177161" class="btn-gold text-xs font-bold px-5 py-2.5 flex items-center gap-2 shadow-md">
+                    <svg class="w-4 h-4 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    <span>CALL: 8877177161</span>
                 </a>
             </div>
 
@@ -105,16 +98,12 @@
     <div id="mobileMenu" class="hidden md:hidden fixed top-24 inset-x-4 z-[99] bg-white/95 backdrop-blur-2xl border border-[#C7E0FA] rounded-3xl p-6 shadow-2xl space-y-3 font-semibold text-sm">
         <a href="{{ route('home') }}" class="block px-4 py-2.5 rounded-xl hover:bg-[#E1EFFD] text-[#0B172A]">Home</a>
         <a href="{{ route('fleet') }}" class="block px-4 py-2.5 rounded-xl hover:bg-[#E1EFFD] text-[#0B172A]">Our Cabs</a>
-        <a href="{{ route('booking') }}" class="block px-4 py-2.5 rounded-xl hover:bg-[#E1EFFD] text-[#0B172A]">Book a Ride</a>
         <a href="{{ route('safety') }}" class="block px-4 py-2.5 rounded-xl hover:bg-[#E1EFFD] text-[#0B172A]">Safety & Drivers</a>
         <a href="{{ route('contact') }}" class="block px-4 py-2.5 rounded-xl hover:bg-[#E1EFFD] text-[#0B172A]">Contact & Location</a>
         
         <div class="pt-3 border-t border-slate-100 space-y-2">
-            <a href="tel:8877177161" class="w-full btn-blue text-center py-3 block text-sm shadow-md font-bold">
+            <a href="tel:8877177161" class="w-full btn-gold text-center py-3 block text-sm shadow-md font-bold">
                 📞 Call 8877177161 (24x7)
-            </a>
-            <a href="{{ route('booking') }}" class="w-full btn-gold text-center py-3 block text-sm shadow-md font-bold">
-                Book a Cab Online
             </a>
         </div>
     </div>
@@ -159,7 +148,6 @@
                     <ul class="space-y-2.5 text-xs text-slate-300">
                         <li><a href="{{ route('home') }}" class="hover:text-amber-400 transition-colors">Home</a></li>
                         <li><a href="{{ route('fleet') }}" class="hover:text-amber-400 transition-colors">Our Cabs & Pricing</a></li>
-                        <li><a href="{{ route('booking') }}" class="hover:text-amber-400 transition-colors">Book a Cab Online</a></li>
                         <li><a href="{{ route('safety') }}" class="hover:text-amber-400 transition-colors">Safety & Drivers</a></li>
                         <li><a href="{{ route('contact') }}" class="hover:text-amber-400 transition-colors">Contact & Office Location</a></li>
                     </ul>
